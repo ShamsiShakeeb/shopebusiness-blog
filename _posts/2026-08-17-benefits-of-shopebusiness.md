@@ -14,6 +14,7 @@ keywords: "Shop-E-Business benefits, e-commerce platform Bangladesh, start onlin
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         line-height: 1.6;
         color: #333;
+        
     }
     .lang-toggle-container {
         text-align: right;
