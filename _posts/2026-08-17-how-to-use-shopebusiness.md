@@ -2,6 +2,7 @@
 layout: post
 title: "How to Use Shop-E-Business: Complete Guide to Launching Your Online Store"
 date: 2026-08-17
+author: "Washiq Anwar Shamsi"
 description: "Learn how to set up, customize, and launch your automated e-commerce storefront in minutes using Shop-E-Business. Step-by-step guide for modern merchants."
 keywords: "how to use Shop-E-Business, launch online store, e-commerce storefront setup, automated ecommerce platform, online store builder"
 ---
