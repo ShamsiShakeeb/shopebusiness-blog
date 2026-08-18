@@ -28,7 +28,7 @@ Before diving into setup, here is what makes the platform built for growth:
 
 Getting started takes less than two minutes:
 
-1. Navigate to [shopebusiness.com](https://shopebusiness.com).
+1. Navigate to [www.shopebusiness.com](https://www.shopebusiness.com).
 2. Click **Register** / **Start Free Trial**.
 3. Enter your business details, email, and choose your unique **Store Name**.
 4. Once registered, log into your dedicated **Merchant Admin Panel**.
@@ -103,4 +103,4 @@ Before promoting your store to the public, do a quick launch review:
 
 ## Ready to Launch?
 
-Your customers are waiting. Head over to [shopebusiness.com](https://shopebusiness.com) to create your store and start selling today!
+Your customers are waiting. Head over to [www.shopebusiness.com](https://www.shopebusiness.com) to create your store and start selling today!
