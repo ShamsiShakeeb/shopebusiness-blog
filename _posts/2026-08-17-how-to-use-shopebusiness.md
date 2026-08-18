@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: clean-blog
 title: "How to Use Shop-E-Business: Complete Guide to Launching Your Online Store"
 date: 2026-08-17
 author: "Washiq Anwar Shamsi"
@@ -17,10 +17,10 @@ Whether you are launching your first brand or scaling an established retail shop
 
 Before diving into setup, here is what makes the platform built for growth:
 
-*   **Dedicated Store Subdomains:** Get your own branded storefront instantly (e.g., `yourbrand.shopebusiness.com`).
-*   **Built-In Technical SEO:** Custom URL slugs, automatic sitemaps, and dynamic meta tags to help your products rank high on search engines.
-*   **Integrated Payment Gateways:** Seamless payment processing for local and global transactions.
-*   **Mobile-First Performance:** Fast load times to maximize checkout conversion rates.
+* **Dedicated Store Subdomains:** Get your own branded storefront instantly (e.g., `baniafashion.shopebusiness.com`).
+* **Built-In Technical SEO:** Custom URL slugs, automatic sitemaps, and dynamic meta tags to help your products rank high on search engines.
+* **Integrated Payment Gateways:** Seamless payment processing for local and global transactions.
+* **Mobile-First Performance:** Fast load times to maximize checkout conversion rates.
 
 ---
 
@@ -41,7 +41,7 @@ Getting started takes less than two minutes:
 
 First impressions matter. Customize your storefront to match your brand identity:
 
-1. Go to **Settings $\rightarrow$ Store Profile** in your admin sidebar.
+1. Go to **Settings → Store Profile** in your admin sidebar.
 2. Upload your high-resolution **Store Logo** and **Cover Banner**.
 3. Add a short, compelling **About Us / Store Bio** describing what you sell.
 4. Add your customer support contact details and social media links so shoppers can connect with your brand.
@@ -52,7 +52,7 @@ First impressions matter. Customize your storefront to match your brand identity
 
 Your product catalog is the core of your store. Adding inventory is straightforward:
 
-1. Go to **Products $\rightarrow$ Add New Product**.
+1. Go to **Products → Add New Product**.
 2. **Product Title & Description:** Write clear, descriptive titles and highlight key benefits, specifications, and sizing info in the description.
 3. **Upload High-Quality Images:** Use clean product photos with solid or neutral backgrounds.
 4. **Pricing & Inventory:** Set your selling price, discount price (if running a sale), and available stock count.
@@ -77,7 +77,7 @@ Shop-E-Business provides built-in SEO tools so your products get discovered orga
 
 To start collecting orders, configure your payment processing:
 
-1. In the admin menu, open **Settings $\rightarrow$ Payments**.
+1. In the admin menu, open **Settings → Payments**.
 2. Enable your preferred payment gateway options (Credit/Debit Card, Mobile Financial Services, or Cash on Delivery).
 3. Set up your **Delivery Rates**: Configure flat-rate shipping, local delivery zones, or free shipping thresholds.
 
@@ -87,17 +87,17 @@ To start collecting orders, configure your payment processing:
 
 Before promoting your store to the public, do a quick launch review:
 
-*   [ ] Open your live store URL in an incognito browser tab.
-*   [ ] Verify your logo, banners, and product pricing are correct.
-*   [ ] Place a test order through the checkout flow to ensure payment processing and order confirmations work smoothly.
+* [ ] Open your live store URL in an incognito browser tab.
+* [ ] Verify your logo, banners, and product pricing are correct.
+* [ ] Place a test order through the checkout flow to ensure payment processing and order confirmations work smoothly.
 
 ---
 
 ## Best Practices for Scaling Your Sales
 
-*   **Share on Social Channels:** Link your Shop-E-Business store in your Instagram, Facebook, and TikTok bios.
-*   **Keep Inventory Updated:** Regularly monitor stock levels to prevent overselling.
-*   **Track Performance:** Use your admin analytics to see which products generate the most views and conversions.
+* **Share on Social Channels:** Link your Shop-E-Business store in your Instagram, Facebook, and TikTok bios.
+* **Keep Inventory Updated:** Regularly monitor stock levels to prevent overselling.
+* **Track Performance:** Use your admin analytics to see which products generate the most views and conversions.
 
 ---
 
