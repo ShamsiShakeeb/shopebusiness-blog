@@ -4,3 +4,5 @@ title: "Shop-E-Business Blog"
 description: "E-commerce tips, tutorials, and updates."
 theme: jekyll-theme-minimal
 permalink: /:title/
+plugins:
+  - jekyll-sitemap
