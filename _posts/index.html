@@ -1,0 +1,22 @@
+---
+layout: default
+title: All Blogs
+---
+
+<div class="blog-container">
+  <h1>Shop-E-Business Blog Posts</h1>
+  
+  <div class="blog-grid">
+    {% for post in site.posts %}
+      <article class="blog-card">
+        <h2>
+          <!-- Cloudflare Worker will proxy this to https://shopebusiness.com/blog/post-slug -->
+          <a href="/blog{{ post.url }}">{{ post.title }}</a>
+        </h2>
+        <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        <a href="/blog{{ post.url }}" class="read-more">Read More →</a>
+      </article>
+    {% endfor %}
+  </div>
+</div>
