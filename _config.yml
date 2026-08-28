@@ -1,4 +1,6 @@
 baseurl: "/shopebusiness-blog"
+# Public path the blog is served from on shopebusiness.com (used for internal links).
+blog_base: "/blog"
 url: "https://shamsishakeeb.github.io"
 title: "Shop-E-Business Blog"
 description: "E-commerce tips, tutorials, and updates."
