@@ -3,61 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: "Shop-E-Business Blog" }}</title>
-  <style>
-      * {
-          box-sizing: border-box;
-      }
-      body {
-          margin: 0;
-          padding: 12px;
-          background-color: #f8fafc;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-          color: #334155;
-          line-height: 1.7;
-      }
-      .blog-container {
-          width: 100%;
-          max-width: 850px;
-          margin: 0 auto;
-          background: #fff;
-          padding: 20px;
-          border-radius: 12px;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      }
-      @media (min-width: 768px) {
-          body {
-              padding: 40px;
-          }
-          .blog-container {
-              padding: 45px;
-          }
-      }
-      .video-container {
-          position: relative;
-          width: 100%;
-          padding-bottom: 56.25%;
-          height: 0;
-          margin: 25px 0;
-          border-radius: 10px;
-          overflow: hidden;
-          box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-          background: #000;
-      }
-      .video-container iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          border: 0;
-      }
-  </style>
+
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
+  {% if page.author %}<meta name="author" content="{{ page.author }}">{% endif %}
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  {% if page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>{% include blog.css %}</style>
 </head>
 <body>
+  <div class="page-shell">
 
-  <!-- Your Blog Post Content Injected Here -->
-  {{ content }}
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="brand" href="https://shopebusiness.com">
+          Shop-E-Business
+          <span class="brand__mark">Blog</span>
+        </a>
+
+        <div class="site-header__actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" id="btn-en" class="lang-btn active" onclick="switchLanguage('en')">English</button>
+            <button type="button" id="btn-bn" class="lang-btn" onclick="switchLanguage('bn')">বাংলা</button>
+          </div>
+          <a class="btn btn--ghost" href="{{ site.blog_base }}/" data-en="All Articles" data-bn="সব লেখা">All Articles</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="post">
+        <header class="post__header">
+          <span class="post__eyebrow" data-en="Article" data-bn="নিবন্ধ">Article</span>
+          <h1 class="post__title" data-en="{{ page.title | escape }}" data-bn="{{ page.title_bn | default: page.title | escape }}">{{ page.title }}</h1>
+          {% if page.author or page.date %}
+            <p class="post__meta">
+              {% if page.author %}<strong>{{ page.author }}</strong>{% endif %}
+              {% if page.author and page.date %} &middot; {% endif %}
+              {% if page.date %}{{ page.date | date: "%B %-d, %Y" }}{% endif %}
+            </p>
+          {% endif %}
+        </header>
+
+        <div class="post__body">
+          {{ content }}
+        </div>
+
+        <footer class="post__footer">
+          <span data-en="Published by Shop-E-Business" data-bn="প্রকাশিত: শপ-ই-বিজনেস">Published by Shop-E-Business</span>
+          <a class="btn" href="https://shopebusiness.com" data-en="Launch Your Store" data-bn="আপনার স্টোর চালু করুন">Launch Your Store</a>
+        </footer>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p data-en="&copy; 2026 Shop-E-Business. All rights reserved." data-bn="&copy; ২০২৬ শপ-ই-বিজনেস। সর্বস্বত্ব সংরক্ষিত।">
+          &copy; 2026 Shop-E-Business. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!--
+    Generic post behaviour. Posts only need markup:
+      * bilingual posts: wrap copy in #content-en / #content-bn
+      * translated inline strings: add data-en / data-bn attributes
+      * tables are made horizontally scrollable automatically
+  -->
+  <script>
+    (function () {
+      var STORAGE_KEY = 'pref_lang';
+
+      function applyLanguage(lang) {
+        lang = lang === 'bn' ? 'bn' : 'en';
+
+        var en = document.getElementById('content-en');
+        var bn = document.getElementById('content-bn');
+        if (en && bn) {
+          en.style.display = lang === 'bn' ? 'none' : 'block';
+          bn.style.display = lang === 'bn' ? 'block' : 'none';
+        }
+
+        document.querySelectorAll('[data-en][data-bn]').forEach(function (el) {
+          var value = el.getAttribute('data-' + lang);
+          if (value !== null) {
+            el.innerHTML = value;
+          }
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(function (btn) {
+          btn.classList.remove('active');
+        });
+        var activeBtn = document.getElementById('btn-' + lang);
+        if (activeBtn) {
+          activeBtn.classList.add('active');
+        }
+
+        document.documentElement.lang = lang;
+
+        try {
+          localStorage.setItem(STORAGE_KEY, lang);
+        } catch (e) { /* storage unavailable */ }
+      }
+
+      window.switchLanguage = applyLanguage;
+      window.setLanguage = applyLanguage;
+
+      function makeTablesScrollable() {
+        document.querySelectorAll('.post__body table').forEach(function (table) {
+          if (table.parentElement && table.parentElement.classList.contains('table-scroll')) {
+            return;
+          }
+          var scroller = document.createElement('div');
+          scroller.className = 'table-scroll';
+          scroller.setAttribute('tabindex', '0');
+          table.parentNode.insertBefore(scroller, table);
+          scroller.appendChild(table);
+        });
+      }
+
+      function makeMediaResponsive() {
+        document.querySelectorAll('.post__body iframe').forEach(function (frame) {
+          frame.removeAttribute('width');
+          frame.removeAttribute('height');
+          frame.setAttribute('loading', 'lazy');
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        makeTablesScrollable();
+        makeMediaResponsive();
+
+        var saved = 'en';
+        try {
+          saved = localStorage.getItem(STORAGE_KEY) || 'en';
+        } catch (e) { /* storage unavailable */ }
+        applyLanguage(saved);
+      });
+    })();
+  </script>
 
   <!-- Infolinks Global Script -->
   <script type="text/javascript">

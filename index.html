@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Primary SEO Meta Tags -->
   <title>Shop-E-Business Blog | E-Commerce Tips & Guides</title>
   <meta name="title" content="Shop-E-Business Blog | E-Commerce Tips & Guides">
@@ -29,125 +29,112 @@
   <meta name="twitter:description" content="Explore expert tips, e-commerce growth strategies, and tutorials from the Shop-E-Business team.">
   <meta name="twitter:image" content="https://assets.shopebusiness.com/images/blog-og-banner.jpg">
 
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <style>
-    body {
-      background-color: #f8f9fa;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    }
-    .blog-card {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: 1px solid #e9ecef;
-      border-radius: 12px;
-    }
-    .blog-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    }
-    .blog-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #212529;
-    }
-    .blog-title:hover {
-      color: #0d6efd;
-    }
-    .brand-header {
-      background: #ffffff;
-      border-bottom: 1px solid #e9ecef;
-    }
-    .lang-toggle .btn {
-      font-size: 0.85rem;
-      padding: 0.25rem 0.65rem;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>{% include blog.css %}</style>
 </head>
 <body>
+  <div class="page-shell">
 
-  <!-- Brand Header & Language Switcher -->
-  <header class="brand-header py-3 mb-5">
-    <div class="container d-flex justify-content-between align-items-center">
-      <a href="https://shopebusiness.com" class="text-decoration-none fw-bold fs-4 text-dark">
-        Shop-E-Business
-      </a>
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="brand" href="https://shopebusiness.com">
+          Shop-E-Business
+          <span class="brand__mark">Blog</span>
+        </a>
 
-      <div class="d-flex align-items-center gap-2">
-        <!-- Language Switcher Buttons -->
-        <div class="btn-group lang-toggle" role="group" aria-label="Language Toggle">
-          <button type="button" class="btn btn-outline-dark active" id="lang-en" onclick="setLanguage('en')">English</button>
-          <button type="button" class="btn btn-outline-dark" id="lang-bn" onclick="setLanguage('bn')">বাংলা</button>
-        </div>
-
-        <a href="https://shopebusiness.com" class="btn btn-sm btn-dark ms-2" data-en="Back to Store" data-bn="স্টোরে ফিরে যান">Back to Store</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="container mb-5">
-    <div class="text-center mb-5">
-      <h1 class="fw-bold display-6" data-en="Shop-E-Business Blog" data-bn="শপ-ই-বিজনেস ব্লগ">Shop-E-Business Blog</h1>
-      <p class="text-muted" data-en="E-commerce tips, platform guides, and growth strategies." data-bn="ই-কমার্স টিপস, প্ল্যাটফর্ম গাইড এবং ব্যবসা বাড়ানোর কৌশল।">
-        E-commerce tips, platform guides, and growth strategies.
-      </p>
-    </div>
-
-    <div class="row g-4">
-      {% for post in site.posts %}
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 blog-card bg-white p-2">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-light text-primary border mb-2 align-self-start" data-en="Article" data-bn="নিবন্ধ">Article</span>
-              <h2 class="card-title h5">
-                <a href="/blog{{ post.url }}" class="blog-title text-decoration-none">
-                  {{ post.title }}
-                </a>
-              </h2>
-              <p class="text-muted small mb-3">{{ post.date | date: "%B %d, %Y" }}</p>
-              <p class="card-text text-secondary flex-grow-1">
-                {{ post.excerpt | strip_html | truncatewords: 22 }}
-              </p>
-              <div class="mt-3 pt-3 border-top">
-                <a href="/blog{{ post.url }}" class="btn btn-sm btn-primary w-100 fw-medium" data-en="Read Article &rarr;" data-bn="সম্পূর্ণ পড়ুন &rarr;">
-                  Read Article &rarr;
-                </a>
-              </div>
-            </div>
+        <div class="site-header__actions">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" id="btn-en" class="lang-btn active" onclick="switchLanguage('en')">English</button>
+            <button type="button" id="btn-bn" class="lang-btn" onclick="switchLanguage('bn')">বাংলা</button>
           </div>
+          <a class="btn btn--ghost" href="https://shopebusiness.com" data-en="Back to Store" data-bn="স্টোরে ফিরে যান">Back to Store</a>
         </div>
-      {% endfor %}
-    </div>
-  </main>
+      </div>
+    </header>
 
-  <!-- Footer -->
-  <footer class="py-4 bg-white border-top text-center text-muted small">
-    <p class="mb-0" data-en="&copy; 2026 Shop-E-Business. All rights reserved." data-bn="&copy; ২০২৬ শপ-ই-বিজনেস। সর্বস্বত্ব সংরক্ষিত।">
-      &copy; 2026 Shop-E-Business. All rights reserved.
-    </p>
-  </footer>
+    <main>
+      <section class="wrap hero">
+        <span class="hero__eyebrow" data-en="The Journal" data-bn="জার্নাল">The Journal</span>
+        <h1 class="hero__title" data-en="Shop-E-Business Blog" data-bn="শপ-ই-বিজনেস ব্লগ">Shop-E-Business Blog</h1>
+        <p class="hero__subtitle" data-en="E-commerce tips, platform guides, and growth strategies." data-bn="ই-কমার্স টিপস, প্ল্যাটফর্ম গাইড এবং ব্যবসা বাড়ানোর কৌশল।">
+          E-commerce tips, platform guides, and growth strategies.
+        </p>
+        <hr class="hero__rule">
+      </section>
 
-  <!-- Language Switcher Logic -->
+      <div class="wrap">
+        <div class="post-grid">
+          {% for post in site.posts %}
+            <article class="post-card">
+              <span class="post-card__tag" data-en="Article" data-bn="নিবন্ধ">Article</span>
+              <h2 class="post-card__title">
+                <a href="{{ site.blog_base }}{{ post.url }}">{{ post.title }}</a>
+              </h2>
+              <p class="post-card__date">{{ post.date | date: "%B %-d, %Y" }}</p>
+              <p class="post-card__excerpt">{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncatewords: 24 }}</p>
+              <a class="post-card__link" href="{{ site.blog_base }}{{ post.url }}" data-en="Read Article &rarr;" data-bn="সম্পূর্ণ পড়ুন &rarr;">Read Article &rarr;</a>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p data-en="&copy; 2026 Shop-E-Business. All rights reserved." data-bn="&copy; ২০২৬ শপ-ই-বিজনেস। সর্বস্বত্ব সংরক্ষিত।">
+          &copy; 2026 Shop-E-Business. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
   <script>
-    function setLanguage(lang) {
-      document.querySelectorAll('[data-en]').forEach(el => {
-        el.innerHTML = el.getAttribute(`data-${lang}`);
+    (function () {
+      var STORAGE_KEY = 'pref_lang';
+
+      function applyLanguage(lang) {
+        lang = lang === 'bn' ? 'bn' : 'en';
+
+        document.querySelectorAll('[data-en][data-bn]').forEach(function (el) {
+          var value = el.getAttribute('data-' + lang);
+          if (value !== null) {
+            el.innerHTML = value;
+          }
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(function (btn) {
+          btn.classList.remove('active');
+        });
+        var activeBtn = document.getElementById('btn-' + lang);
+        if (activeBtn) {
+          activeBtn.classList.add('active');
+        }
+
+        document.documentElement.lang = lang;
+
+        try {
+          localStorage.setItem(STORAGE_KEY, lang);
+        } catch (e) { /* storage unavailable */ }
+      }
+
+      window.switchLanguage = applyLanguage;
+      window.setLanguage = applyLanguage;
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var saved = 'en';
+        try {
+          saved = localStorage.getItem(STORAGE_KEY) || 'en';
+        } catch (e) { /* storage unavailable */ }
+        applyLanguage(saved);
       });
-
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-bn').classList.toggle('active', lang === 'bn');
-      localStorage.setItem('pref_lang', lang);
-    }
-
-    // Auto-load saved language or default to English
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('pref_lang') || 'en';
-      setLanguage(savedLang);
-    });
+    })();
   </script>
 
-   <!-- Infolinks Global Script -->
+  <!-- Infolinks Global Script -->
   <script type="text/javascript">
       var infolinks_pid = 3447398;
       var infolinks_wsid = 0;
