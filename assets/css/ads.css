@@ -1,0 +1,71 @@
+/* Core container style */
+.ad-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  box-sizing: border-box;
+  pointer-events: none; /* ad iframe handles interactions; container just positions */
+}
+
+/* The inner slot should be centered and its max width constrained */
+.amanah-ad-slot {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  min-height: 0; /* JS or ad iframe will set actual size */
+}
+
+/* Desktop-centered leaderboard max width */
+.ad-desktop-centered .amanah-ad-slot {
+  max-width: 728px;
+}
+
+/* Inline medium rectangle maximum width */
+.ad-inline .amanah-ad-slot {
+  max-width: 300px;
+}
+
+/* Mobile banner: limit to mobile width, allow sticky positioning */
+.ad-mobile-sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  z-index: 9999;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.98); /* slight background so it stands out */
+  box-shadow: 0 -1px 6px rgba(0,0,0,0.08);
+  display: none; /* shown only on small screens via media queries */
+}
+
+/* When mobile sticky shows, constrain ad width */
+.ad-mobile-sticky .amanah-ad-slot {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Hide mobile-only on desktop */
+.ad-mobile-only { display: none; }
+
+/* Responsive rules */
+@media (max-width: 767px) {
+  /* hide large leaderboard on small screens */
+  .ad-desktop-centered { display: none; }
+
+  /* show mobile sticky banner */
+  .ad-mobile-sticky { display: flex; }
+
+  /* medium rectangle should appear inline only if enough width, otherwise hide */
+  .ad-inline { display: none; }
+
+  /* show mobile video slot where appropriate */
+  .ad-mobile-only { display: flex; }
+}
+
+/* Larger screens: hide the mobile sticky */
+@media (min-width: 768px) {
+  .ad-mobile-sticky { display: none; }
+  .ad-inline { display: flex; }
+}

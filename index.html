@@ -34,6 +34,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>{% include blog.css %}</style>
+  <link rel="stylesheet" href="{{ '/assets/css/ads.css' | relative_url }}">
+
+  <script
+    src="https://amanahads.com/api/ads/serve.js"
+    data-key="dev_d277700163b44f63a47b3d859bf0959f"
+    async>
+  </script>
+
 </head>
 <body>
   <div class="page-shell">
@@ -65,6 +73,28 @@
         <hr class="hero__rule">
       </section>
 
+      <!-- Leaderboard ad (desktop) -->
+      <div class="ad-container ad-desktop-centered" role="complementary" aria-label="Advertisement - leaderboard">
+        <div
+          id="amanah-ad-banner-leaderboard"
+          class="amanah-ad-slot"
+          data-type="BANNER"
+          data-size="LEADERBOARD"
+          aria-hidden="true">
+        </div>
+      </div>
+
+      <!-- Video leaderboard (desktop) -->
+      <div class="ad-container ad-desktop-centered" role="complementary" aria-label="Advertisement - video leaderboard">
+        <div
+          id="amanah-ad-video-leaderboard"
+          class="amanah-ad-slot"
+          data-type="VIDEO"
+          data-size="LEADERBOARD"
+          aria-hidden="true">
+        </div>
+      </div>
+
       <div class="wrap">
         <div class="post-grid">
           {% for post in site.posts %}
@@ -91,6 +121,30 @@
     </footer>
 
   </div>
+
+  <!-- Mobile sticky banner (appears only on small screens) -->
+  <div class="ad-container ad-mobile-sticky" role="complementary" aria-label="Advertisement - mobile banner">
+    <div
+      id="amanah-ad-banner-mobile_banner"
+      class="amanah-ad-slot"
+      data-type="BANNER"
+      data-size="MOBILE_BANNER"
+      aria-hidden="true">
+    </div>
+  </div>
+
+  <!-- Mobile-only video banner (shows on small screens) -->
+  <div class="ad-container ad-mobile-only" role="complementary" aria-label="Advertisement - video mobile banner">
+    <div
+      id="amanah-ad-video-mobile_banner"
+      class="amanah-ad-slot"
+      data-type="VIDEO"
+      data-size="MOBILE_BANNER"
+      aria-hidden="true">
+    </div>
+  </div>
+
+  <script src="{{ '/assets/js/ads-helper.js' | relative_url }}" defer></script>
 
   <script>
     (function () {
