@@ -22,6 +22,15 @@
 
   <style>{% include blog.css %}</style>
   <link rel="stylesheet" href="{{ '/assets/css/ads.css' | relative_url }}">
+
+  <!-- Place this once (head or before </body>) -->
+  <script
+    src="https://amanahads.com/api/ads/serve.js"
+    data-key="dev_d277700163b44f63a47b3d859bf0959f"
+    async>
+  </script>
+
+
 </head>
 <body>
   <div class="page-shell">
@@ -112,8 +121,6 @@
     </div>
   </div>
 
-  <!-- AmanahAds vendor script include -->
-  {% include amanah-ads-script.html %}
   <script src="{{ '/assets/js/ads-helper.js' | relative_url }}" defer></script>
 
   <!--
