@@ -34,6 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>{% include blog.css %}</style>
+  <link rel="stylesheet" href="{{ '/assets/css/ads.css' | relative_url }}">
 </head>
 <body>
   <div class="page-shell">
@@ -59,11 +60,22 @@
       <section class="wrap hero">
         <span class="hero__eyebrow" data-en="The Journal" data-bn="জার্নাল">The Journal</span>
         <h1 class="hero__title" data-en="Shop-E-Business Blog" data-bn="শপ-ই-বিজনেস ব্লগ">Shop-E-Business Blog</h1>
-        <p class="hero__subtitle" data-en="E-commerce tips, platform guides, and growth strategies." data-bn="ই-কমার্স টিপস, প্ল্যাটফর্ম গাইড এবং ব্যবসা বাড়ানোর কৌশল।">
+        <p class="hero__subtitle" data-en="E-commerce tips, platform guides, and growth strategies." data-bn="ই-কমার্স টিপস, প্ল্যাটফর্ম গাইড । বিকাশ ও স্কেল করার কৌশল।">
           E-commerce tips, platform guides, and growth strategies.
         </p>
         <hr class="hero__rule">
       </section>
+
+      <!-- Leaderboard ad (desktop) -->
+      <div class="ad-container ad-desktop-centered" role="complementary" aria-label="Advertisement - leaderboard">
+        <div
+          id="amanah-ad-banner-leaderboard"
+          class="amanah-ad-slot"
+          data-type="BANNER"
+          data-size="LEADERBOARD"
+          aria-hidden="true">
+        </div>
+      </div>
 
       <div class="wrap">
         <div class="post-grid">
@@ -91,6 +103,21 @@
     </footer>
 
   </div>
+
+  <!-- Mobile sticky banner (appears only on small screens) -->
+  <div class="ad-container ad-mobile-sticky" role="complementary" aria-label="Advertisement - mobile banner">
+    <div
+      id="amanah-ad-banner-mobile_banner"
+      class="amanah-ad-slot"
+      data-type="BANNER"
+      data-size="MOBILE_BANNER"
+      aria-hidden="true">
+    </div>
+  </div>
+
+  <!-- AmanahAds vendor script include -->
+  {% include amanah-ads-script.html %}
+  <script src="{{ '/assets/js/ads-helper.js' | relative_url }}" defer></script>
 
   <script>
     (function () {
