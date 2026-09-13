@@ -156,8 +156,15 @@
     })();
   </script>
 
- <!-- HalalSpark Auto Ads — shopebusiness-blog profile -->
-<script src="https://ads.halalspark.co.uk/get-auto-ads-script?websiteId=415e0d37-5481-4156-a2f2-7401c64a687f&profile=shopebusiness-blog" async></script>
-  
+<script>
+  if (window.location.hostname.includes("shopebusiness.com")) {
+    // HalalSpark Auto Ads — shopebusiness-blog profile
+    const adScript = document.createElement("script");
+    adScript.src = "https://ads.halalspark.co.uk/get-auto-ads-script?websiteId=415e0d37-5481-4156-a2f2-7401c64a687f&profile=shopebusiness-blog";
+    adScript.async = true;
+    document.head.appendChild(adScript);
+  }
+</script>
+
 </body>
 </html>
