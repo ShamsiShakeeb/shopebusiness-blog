@@ -84,77 +84,93 @@
       * tables are made horizontally scrollable automatically
   -->
   <script>
-    (function () {
-      var STORAGE_KEY = 'pref_lang';
+  (function () {
+    var STORAGE_KEY = 'pref_lang';
+    var SUPPORTED_LANGS = ['en', 'bn', 'th'];
 
-      function applyLanguage(lang) {
-        lang = lang === 'bn' ? 'bn' : 'en';
+    function applyLanguage(lang) {
+      // Fallback to 'en' if invalid or unsupported
+      if (SUPPORTED_LANGS.indexOf(lang) === -1) {
+        lang = 'en';
+      }
 
-        var en = document.getElementById('content-en');
-        var bn = document.getElementById('content-bn');
-        if (en && bn) {
-          en.style.display = lang === 'bn' ? 'none' : 'block';
-          bn.style.display = lang === 'bn' ? 'block' : 'none';
+      // 1. Toggle Content Containers (content-en, content-bn, content-th)
+      SUPPORTED_LANGS.forEach(function (l) {
+        var el = document.getElementById('content-' + l);
+        if (el) {
+          el.style.display = l === lang ? 'block' : 'none';
         }
-
-        document.querySelectorAll('[data-en][data-bn]').forEach(function (el) {
-          var value = el.getAttribute('data-' + lang);
-          if (value !== null) {
-            el.innerHTML = value;
-          }
-        });
-
-        document.querySelectorAll('.lang-btn').forEach(function (btn) {
-          btn.classList.remove('active');
-        });
-        var activeBtn = document.getElementById('btn-' + lang);
-        if (activeBtn) {
-          activeBtn.classList.add('active');
-        }
-
-        document.documentElement.lang = lang;
-
-        try {
-          localStorage.setItem(STORAGE_KEY, lang);
-        } catch (e) { /* storage unavailable */ }
-      }
-
-      window.switchLanguage = applyLanguage;
-      window.setLanguage = applyLanguage;
-
-      function makeTablesScrollable() {
-        document.querySelectorAll('.post__body table').forEach(function (table) {
-          if (table.parentElement && table.parentElement.classList.contains('table-scroll')) {
-            return;
-          }
-          var scroller = document.createElement('div');
-          scroller.className = 'table-scroll';
-          scroller.setAttribute('tabindex', '0');
-          table.parentNode.insertBefore(scroller, table);
-          scroller.appendChild(table);
-        });
-      }
-
-      function makeMediaResponsive() {
-        document.querySelectorAll('.post__body iframe').forEach(function (frame) {
-          frame.removeAttribute('width');
-          frame.removeAttribute('height');
-          frame.setAttribute('loading', 'lazy');
-        });
-      }
-
-      document.addEventListener('DOMContentLoaded', function () {
-        makeTablesScrollable();
-        makeMediaResponsive();
-
-        var saved = 'en';
-        try {
-          saved = localStorage.getItem(STORAGE_KEY) || 'en';
-        } catch (e) { /* storage unavailable */ }
-        applyLanguage(saved);
       });
-    })();
-  </script>
+
+      // 2. Update inline attributes (data-en, data-bn, data-th)
+      document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+        var value = el.getAttribute('data-' + lang);
+        if (value !== null) {
+          el.innerHTML = value;
+        }
+      });
+
+      // 3. Update Language Switcher Buttons
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.remove('active');
+      });
+      var activeBtn = document.getElementById('btn-' + lang);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+
+      // 4. Update Document Language tag
+      document.documentElement.lang = lang;
+
+      // 5. Update Document Title if localized title is present
+      var pageTitleEl = document.querySelector('title');
+      var localizedTitle = document.querySelector('[data-title-' + lang + ']');
+      if (pageTitleEl && localizedTitle) {
+        pageTitleEl.innerText = localizedTitle.getAttribute('data-title-' + lang);
+      }
+
+      // 6. Save preference
+      try {
+        localStorage.setItem(STORAGE_KEY, lang);
+      } catch (e) { /* storage unavailable */ }
+    }
+
+    window.switchLanguage = applyLanguage;
+    window.setLanguage = applyLanguage;
+
+    function makeTablesScrollable() {
+      document.querySelectorAll('.post__body table').forEach(function (table) {
+        if (table.parentElement && table.parentElement.classList.contains('table-scroll')) {
+          return;
+        }
+        var scroller = document.createElement('div');
+        scroller.className = 'table-scroll';
+        scroller.setAttribute('tabindex', '0');
+        table.parentNode.insertBefore(scroller, table);
+        scroller.appendChild(table);
+      });
+    }
+
+    function makeMediaResponsive() {
+      document.querySelectorAll('.post__body iframe').forEach(function (frame) {
+        frame.removeAttribute('width');
+        frame.removeAttribute('height');
+        frame.setAttribute('loading', 'lazy');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      makeTablesScrollable();
+      makeMediaResponsive();
+
+      var saved = 'en';
+      try {
+        saved = localStorage.getItem(STORAGE_KEY) || 'en';
+      } catch (e) { /* storage unavailable */ }
+      applyLanguage(saved);
+    });
+  })();
+</script>
 
 <script>
   if (window.location.hostname.includes("shopebusiness.com")) {
