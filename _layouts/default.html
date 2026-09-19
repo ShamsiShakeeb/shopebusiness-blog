@@ -1,3 +1,4 @@
+{% assign page_langs = page.languages | default: "en,bn" | join: "," | split: "," %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,11 +35,13 @@
 
         <div class="site-header__actions">
           <div class="lang-toggle" role="group" aria-label="Language">
-            <button type="button" id="btn-en" class="lang-btn active" onclick="switchLanguage('en')">English</button>
-            <button type="button" id="btn-bn" class="lang-btn" onclick="switchLanguage('bn')">বাংলা</button>
-             <button type="button" id="btn-th" class="lang-btn" onclick="switchLanguage('th')">ภาษาไทย</button>
+            {% for lang in page_langs %}{% assign l = lang | strip %}
+            {% if l == "en" %}<button type="button" id="btn-en" class="lang-btn active" onclick="switchLanguage('en')">English</button>{% endif %}
+            {% if l == "bn" %}<button type="button" id="btn-bn" class="lang-btn" onclick="switchLanguage('bn')">বাংলা</button>{% endif %}
+            {% if l == "th" %}<button type="button" id="btn-th" class="lang-btn" onclick="switchLanguage('th')">ภาษาไทย</button>{% endif %}
+            {% endfor %}
           </div>
-          <a class="btn btn--ghost" href="{{ site.blog_base }}/" data-en="All Articles" data-bn="সব লেখা">All Articles</a>
+          <a class="btn btn--ghost" href="{{ site.blog_base }}/" data-en="All Articles" data-bn="সব লেখা" data-th="บทความทั้งหมด">All Articles</a>
         </div>
       </div>
     </header>
@@ -46,8 +49,8 @@
     <main class="wrap">
       <article class="post">
         <header class="post__header">
-          <span class="post__eyebrow" data-en="Article" data-bn="নিবন্ধ">Article</span>
-          <h1 class="post__title" data-en="{{ page.title | escape }}" data-bn="{{ page.title_bn | default: page.title | escape }}">{{ page.title }}</h1>
+          <span class="post__eyebrow" data-en="Article" data-bn="নিবন্ধ" data-th="บทความ">Article</span>
+          <h1 class="post__title" data-en="{{ page.title | escape }}" data-bn="{{ page.title_bn | default: page.title | escape }}" data-th="{{ page.title_th | default: page.title | escape }}" data-title-en="{{ page.title | escape }}" data-title-bn="{{ page.title_bn | default: page.title | escape }}" data-title-th="{{ page.title_th | default: page.title | escape }}">{{ page.title }}</h1>
           {% if page.author or page.date %}
             <p class="post__meta">
               {% if page.author %}<strong>{{ page.author }}</strong>{% endif %}
@@ -62,15 +65,15 @@
         </div>
 
         <footer class="post__footer">
-          <span data-en="Published by Shop-E-Business" data-bn="প্রকাশিত: শপ-ই-বিজনেস">Published by Shop-E-Business</span>
-          <a class="btn" href="https://shopebusiness.com" data-en="Launch Your Store" data-bn="আপনার স্টোর চালু করুন">Launch Your Store</a>
+          <span data-en="Published by Shop-E-Business" data-bn="প্রকাশিত: শপ-ই-বিজনেস" data-th="เผยแพร่โดย Shop-E-Business">Published by Shop-E-Business</span>
+          <a class="btn" href="https://shopebusiness.com" data-en="Launch Your Store" data-bn="আপনার স্টোর চালু করুন" data-th="เปิดร้านของคุณ">Launch Your Store</a>
         </footer>
       </article>
     </main>
 
     <footer class="site-footer">
       <div class="wrap">
-        <p data-en="&copy; 2026 Shop-E-Business. All rights reserved." data-bn="&copy; ২০২৬ শপ-ই-বিজনেস। সর্বস্বত্ব সংরক্ষিত।">
+        <p data-en="&copy; 2026 Shop-E-Business. All rights reserved." data-bn="&copy; ২০২৬ শপ-ই-বিজনেস। সর্বস্বত্ব সংরক্ষিত।" data-th="&copy; 2026 Shop-E-Business สงวนลิขสิทธิ์">
           &copy; 2026 Shop-E-Business. All rights reserved.
         </p>
       </div>
@@ -80,14 +83,15 @@
 
   <!--
     Generic post behaviour. Posts only need markup:
-      * bilingual posts: wrap copy in #content-en / #content-bn
-      * translated inline strings: add data-en / data-bn attributes
+      * bilingual posts: wrap copy in #content-en / #content-bn (or #content-th)
+      * front matter `languages: [en, th]` controls which switcher buttons appear (default en, bn)
+      * translated inline strings: add data-en / data-bn / data-th attributes
       * tables are made horizontally scrollable automatically
   -->
   <script>
   (function () {
     var STORAGE_KEY = 'pref_lang';
-    var SUPPORTED_LANGS = ['en', 'bn', 'th'];
+    var SUPPORTED_LANGS = [{% for lang in page_langs %}'{{ lang | strip }}'{% unless forloop.last %}, {% endunless %}{% endfor %}];
 
     function applyLanguage(lang) {
       // Fallback to 'en' if invalid or unsupported
