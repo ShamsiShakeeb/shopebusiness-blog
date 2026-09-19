@@ -625,8 +625,14 @@ video {
 
 /* Bilingual content ------------------------------------------------------- */
 
-.lang-bn {
+.lang-bn,
+.lang-th {
   display: none;
+}
+
+.lang-th,
+[lang="th"] {
+  line-height: 1.85;
 }
 
 .lang-bn,
