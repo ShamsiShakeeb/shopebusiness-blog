@@ -470,6 +470,31 @@ video {
   }
 }
 
+.post-banners--after-video {
+  margin-top: -0.6em;
+}
+
+.post__body .guide-banner,
+.post__body .bd-banner {
+  font-weight: 400;
+  border-bottom: 0;
+}
+
+.post__body .guide-banner {
+  border-bottom: 1px solid var(--accent);
+}
+
+.post__body .guide-banner:hover,
+.post__body .guide-banner:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.post__body .bd-banner:hover,
+.post__body .bd-banner:focus-visible {
+  color: #fff;
+}
+
 /* Typography for post content -------------------------------------------- */
 
 .post__body h1,
