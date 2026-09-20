@@ -60,6 +60,7 @@
           {% endif %}
         </header>
 
+        <div class="post-banners" id="post-banners">
         {% if page.bd_guide %}
         <a class="bd-banner" id="bd-banner" href="https://shopebusiness.com/blog/how-to-use-shopebusiness/" hidden>
           <span class="bd-banner__flag" aria-hidden="true"></span>
@@ -81,6 +82,7 @@
           <span class="guide-banner__cta" data-en="Open guide &rarr;" data-bn="গাইড খুলুন &rarr;" data-th="เปิดคู่มือ &rarr;">Open guide &rarr;</span>
         </a>
         {% endunless %}
+        </div>
 
         <div class="post__body">
           {{ content }}
@@ -164,10 +166,29 @@
         bdBanner.hidden = !(lang === 'bn' || isBangladeshVisitor());
       }
 
-      // 7. Save preference
+      // 7. Posts that open with a video: place the banners right below it
+      positionBanners(lang);
+
+      // 8. Save preference
       try {
         localStorage.setItem(STORAGE_KEY, lang);
       } catch (e) { /* storage unavailable */ }
+    }
+
+    function positionBanners(lang) {
+      var banners = document.getElementById('post-banners');
+      var body = document.querySelector('.post__body');
+      if (!banners || !body) { return; }
+      var scope = document.getElementById('content-' + lang) || body;
+      var video = scope.querySelector('.video-container, iframe, video');
+      if (video) {
+        var anchor = video.closest('.video-container') || video;
+        anchor.insertAdjacentElement('afterend', banners);
+        banners.classList.add('post-banners--after-video');
+      } else {
+        body.insertAdjacentElement('beforebegin', banners);
+        banners.classList.remove('post-banners--after-video');
+      }
     }
 
     function isBangladeshVisitor() {
