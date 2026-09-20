@@ -60,6 +60,17 @@
           {% endif %}
         </header>
 
+        {% if page_langs contains "th" %}
+        <a class="guide-banner" href="https://shopebusiness.com/blog/shop-e-business-user-manual-step-by-step/">
+          <svg class="guide-banner__icon" aria-hidden="true" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9 7h7M9 10.5h7"/></svg>
+          <span class="guide-banner__text">
+            <strong data-en="New here? Read the Shop-E-Business User Manual" data-th="มือใหม่? อ่านคู่มือการใช้งาน Shop-E-Business">New here? Read the Shop-E-Business User Manual</strong>
+            <span data-en="Step-by-step tutorial with screenshots: open your store, add products, manage orders." data-th="บทช่วยสอนทีละขั้นตอนพร้อมภาพหน้าจอ: เปิดร้าน เพิ่มสินค้า จัดการออเดอร์">Step-by-step tutorial with screenshots: open your store, add products, manage orders.</span>
+          </span>
+          <span class="guide-banner__cta" data-en="Open guide &rarr;" data-th="เปิดคู่มือ &rarr;">Open guide &rarr;</span>
+        </a>
+        {% endif %}
+
         <div class="post__body">
           {{ content }}
         </div>
