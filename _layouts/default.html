@@ -60,16 +60,27 @@
           {% endif %}
         </header>
 
-        {% if page_langs contains "th" %}
+        {% if page.bd_guide %}
+        <a class="bd-banner" id="bd-banner" href="https://shopebusiness.com/blog/how-to-use-shopebusiness/" hidden>
+          <span class="bd-banner__flag" aria-hidden="true"></span>
+          <span class="bd-banner__text">
+            <strong data-en="Selling from Bangladesh? Watch the video guide in Bangla" data-bn="বাংলাদেশ থেকে বিক্রি করছেন? বাংলায় ভিডিও গাইড দেখুন" data-th="Selling from Bangladesh? Watch the video guide in Bangla">Selling from Bangladesh? Watch the video guide in Bangla</strong>
+            <span data-en="How to Use Shop-E-Business: launch your store step by step, with bKash/Nagad-style COD orders." data-bn="শপ-ই-বিজনেস কীভাবে ব্যবহার করবেন: ধাপে ধাপে আপনার স্টোর চালু করুন, ক্যাশ অন ডেলিভারি অর্ডার সহ" data-th="How to Use Shop-E-Business: launch your store step by step.">How to Use Shop-E-Business: launch your store step by step, with bKash/Nagad-style COD orders.</span>
+          </span>
+          <span class="bd-banner__cta" data-en="Read the Bangla guide &rarr;" data-bn="গাইড পড়ুন &rarr;" data-th="Read the Bangla guide &rarr;">Read the Bangla guide &rarr;</span>
+        </a>
+        {% endif %}
+
+        {% unless page.hide_manual_banner %}
         <a class="guide-banner" href="https://shopebusiness.com/blog/shop-e-business-user-manual-step-by-step/">
           <svg class="guide-banner__icon" aria-hidden="true" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9 7h7M9 10.5h7"/></svg>
           <span class="guide-banner__text">
-            <strong data-en="New here? Read the Shop-E-Business User Manual" data-th="มือใหม่? อ่านคู่มือการใช้งาน Shop-E-Business">New here? Read the Shop-E-Business User Manual</strong>
-            <span data-en="Step-by-step tutorial with screenshots: open your store, add products, manage orders." data-th="บทช่วยสอนทีละขั้นตอนพร้อมภาพหน้าจอ: เปิดร้าน เพิ่มสินค้า จัดการออเดอร์">Step-by-step tutorial with screenshots: open your store, add products, manage orders.</span>
+            <strong data-en="New here? Read the Shop-E-Business User Manual" data-bn="নতুন? শপ-ই-বিজনেস ইউজার ম্যানুয়াল পড়ুন" data-th="มือใหม่? อ่านคู่มือการใช้งาน Shop-E-Business">New here? Read the Shop-E-Business User Manual</strong>
+            <span data-en="Step-by-step tutorial with screenshots: open your store, add products, manage orders." data-bn="স্ক্রিনশট সহ ধাপে ধাপে টিউটোরিয়াল: স্টোর খুলুন, প্রোডাক্ট যোগ করুন, অর্ডার ম্যানেজ করুন।" data-th="บทช่วยสอนทีละขั้นตอนพร้อมภาพหน้าจอ: เปิดร้าน เพิ่มสินค้า จัดการออเดอร์">Step-by-step tutorial with screenshots: open your store, add products, manage orders.</span>
           </span>
-          <span class="guide-banner__cta" data-en="Open guide &rarr;" data-th="เปิดคู่มือ &rarr;">Open guide &rarr;</span>
+          <span class="guide-banner__cta" data-en="Open guide &rarr;" data-bn="গাইড খুলুন &rarr;" data-th="เปิดคู่มือ &rarr;">Open guide &rarr;</span>
         </a>
-        {% endif %}
+        {% endunless %}
 
         <div class="post__body">
           {{ content }}
@@ -96,6 +107,8 @@
     Generic post behaviour. Posts only need markup:
       * bilingual posts: wrap copy in #content-en / #content-bn (or #content-th)
       * front matter `languages: [en, th]` controls which switcher buttons appear (default en, bn)
+      * every post shows the user-manual banner; `hide_manual_banner: true` opts out
+      * `bd_guide: true` shows the Bangladesh video-guide banner (Bangla readers / BD visitors)
       * translated inline strings: add data-en / data-bn / data-th attributes
       * tables are made horizontally scrollable automatically
   -->
@@ -145,10 +158,25 @@
         pageTitleEl.innerText = localizedTitle.getAttribute('data-title-' + lang);
       }
 
-      // 6. Save preference
+      // 6. Bangladesh guide banner: show for Bangla readers or Bangladesh visitors
+      var bdBanner = document.getElementById('bd-banner');
+      if (bdBanner) {
+        bdBanner.hidden = !(lang === 'bn' || isBangladeshVisitor());
+      }
+
+      // 7. Save preference
       try {
         localStorage.setItem(STORAGE_KEY, lang);
       } catch (e) { /* storage unavailable */ }
+    }
+
+    function isBangladeshVisitor() {
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz === 'Asia/Dhaka') { return true; }
+      } catch (e) { /* Intl unavailable */ }
+      var langs = navigator.languages || [navigator.language || ''];
+      return langs.some(function (l) { return /^bn(-|$)/i.test(l) || /-BD$/i.test(l); });
     }
 
     window.switchLanguage = applyLanguage;

@@ -354,6 +354,122 @@ video {
   }
 }
 
+.bd-banner {
+  max-width: var(--measure);
+  margin: 0 auto 1.25rem;
+  padding: 1rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: var(--radius);
+  background: linear-gradient(120deg, #006a4e 0%, #0b8a66 55%, #12a67a 100%);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(0, 106, 78, 0.28);
+  position: relative;
+  overflow: hidden;
+  animation: bd-banner-pop 0.5s ease-out both;
+}
+
+.bd-banner[hidden] {
+  display: none;
+}
+
+.bd-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.22) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: bd-banner-shine 3.5s ease-in-out 0.8s infinite;
+  pointer-events: none;
+}
+
+.bd-banner:hover,
+.bd-banner:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 106, 78, 0.36);
+}
+
+.bd-banner__flag {
+  flex-shrink: 0;
+  width: 44px;
+  height: 30px;
+  border-radius: 4px;
+  background: #006a4e;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.bd-banner__flag::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f42a41;
+  transform: translate(-50%, -50%);
+}
+
+.bd-banner__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.bd-banner__text strong {
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.bd-banner__cta {
+  flex-shrink: 0;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #006a4e;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+@keyframes bd-banner-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes bd-banner-shine {
+  0%, 60% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bd-banner,
+  .bd-banner::after {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .bd-banner {
+    flex-wrap: wrap;
+  }
+
+  .bd-banner__cta {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* Typography for post content -------------------------------------------- */
 
 .post__body h1,
