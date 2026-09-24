@@ -41,7 +41,8 @@ of the title).
 - Any `<iframe>` becomes a responsive 16:9 frame; `.video-container` also works.
 - Optional class hooks for richer blocks: `.benefit-card`, `.feature-box`,
   `.callout`, `.price-box`, `.cta-button`, `.highlight-col`,
-  `.table-header-highlight`.
+  `.table-header-highlight`, `.video-promo` (the promo card that sits directly
+  above the video opening a post).
 
 ## Local preview
 
