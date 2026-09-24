@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Shop-E-Business User Manual: Step-by-Step Guide for International Merchants (10 USD/year)"
-title_bn: "শপ-ই-বিজনেস ইউজার ম্যানুয়াল: আন্তর্জাতিক ব্যবসায়ীদের জন্য ধাপে ধাপে গাইড (১০ USD/বছর)"
+title: "Shop-E-Business User Manual: Step-by-Step Guide from Register to Login, Products, /landingpage, /buy and Themes (10 USD/year)"
+title_bn: "শপ-ই-বিজনেস ইউজার ম্যানুয়াল: রেজিস্টার থেকে লগইন, প্রোডাক্ট, /landingpage, /buy ও থিম — ধাপে ধাপে গাইড (১০ USD/বছর)"
 date: 2026-09-18
 author: "Washiq Anwar Shamsi"
-description: "Complete step-by-step Shop-E-Business user manual with real screenshots: register a shop, set up branding, add products, sizes, SEO slugs, delivery charges, manage orders, switch themes, reset your password and more — all for 10 USD per year."
+description: "The complete Shop-E-Business user manual with real screenshots: register and log in, set up Shop Info, upload a product with a long description, add sizes, SEO slug URLs, SEO metatags, delivery charges, manage orders, use the /landingpage and /buy pages in all three themes, reset your password and log out — all for 10 USD per year."
 hide_manual_banner: true
 bd_guide: true
-keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store setup guide, 10 USD per year ecommerce, product slug SEO, theme switching, order management, delivery charge setup, password reset OTP"
+keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store setup guide, register online shop, admin login, upload product, product long description, product slug URL, /Product/View, /landingpage, /buy page, Classic theme, Grocery Inspired theme, Fashion Luxe theme, order management, delivery charge, SEO metatags, password reset OTP, 10 USD per year ecommerce"
 ---
 
 <div id="content-en" class="lang-en">
@@ -25,159 +25,247 @@ keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store
 
   <div class="price-box">
     <h3>International Plan · 10 USD / year</h3>
-    <p>One flat price. Unlimited products, your own store subdomain, three storefront themes, SEO tools and order management included. Every new shop starts with a free trial, so you can complete this whole manual before paying anything.</p>
+    <p>One flat price. Unlimited products, your own store subdomain, three storefront themes, SEO tools, a dedicated <code>/landingpage</code> and one-click <code>/buy</code> pages, plus order management. Every new shop starts with a free trial, so you can complete this whole manual before paying anything.</p>
   </div>
 
   <div class="callout">
-    <p><strong>How to read this manual.</strong> Each numbered section is one feature of the platform. Menu names in <strong>bold</strong> are the exact labels you will see in the admin sidebar: <strong>Dashboard, Shop Info, Upload Product, Products, Orders, Delivery Charge, Product Size, Product Slug URL, SEO Metatags, Manage Category, Theme</strong> and <strong>Logout</strong>.</p>
+    <p><strong>How to read this manual.</strong> Each numbered section is one feature of the platform, in the order you will use it. Menu names in <strong>bold</strong> are the exact labels you will see in the admin sidebar: <strong>Dashboard, Shop Info, Upload Product, Products, Orders, Delivery Charge, Product Size, Product Slug URL, SEO Metatags, Manage Category, Theme</strong> and <strong>Logout</strong>. Storefront URLs are written as <code>yourstore.shopebusiness.com/…</code> — replace <em>yourstore</em> with your own shop domain name.</p>
   </div>
 
-  <h2>1. Register a New Shop</h2>
-  <p>Open the <a href="https://www.shopebusiness.com" target="_blank" rel="noopener noreferrer"><strong>Shop-E-Business</strong></a> home page and scroll to the <strong>Register</strong> panel.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/01-home-landing.jpg" alt="Shop-E-Business home page" loading="lazy">
+  <h2>Table of Contents</h2>
   <ol>
-    <li><strong>Shop Name</strong> — your brand name as customers will see it (we used <em>Nordic Craft Store</em>).</li>
-    <li><strong>Shop Domain Name</strong> — a unique, lowercase word that becomes your store address (<code>yourname.&lt;platform-domain&gt;</code>). The form checks availability while you type.</li>
-    <li><strong>Email</strong> — used for login and for password-reset OTP codes, so use a real inbox.</li>
-    <li><strong>Password</strong> and <strong>Confirm Password</strong>, then click <strong>Register Now</strong>.</li>
+    <li><a href="#register">Register a New Shop</a></li>
+    <li><a href="#login">Log In to the Admin Panel</a></li>
+    <li><a href="#pricing">Trial, Subscription and the 10 USD/year Plan</a></li>
+    <li><a href="#shop-info">Shop Info — Branding</a></li>
+    <li><a href="#category">Manage Category</a></li>
+    <li><a href="#upload-product">Upload Product (with a Long Description)</a></li>
+    <li><a href="#product-size">Product Size / Variants</a></li>
+    <li><a href="#products-list">Products List and Product Status</a></li>
+    <li><a href="#slug">Product Slug URL — <code>/Product/View/{id}</code> vs <code>/{slug-url}</code></a></li>
+    <li><a href="#seo">SEO Metatags</a></li>
+    <li><a href="#delivery">Delivery Charge</a></li>
+    <li><a href="#orders">Orders and Order Status</a></li>
+    <li><a href="#storefront">The Customer Storefront: Home, <code>/landingpage</code>, Product Page, Cart and Checkout</a></li>
+    <li><a href="#buy">The <code>/buy</code> Page — One-Click Ordering</a></li>
+    <li><a href="#themes">Themes: Classic, Grocery Inspired and Fashion Luxe (Home, <code>/landingpage</code>, Product and <code>/buy</code> in each)</a></li>
+    <li><a href="#reset">Password Reset via OTP</a></li>
+    <li><a href="#dashboard">Dashboard Overview</a></li>
+    <li><a href="#logout">Logout</a></li>
   </ol>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/01-register-form-filled.jpg" alt="Registration form filled in" loading="lazy">
-  <blockquote><strong>Tip:</strong> The domain name cannot be changed later, so keep it short and match it to your brand — it is also your primary SEO identifier.</blockquote>
 
-  <h2>2. Log In to the Admin Panel</h2>
-  <p>Directly below the registration panel is the <strong>Login</strong> form. Enter the same email and password and click <strong>Login</strong>. A success popup appears and you land on the <strong>Dashboard</strong>.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/02-login-form.jpg" alt="Login form" loading="lazy">
-
-  <h2>3. Trial, Subscription and the 10 USD/year Plan</h2>
-  <p>Every new shop is created with an active trial, so the full sidebar (products, orders, themes…) is visible immediately. The pricing section on the home page shows the international plan at <strong>$10 / year</strong>.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/03-pricing-10-usd-year.jpg" alt="Pricing showing 10 USD per year international plan" loading="lazy">
-  <p>Inside the admin panel a banner shows how many trial days remain, with a <strong>Get License Key for 1 year subscription</strong> button. When the trial ends, only <strong>Dashboard</strong> and <strong>Shop Info</strong> stay visible until you activate a license — your data is kept, nothing is deleted.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/16-dashboard-overview.jpg" alt="Dashboard with subscription banner" loading="lazy">
-
-  <h2>4. Shop Info — Branding</h2>
-  <p>Go to <strong>Shop Info</strong>. This page controls everything customers see in your storefront header and footer.</p>
+  <h2 id="register">1. Register a New Shop</h2>
+  <p>Open the <a href="https://www.shopebusiness.com" target="_blank" rel="noopener noreferrer"><strong>Shop-E-Business</strong></a> home page. The hero section explains the offer; click <strong>Create Account</strong> (or scroll to the <strong>Create Your Shop</strong> panel).</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/01-home-landing.jpg" alt="Shop-E-Business home page with Login and Create Account buttons" loading="lazy">
   <ol>
-    <li><strong>Shop Logo</strong> — square image (PNG/JPG). It appears in the storefront header and on the checkout page.</li>
-    <li><strong>Cover Photo</strong> — wide banner used by the storefront hero area.</li>
-    <li><strong>Description</strong> — one or two sentences about what you sell and where you ship.</li>
+    <li><strong>Shop Name</strong> — your brand name exactly as customers will see it in the storefront header (for example <em>Sabrina Fashion House</em>).</li>
+    <li><strong>Shop Domain Name</strong> — one short lowercase word. It becomes your permanent store address, <code>yourstore.shopebusiness.com</code>. Availability is checked while you type.</li>
+    <li><strong>Email</strong> — used for login and for password-reset OTP codes, so use a real inbox you control.</li>
+    <li><strong>Password</strong> and <strong>Confirm Password</strong> — at least 8 characters with a mix of letters, numbers and symbols.</li>
+    <li>Click <strong>Register Now</strong>. Your shop is created instantly with an active trial.</li>
+  </ol>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/01-register-form-filled.jpg" alt="Create Your Shop registration form filled in with shop name, domain, email and password" loading="lazy">
+  <blockquote><strong>SEO tip:</strong> The domain name cannot be changed later and it appears in every product URL, so keep it short, brandable and memorable — <code>sole</code> is better than <code>sole-fashion-store-2026</code>.</blockquote>
+
+  <h2 id="login">2. Log In to the Admin Panel</h2>
+  <p>Click <strong>Login</strong> in the top navigation, enter the same <strong>Email</strong> and <strong>Password</strong> you registered with and press <strong>Login</strong>. A <strong>Forgot password?</strong> link sits directly under the form (see <a href="#reset">section 16</a>).</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/02-login-form.jpg" alt="Shop-E-Business admin login form with email and password" loading="lazy">
+  <p>After a successful login you land on the <strong>Dashboard</strong>. The left sidebar is your <strong>Admin Panel</strong>: every feature in this manual is one click away from here.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/02-login-success.jpg" alt="Admin Panel dashboard shown right after login" loading="lazy">
+
+  <h2 id="pricing">3. Trial, Subscription and the 10 USD/year Plan</h2>
+  <p>Every new shop starts with an active trial, so the full sidebar (products, orders, themes…) is available immediately. The <strong>Pricing</strong> section on the home page shows the international <strong>Premium Shop</strong> plan at <strong>$10 / year</strong>: unlimited products, custom order links, an order management dashboard and priority support. No credit card is required to start.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/03-pricing-10-usd-year.jpg" alt="Simple, Affordable Pricing — Premium Shop 10 USD per year" loading="lazy">
+  <p>Inside the admin panel, the top-right badge shows your current plan and how many days remain. When the trial ends, only <strong>Dashboard</strong> and <strong>Shop Info</strong> stay visible until you activate a license key — your products and orders are kept, nothing is deleted.</p>
+
+  <h2 id="shop-info">4. Shop Info — Branding</h2>
+  <p>Go to <strong>Shop Info</strong>. This page controls everything customers see in the storefront header, hero area and footer of every theme.</p>
+  <ol>
+    <li><strong>Shop Logo</strong> — a square PNG/JPG. Appears in the storefront header and on the checkout page.</li>
+    <li><strong>Cover Photo</strong> — a wide banner used as the hero image on the storefront home page and <code>/landingpage</code>.</li>
+    <li><strong>Shop Domain</strong> — read-only reminder of your <code>yourstore.shopebusiness.com</code> address.</li>
+    <li><strong>Description</strong> — one or two sentences about what you sell (ours: <em>“SOLE'S timeless elegance meets bold individuality…”</em>). Shown under the shop name and used as the default meta description.</li>
     <li><strong>Facebook Page Link</strong> — powers the <em>Facebook</em> and <em>Chat</em> buttons on the storefront.</li>
-    <li><strong>Address</strong> and <strong>Phone Number</strong> — shown in the footer/contact area.</li>
-    <li>Click <strong>Save</strong>.</li>
+    <li><strong>Address</strong> and <strong>Phone Number</strong> — shown in the footer/contact area and in the top info bar.</li>
+    <li>Click <strong>Save Shop Info</strong>. The <strong>View</strong> and <strong>Share</strong> buttons at the top open or share your live store link.</li>
   </ol>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/04-shop-info-form-filled.jpg" alt="Shop Info branding form" loading="lazy">
-  <blockquote><strong>Tip:</strong> Use a phone number in international format (for example <code>+45 …</code>) so overseas customers can call or WhatsApp you directly.</blockquote>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/04-shop-info-form.jpg" alt="Shop Information form with logo, cover photo, description, Facebook link, address and phone" loading="lazy">
+  <blockquote><strong>Tip:</strong> Use a phone number in international format (for example <code>+880 …</code>) so overseas customers can call or WhatsApp you directly from the storefront.</blockquote>
 
-  <h2>5. Manage Category</h2>
-  <p>Categories are created from the <strong>Upload Product</strong> form: open the <strong>Select Category</strong> dropdown, type a new name (we typed <em>Ceramics</em>) and click <strong>Add</strong>. Once at least one category exists, the <strong>Manage Category</strong> page lets you rename it, give it a description and upload a category image that appears in the storefront category section.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/05-manage-category-table.jpg" alt="Manage Category page" loading="lazy">
-  <blockquote><strong>Tip:</strong> Keep 3–8 broad categories. Customers filter by category on the storefront sidebar, so too many tiny categories make browsing harder.</blockquote>
+  <h2 id="category">5. Manage Category</h2>
+  <p>You can create a category right inside the <strong>Upload Product</strong> form: open the <strong>Select Category</strong> dropdown, type a new name (we typed <em>Ladies Suit</em>) and click <strong>Add “Ladies Suit”</strong>. The category is saved instantly and selected for the product.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/05-add-category-inline.jpg" alt="Adding a new category called Ladies Suit inline from the Upload Product form" loading="lazy">
+  <p>The <strong>Manage Category</strong> page lists every category with its image, name, description and product count. Here you can rename a category, add a description and upload a category image — these images appear in the <em>Shop by Category</em> section of the storefront and on <code>/landingpage</code>.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/05-manage-category-table.jpg" alt="Manage Category page showing the category table and a success message" loading="lazy">
+  <blockquote><strong>Tip:</strong> Keep 3–8 broad categories. Customers filter by category in the storefront sidebar, so too many tiny categories make browsing harder and dilute your SEO.</blockquote>
 
-  <h2>6. Upload Product</h2>
-  <p>Go to <strong>Upload Product</strong> and fill in the form:</p>
+  <h2 id="upload-product">6. Upload Product (with a Long Description)</h2>
+  <p>Go to <strong>Upload Product</strong>. We uploaded a real product — <em>Lavender Chikankari Embroidered Ladies Suit – 3 Piece (Kameez, Trouser &amp; Dupatta)</em> — using these three photos:</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+    <img src="{{ site.baseurl }}/assets/img/user-manual/product-ladies-suit-1.jpg" alt="Lavender chikankari embroidered ladies suit — front view" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/img/user-manual/product-ladies-suit-2.jpg" alt="Lavender chikankari embroidered ladies suit — detail" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/img/user-manual/product-ladies-suit-3.jpg" alt="Sky blue chikankari embroidered ladies suit — colour variant" loading="lazy">
+  </div>
+  <p>Fill in the form from top to bottom:</p>
   <ol>
-    <li><strong>Title</strong> — clear and specific (<em>Handmade Ceramic Coffee Mug</em>).</li>
-    <li><strong>Short Description</strong> — up to 250 characters; shown on product cards and in the cart.</li>
-    <li><strong>Select Category</strong> — pick an existing category or add a new one inline.</li>
-    <li><strong>Long Description</strong> — a rich-text editor for details, materials, care instructions and shipping time.</li>
-    <li><strong>Price</strong> and <strong>Product Currency</strong> — we selected <strong>USD</strong>; the currency is displayed with the price everywhere on the storefront.</li>
-    <li><strong>Photos</strong> — up to 5 images. Click <strong>Add More</strong> for extra photos, then choose one as the <strong>Cover Photo</strong>.</li>
-    <li><strong>Related Products</strong> (optional) — cross-sell items shown on the product page.</li>
+    <li><strong>Title</strong> — specific and keyword-rich: fabric, style, pieces and colour. Our title contains <em>Chikankari</em>, <em>Embroidered</em>, <em>Ladies Suit</em> and <em>3 Piece</em>, which is exactly what shoppers search for.</li>
+    <li><strong>Short Description</strong> — up to 250 characters. It appears on product cards, on the <code>/buy</code> page and in the cart, so summarise the product in one strong sentence.</li>
+    <li><strong>Select Category</strong> — pick an existing category or add a new one inline (section 5).</li>
+    <li><strong>Long Description</strong> — a rich-text editor. <strong>Make this big.</strong> The long description is rendered in full on the product page (<code>/Product/View/{id}</code> or <code>/{slug-url}</code>) and on <code>/buy</code>, so a detailed description is what makes those pages look professional and rank in search. We wrote seven sections with headings and bullet lists:
+      <ul>
+        <li><em>Product overview</em> — what it is and who it is for</li>
+        <li><em>Embroidery &amp; fabric</em> — hand-finished chikankari on breathable lawn cotton</li>
+        <li><em>Complete 3-piece set</em> — kameez, trouser and dupatta measurements</li>
+        <li><em>Size guide</em> — S to XXL plus an Unstitched option</li>
+        <li><em>Styling ideas</em> — casual, office and festive</li>
+        <li><em>Care instructions</em> — cold hand-wash, dry in shade, iron inside-out</li>
+        <li><em>Delivery, cash on delivery &amp; returns</em></li>
+      </ul>
+    </li>
+    <li><strong>Price</strong> and <strong>Product Currency</strong> — we entered <em>2850</em> and <strong>BDT (৳)</strong>; the symbol is shown with the price everywhere on the storefront.</li>
+    <li><strong>Photos</strong> — up to 5 images. Click <strong>Add More (max 5)</strong> for each extra photo and tick one as the <strong>Cover Photo</strong>; the cover is used on product cards and as the first gallery image.</li>
+    <li><strong>Related Products</strong> (optional) — cross-sell items shown under the product.</li>
     <li>Click <strong>Save Product</strong>.</li>
   </ol>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/06-upload-product-form-filled.jpg" alt="Upload Product form filled in" loading="lazy">
-  <p><strong>Product status</strong> (Normal, Featured, Latest, Premium) is set afterwards from the <strong>Products</strong> list with a single click — Featured and Latest products are highlighted on the storefront landing page.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/06-product-status-featured.jpg" alt="Product status changed to Featured Product" loading="lazy">
-  <blockquote><strong>Tip:</strong> Discounts and size-based price differences are handled in <strong>Product Size</strong> (next step) — add a size such as <em>Sale pack</em> with a negative or positive price adjustment.</blockquote>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/06-upload-product-form-filled.jpg" alt="Add New Product form filled in with title, short description, category, long description, price and photos" loading="lazy">
+  <p>After saving you are redirected to the <strong>Products</strong> list, where the new suit appears at the top with its cover photo, price and status.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/06-upload-product-saved.jpg" alt="Product List showing the newly saved ladies suit" loading="lazy">
+  <blockquote><strong>SEO tip:</strong> Write the long description for humans first — headings, short paragraphs and bullet lists. Search engines reward pages with 300+ words of unique, well-structured text, and customers who read a complete size guide and care section return fewer items.</blockquote>
 
-  <h2>7. Product Size / Variants</h2>
-  <p>Go to <strong>Product Size</strong>, choose a product under <strong>Choose Product to Configure</strong>, then add each variant with a <strong>Size / Variant Name</strong> and an <strong>Increased Price (+)</strong>. Use <code>0</code> for the base variant.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/07-product-size-form.jpg" alt="Product Size form" loading="lazy">
-  <p>Saved variants appear in the table and become a required dropdown at checkout (for example <em>Large 450 ml (+6.00)</em>).</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/07-product-size-table.jpg" alt="Product sizes saved" loading="lazy">
+  <h2 id="product-size">7. Product Size / Variants</h2>
+  <p>Go to <strong>Product Size</strong> and pick the product under <strong>Choose Product to Configure</strong>. The base price is displayed; add each variant with a <strong>Size / Variant Name</strong> and an <strong>Increased Price (+)</strong>. Use <code>0</code> for sizes sold at the base price, a positive number for a surcharge and a negative number for a discount.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/07-product-size-form.jpg" alt="Product Sizes and Pricing form with base price and Add Size button" loading="lazy">
+  <p>We added <strong>S, M, L</strong> (+0), <strong>XL</strong> (+৳100), <strong>XXL</strong> (+৳150) and <strong>Unstitched</strong> (−৳200). The table shows the final price of every variant, and these become a required dropdown on the product page, the <code>/buy</code> page and at checkout.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/07-product-size-table.jpg" alt="Saved product sizes S, M, L, XL, XXL and Unstitched with final totals" loading="lazy">
 
-  <h2>8. Products List</h2>
-  <p>The <strong>Products</strong> page lists every product with its cover photo, price, status radio buttons and action icons: edit, view on storefront, feature, copy link, share and delete. Use the search box and <strong>Rows per page</strong> selector for large catalogues.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/08-products-list.jpg" alt="Products list" loading="lazy">
+  <h2 id="products-list">8. Products List and Product Status</h2>
+  <p>The <strong>Products</strong> page lists every product with its cover photo, title, price, <strong>Product Status</strong> radio buttons and action icons: edit, view on storefront, copy link, share and delete. Use the search box and <strong>Rows per page</strong> selector for large catalogues.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/08-products-list.jpg" alt="Products list with cover photos, prices, status radio buttons and action icons" loading="lazy">
+  <p><strong>Product status</strong> is changed with a single click: <strong>Normal</strong>, <strong>Featured</strong>, <strong>Latest</strong> or <strong>Premium</strong>. We marked the suit <em>Featured</em>, which places it in the <em>Featured Products</em> block on the storefront home page and on <code>/landingpage</code>.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/06-product-status-featured.jpg" alt="Product status changed to Featured Product with a success message" loading="lazy">
 
-  <h2>9. Product Slug URL (SEO-friendly link)</h2>
-  <p>By default a product is reachable at <code>/Product/View/&lt;id&gt;</code>. Go to <strong>Product Slug URL</strong>, choose the product and type a readable slug such as <code>handmade-ceramic-coffee-mug</code>, then <strong>Save Slug</strong>. Your product now lives at <code>yourstore.&lt;platform-domain&gt;/handmade-ceramic-coffee-mug</code>.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/09-product-slug-form.jpg" alt="Product slug form" loading="lazy">
+  <h2 id="slug">9. Product Slug URL — <code>/Product/View/{id}</code> vs <code>/{slug-url}</code></h2>
+  <p>Every product is reachable immediately at its numeric address, for example <code>sole.shopebusiness.com/Product/View/970</code>. That works, but a readable URL ranks better and looks more trustworthy when shared. Go to <strong>Product Slug URL</strong>, choose the product, type a slug such as <code>lavender-chikankari-ladies-suit</code> and click <strong>Save Slug</strong>.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/09-product-slug-form.jpg" alt="Manage Product Slug form with slug URL preview" loading="lazy">
+  <p>Once saved, the page shows the <strong>Current Slug URL</strong>. Your product now lives at <code>sole.shopebusiness.com/lavender-chikankari-ladies-suit</code>, and the same slug also powers the one-click buy page <code>sole.shopebusiness.com/buy/lavender-chikankari-ladies-suit</code> (section 14). The old numeric URL keeps working, so nothing breaks.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/09-product-slug-saved.jpg" alt="Slug saved — Current Slug URL shown with Remove Slug button" loading="lazy">
   <div class="callout">
-    <p><strong>Slug rules:</strong> lowercase letters, numbers and single hyphens only; 3–300 characters; no leading or trailing hyphen. Slugs must be unique within your shop.</p>
+    <p><strong>Slug rules:</strong> lowercase letters, numbers and single hyphens only; 3–300 characters; no leading or trailing hyphen; must contain at least one letter. Slugs must be unique within your shop and cannot start with a reserved word such as <code>admin</code>, <code>product</code>, <code>order</code>, <code>landingpage</code> or <code>checkout</code>.</p>
   </div>
 
-  <h2>10. SEO Metatags</h2>
-  <p>Go to <strong>SEO Metatags</strong>. Under <strong>Choose Page</strong> select either your shop home page or an individual product, then enter <strong>Keywords</strong> and a <strong>Description</strong> (about 150–160 characters) and click <strong>Save</strong>. These become the <code>&lt;meta&gt;</code> tags search engines and social networks read.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/10-seo-metatags-form.jpg" alt="SEO Metatags form" loading="lazy">
-  <blockquote><strong>Tip:</strong> Combine step 9 and 10: a readable slug plus a keyword-rich description is the fastest way to get product pages indexed.</blockquote>
+  <h2 id="seo">10. SEO Metatags</h2>
+  <p>Go to <strong>SEO Metatags</strong>. Under <strong>Choose Page</strong> select either your shop home page or an individual product; the <strong>Selected Page URL</strong> is displayed so you know exactly which page you are optimising. Enter <strong>Keywords</strong> (comma-separated) and a <strong>Description</strong> of about 150–160 characters, or press <strong>Use Auto Generated</strong> to fill them from the product title and short description. Click <strong>Save Metatags</strong>.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/10-seo-metatags-form.jpg" alt="SEO Metatags form with Choose Page, Keywords and Description" loading="lazy">
+  <p>Saved metatags become the <code>&lt;title&gt;</code>, <code>&lt;meta name="description"&gt;</code> and Open Graph tags on that page — the text Google shows in search results and Facebook/WhatsApp show when the link is shared.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/10-seo-metatags-saved.jpg" alt="SEO Metatags saved successfully for the ladies suit product" loading="lazy">
+  <blockquote><strong>SEO tip:</strong> Combine sections 6, 9 and 10: a long description, a readable slug and a keyword-rich meta description is the fastest way to get a product page indexed and clicked.</blockquote>
 
-  <h2>11. Delivery Charge</h2>
-  <p>Go to <strong>Delivery Charge</strong>. Each row is a shipping option the customer can pick at checkout: a <strong>Message</strong> (e.g. <em>Europe (5-7 days)</em>), the <strong>Charge</strong> and its currency. Click <strong>Save</strong> and repeat for each zone. Toggle the visibility switch to hide an option temporarily without deleting it.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/11-delivery-charge-table.jpg" alt="Delivery charges configured" loading="lazy">
+  <h2 id="delivery">11. Delivery Charge</h2>
+  <p>Go to <strong>Delivery Charge</strong>. Each row is a shipping option the customer can pick at checkout: a <strong>Message</strong> (e.g. <em>Inside Dhaka</em>, <em>Outside Dhaka</em>, <em>Outside Bangladesh</em>), the <strong>Charge</strong> and its <strong>Delivery Order Currency</strong>. Click <strong>Save</strong> and repeat for each zone. Use the toggle in the <strong>Action</strong> column to hide an option temporarily without deleting it.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/11-delivery-charge-table.jpg" alt="Delivery Charge form and table of shipping zones with charges and visibility toggles" loading="lazy">
 
-  <h2>12. Orders and Order Status</h2>
-  <p>Every checkout appears instantly in <strong>Orders</strong> with the product, size, quantity, customer name, phone, address, note and a price summary (items + shipping = total).</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-list.jpg" alt="Order list" loading="lazy">
-  <p>Change the status with the radio buttons on the right — <strong>Initial → Confirmed → Packed → Shipped → Delivered</strong>, or <strong>Cancelled</strong>. The change is saved immediately.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/12-order-status-confirmed.jpg" alt="Order status updated to Confirmed" loading="lazy">
-  <p>Use the <strong>All Statuses</strong> filter and the search box to find orders quickly, e.g. everything still waiting to be packed.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-filter-confirmed.jpg" alt="Orders filtered by Confirmed status" loading="lazy">
+  <h2 id="orders">12. Orders and Order Status</h2>
+  <p>Every checkout appears instantly in <strong>Orders</strong>, with the product, size, quantity, customer name, phone, address, note and a price summary (items + shipping = total). Customer details are blurred in our screenshots for privacy.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-list.jpg" alt="Order List with product, customer, price summary and status radio buttons" loading="lazy">
+  <p>Change the status with the radio buttons on the right — <strong>Initial → Confirmed → Packed → Shipped → Delivered</strong>, or <strong>Cancelled</strong>. The change is saved immediately. Use the <strong>All Statuses</strong> filter and the search box to find, for example, every order still waiting to be packed.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-filter.jpg" alt="Orders filtered by status" loading="lazy">
+  <blockquote><strong>Tip:</strong> Orders are cash-on-delivery style — no card gateway is needed. Confirm the order by phone or Messenger, then move it through the statuses as you pack and ship.</blockquote>
 
-  <h2>13. The Customer Storefront</h2>
-  <p>Your customers never see the admin panel. They visit <code>yourstore.&lt;platform-domain&gt;</code> and get a fast, mobile-first shop.</p>
-  <h3>Landing page</h3>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-storefront-landing.jpg" alt="Storefront landing page" loading="lazy">
-  <h3>Browsing products</h3>
-  <p>Products are filtered by the category sidebar; each card has an <em>add to cart</em> and a <em>view details</em> button.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-storefront-product-browsing.jpg" alt="Browsing products by category" loading="lazy">
+  <h2 id="storefront">13. The Customer Storefront: Home, <code>/landingpage</code>, Product Page, Cart and Checkout</h2>
+  <p>Your customers never see the admin panel. They visit <code>yourstore.shopebusiness.com</code> and get a fast, mobile-first shop. Below is the storefront in the currently applied theme (<em>Fashion Luxe</em>); section 15 shows the same pages in Classic and Grocery Inspired.</p>
+
+  <h3>Storefront home — <code>/</code></h3>
+  <p>The home page is the full catalogue: a category sidebar, search, and a product grid where every card shows the cover photo, title, price and a quick <em>add to cart</em> button.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-storefront-home.jpg" alt="Fashion Luxe storefront home page with Shop All product grid and category sidebar" loading="lazy">
+
+  <h3>Landing page — <code>/landingpage</code></h3>
+  <p>Every shop also has a marketing landing page at <code>yourstore.shopebusiness.com/landingpage</code>. It uses your <strong>Cover Photo</strong> as the hero, shows your shop description, <strong>Shop the Collection</strong> and <strong>Browse Categories</strong> buttons, trust badges (free delivery, secure checkout, easy returns), your category tiles and the <em>Featured</em> and <em>Latest</em> products. This is the link to put in your Facebook bio, Instagram and ads — it is designed to convert visitors, while <code>/</code> is designed for browsing.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-landingpage.jpg" alt="Fashion Luxe /landingpage with hero cover photo, shop description and call-to-action buttons" loading="lazy">
+
+  <h3>Product page — <code>/{slug-url}</code> or <code>/Product/View/{id}</code></h3>
+  <p>The product page shows the photo gallery, price, size dropdown, <strong>Order Now</strong> and <strong>Add to Cart</strong> buttons, and — most importantly — your full long description in the <em>Description</em> tab, followed by <em>Details</em> and <em>Delivery</em>. This is why section 6 asked you to write a big description: the page below is filled entirely with the text we entered in the editor.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-product-page-full.jpg" alt="Full product page at /lavender-chikankari-ladies-suit showing gallery, sizes and the complete long description" loading="lazy">
+
   <h3>Add to cart</h3>
-  <p>Clicking the cart icon adds the item and shows a confirmation toast; the header counter and floating <strong>Checkout</strong> tab update instantly.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-storefront-add-to-cart.jpg" alt="Product added to cart" loading="lazy">
-  <h3>Product detail page</h3>
-  <p>The product page (reachable through your SEO slug) shows the photo gallery, long description, size options and an <strong>Order Now</strong> form for one-click ordering.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-product-detail-page.jpg" alt="Product detail page" loading="lazy">
-  <h3>Checkout</h3>
-  <p>The checkout page asks for <strong>Full Name, Phone Number, Full Address</strong>, a <strong>Shipping Method</strong> (your delivery charges) and an optional note. The customer picks a size and quantity per item, sees the live total and clicks <strong>Place Order</strong>.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-checkout-form-filled.jpg" alt="Checkout form" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-checkout-order-placed.jpg" alt="Order placed confirmation" loading="lazy">
-  <blockquote><strong>Tip:</strong> Orders are cash-on-delivery style — no card gateway is needed for the customer. You confirm the order by phone or Messenger, then move it through the statuses in step 12.</blockquote>
+  <p>Clicking the cart icon on a card (or <strong>Add to Cart</strong> on the product page) adds the item and shows a confirmation toast; the header cart counter updates instantly.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-add-to-cart.jpg" alt="Product added to cart toast and header counter in Fashion Luxe" loading="lazy">
 
-  <h2>14. Theme Switching</h2>
+  <h3>Checkout — <code>/Order/Checkout</code></h3>
+  <p>The checkout page asks for <strong>Full Name, Phone Number, Full Address</strong>, a <strong>Shipping Method</strong> (your delivery charges from section 11) and an optional <strong>Note</strong>. The customer picks a size and quantity per item, sees the live subtotal, shipping and total in the <strong>Order Summary</strong> and clicks <strong>Place Order</strong>. The order appears in your <strong>Orders</strong> page immediately.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-checkout.jpg" alt="Fashion Luxe checkout page with delivery details, shipping method and order summary" loading="lazy">
+
+  <h2 id="buy">14. The <code>/buy</code> Page — One-Click Ordering</h2>
+  <p>Every product also has a dedicated single-product order page at <code>yourstore.shopebusiness.com/buy/{slug-url}</code> (or <code>/buy/{id}</code>). Unlike the product page, the <code>/buy</code> page has <em>no</em> catalogue navigation: just the gallery, title, short description, the long description, size selector and an <strong>Order Now</strong> / <strong>Buy Now</strong> form on the same screen. It is built for ads and Messenger selling — send a customer <code>sole.shopebusiness.com/buy/lavender-chikankari-ladies-suit</code> and they can order in under a minute without being distracted by other products.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-buy-page.jpg" alt="Fashion Luxe /buy page for the ladies suit with Order Now form" loading="lazy">
+  <div class="callout">
+    <p><strong>Which link to share?</strong> <code>/landingpage</code> for your brand (bio, ads for the whole shop) · <code>/{slug-url}</code> for organic search and product research · <code>/buy/{slug-url}</code> for a single-product ad or a customer who has already decided.</p>
+  </div>
+
+  <h2 id="themes">15. Themes: Classic, Grocery Inspired and Fashion Luxe</h2>
   <p>Go to <strong>Theme</strong>. Three storefront designs are available, each with a <strong>Preview</strong> and an <strong>Apply</strong> button; the active theme is marked <em>Active</em>.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-theme-page.jpg" alt="Theme page" loading="lazy">
-  <p><strong>Preview</strong> opens your storefront in a new tab with the chosen theme for <strong>5 minutes</strong> — only in your own browser, customers keep seeing the live theme. <strong>Apply</strong> makes it live for everyone instantly.</p>
-  <h3>Classic</h3>
-  <p>The default look: light surfaces, blue category bar, category sidebar and product grid.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-storefront-classic.jpg" alt="Storefront with Classic theme" loading="lazy">
-  <h3>Grocery Inspired</h3>
-  <p>Green marketplace look with a dark top bar, white cards and a clean single-column checkout.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-storefront-grocery-inspired.jpg" alt="Storefront with Grocery Inspired theme" loading="lazy">
-  <h3>Fashion Luxe</h3>
-  <p>Premium fashion storefront: black-and-gold palette, editorial hero, serif headings and a stepped checkout.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-storefront-fashion-luxe.jpg" alt="Storefront with Fashion Luxe theme" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-theme-applied-fashion-luxe.jpg" alt="Fashion Luxe applied" loading="lazy">
-  <blockquote><strong>Tip:</strong> Preview first, then apply. Theme changes do not touch your products, prices or orders — switch as often as you like for seasonal campaigns.</blockquote>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-theme-page.jpg" alt="Theme page with Classic, Grocery Inspired and Fashion Luxe cards" loading="lazy">
+  <p><strong>Preview</strong> opens your storefront with the chosen theme for <strong>5 minutes</strong> — only in your own browser, customers keep seeing the live theme. <strong>Apply</strong> makes it live for everyone instantly. Every theme renders the same four pages — home, <code>/landingpage</code>, product page and <code>/buy</code> — so your content never changes, only the design.</p>
 
-  <h2>15. Password Reset via OTP</h2>
+  <h3>Classic</h3>
+  <p>The default look: light surfaces, a blue category bar, category sidebar and product grid. Best for general stores and electronics.</p>
+  <h4>Classic — home <code>/</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-storefront-home.jpg" alt="Classic theme storefront home page" loading="lazy">
+  <h4>Classic — <code>/landingpage</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-landingpage.jpg" alt="Classic theme /landingpage with category tiles and featured products" loading="lazy">
+  <h4>Classic — product page <code>/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-product-page-full.jpg" alt="Classic theme product page with gallery, sizes, Order Now form and long description" loading="lazy">
+  <h4>Classic — <code>/buy/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-buy-page.jpg" alt="Classic theme /buy page" loading="lazy">
+  <h4>Classic — cart and checkout</h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-add-to-cart.jpg" alt="Classic theme add to cart toast" loading="lazy">
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-checkout.jpg" alt="Classic theme checkout with delivery details and order summary" loading="lazy">
+
+  <h3>Grocery Inspired</h3>
+  <p>A green marketplace look with a dark top info bar, white cards, big <strong>Add to Cart</strong> buttons and a clean two-column checkout. Best for food, daily essentials and high-volume catalogues.</p>
+  <h4>Grocery Inspired — home <code>/</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-storefront-home.jpg" alt="Grocery Inspired theme storefront home page" loading="lazy">
+  <h4>Grocery Inspired — <code>/landingpage</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-landingpage.jpg" alt="Grocery Inspired theme /landingpage hero with Shop Now and Browse Categories" loading="lazy">
+  <h4>Grocery Inspired — product page <code>/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-product-page-full.jpg" alt="Grocery Inspired theme product page with description and delivery tabs" loading="lazy">
+  <h4>Grocery Inspired — <code>/buy/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-buy-page.jpg" alt="Grocery Inspired theme /buy page with Buy Now button" loading="lazy">
+  <h4>Grocery Inspired — cart and checkout</h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-add-to-cart.jpg" alt="Grocery Inspired theme add to cart toast" loading="lazy">
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-checkout.jpg" alt="Grocery Inspired theme checkout" loading="lazy">
+
+  <h3>Fashion Luxe</h3>
+  <p>A premium fashion storefront: black-and-gold palette, editorial hero, serif headings, hover-reveal quick-add buttons and a stepped checkout (Cart → Delivery details → Confirmation). Best for clothing, jewellery and lifestyle brands — which is why our ladies-suit shop uses it.</p>
+  <h4>Fashion Luxe — home <code>/</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-storefront-home.jpg" alt="Fashion Luxe theme storefront home page" loading="lazy">
+  <h4>Fashion Luxe — <code>/landingpage</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-landingpage.jpg" alt="Fashion Luxe theme /landingpage" loading="lazy">
+  <h4>Fashion Luxe — product page <code>/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-product-page-full.jpg" alt="Fashion Luxe theme product page with full long description" loading="lazy">
+  <h4>Fashion Luxe — <code>/buy/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-buy-page.jpg" alt="Fashion Luxe theme /buy page with Order Now and Browse the Store" loading="lazy">
+  <h4>Fashion Luxe — cart and checkout</h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-add-to-cart.jpg" alt="Fashion Luxe theme add to cart toast" loading="lazy">
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-checkout.jpg" alt="Fashion Luxe theme stepped checkout" loading="lazy">
+  <blockquote><strong>Tip:</strong> Preview first, then apply. Theme changes do not touch your products, prices, slugs or orders — switch as often as you like for seasonal campaigns.</blockquote>
+
+  <h2 id="reset">16. Password Reset via OTP</h2>
   <p>Click <strong>Forgot password?</strong> under the login form.</p>
   <ol>
     <li>Enter your registered <strong>Email Address</strong> and click <strong>Send OTP</strong>.</li>
     <li>Open your inbox, copy the 6-digit code, enter it under <strong>Enter OTP Code</strong> and click <strong>Verify OTP</strong>.</li>
     <li>Type a <strong>New Password</strong>, confirm it and click <strong>Change Password</strong>. Log in with the new password.</li>
   </ol>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/15-reset-password-send-otp.jpg" alt="Reset password: enter email" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/15-reset-password-enter-otp.jpg" alt="Reset password: enter OTP code" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/15-reset-password-new-password.jpg" alt="Reset password: set new password" loading="lazy">
-  <blockquote><strong>Tip:</strong> The OTP email is sent instantly; check spam if you do not see it within a minute. Codes are single-use.</blockquote>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/15-reset-password-send-otp.jpg" alt="Reset Password page: enter your email address and click Send OTP" loading="lazy">
+  <blockquote><strong>Tip:</strong> The OTP email is sent instantly; check spam if you do not see it within a minute. Codes are single-use and expire quickly.</blockquote>
 
-  <h2>16. Dashboard Overview</h2>
-  <p>The <strong>Dashboard</strong> is your home screen after login: subscription status and days remaining, quick links to every feature, and the license button when you are ready to upgrade to the yearly plan.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/16-dashboard-overview.jpg" alt="Dashboard overview" loading="lazy">
+  <h2 id="dashboard">17. Dashboard Overview</h2>
+  <p>The <strong>Dashboard</strong> is your home screen after login: live counters for <strong>Orders</strong>, <strong>Products</strong>, <strong>Deliverable Orders</strong> and <strong>New Orders</strong>, a searchable <strong>Tutorials</strong> panel with step-by-step guides (using Shop-E-Business, theme customisation, SEO and custom URL slugs), your plan badge and the <strong>Live Chat</strong> button for support.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/16-dashboard-overview.jpg" alt="Dashboard with order and product counters and tutorial cards" loading="lazy">
 
-  <h2>17. Logout</h2>
-  <p>Click <strong>Logout</strong> at the bottom of the sidebar (or the red logout icon next to your shop name). You are returned to the public home page; log in again any time with your email and password.</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/17-logout-link.jpg" alt="Logout link in sidebar" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/17-logged-out.jpg" alt="Logged out, back on home page" loading="lazy">
+  <h2 id="logout">18. Logout</h2>
+  <p>Click the red logout icon next to your shop name at the bottom of the sidebar. You are returned to the public home page; log in again any time with your email and password.</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/17-logout-link.jpg" alt="Admin Panel sidebar with the logout icon next to the shop name" loading="lazy">
 
   <h2>Quick Launch Checklist</h2>
   <div class="feature-box">
@@ -185,10 +273,10 @@ keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store
     <ul>
       <li>Register → Log in → note your trial days</li>
       <li><strong>Shop Info</strong>: logo, cover, description, Facebook, address, phone</li>
-      <li><strong>Upload Product</strong> with a category, photos and USD price → mark it <em>Featured</em></li>
+      <li><strong>Upload Product</strong> with a category, 3–5 photos, a <em>long</em> description and a price → mark it <em>Featured</em></li>
       <li><strong>Product Size</strong>, <strong>Product Slug URL</strong>, <strong>SEO Metatags</strong></li>
       <li><strong>Delivery Charge</strong> for each shipping zone</li>
-      <li>Pick a <strong>Theme</strong> → share your store link → confirm orders in <strong>Orders</strong></li>
+      <li>Pick a <strong>Theme</strong> → share <code>/landingpage</code> and <code>/buy/{slug}</code> links → confirm orders in <strong>Orders</strong></li>
     </ul>
   </div>
   <p style="text-align:center;"><a class="cta-button" href="https://www.shopebusiness.com" target="_blank" rel="noopener">Start your store — 10 USD/year</a></p>
@@ -209,159 +297,225 @@ keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store
 
   <div class="price-box">
     <h3>আন্তর্জাতিক প্ল্যান · ১০ USD / বছর</h3>
-    <p>একটাই ফ্ল্যাট মূল্য। আনলিমিটেড প্রোডাক্ট, নিজের স্টোর সাবডোমেইন, তিনটি স্টোরফ্রন্ট থিম, SEO টুল এবং অর্ডার ম্যানেজমেন্ট — সবই অন্তর্ভুক্ত। প্রতিটি নতুন শপ ফ্রি ট্রায়াল দিয়ে শুরু হয়, তাই কোনো টাকা দেওয়ার আগেই আপনি এই পুরো ম্যানুয়ালটি অনুসরণ করে দেখতে পারবেন।</p>
+    <p>একটাই ফ্ল্যাট মূল্য। আনলিমিটেড প্রোডাক্ট, নিজের স্টোর সাবডোমেইন, তিনটি স্টোরফ্রন্ট থিম, SEO টুল, আলাদা <code>/landingpage</code> ও এক-ক্লিক <code>/buy</code> পেজ এবং অর্ডার ম্যানেজমেন্ট। প্রতিটি নতুন শপ ফ্রি ট্রায়াল দিয়ে শুরু হয়, তাই কোনো টাকা দেওয়ার আগেই পুরো ম্যানুয়ালটি অনুসরণ করে দেখতে পারবেন।</p>
   </div>
 
   <div class="callout">
-    <p><strong>এই ম্যানুয়াল কীভাবে পড়বেন।</strong> প্রতিটি নম্বরযুক্ত সেকশন প্ল্যাটফর্মের একটি ফিচার। <strong>বোল্ড</strong> করা মেনুর নামগুলো অ্যাডমিন সাইডবারে ঠিক এভাবেই দেখবেন: <strong>Dashboard, Shop Info, Upload Product, Products, Orders, Delivery Charge, Product Size, Product Slug URL, SEO Metatags, Manage Category, Theme</strong> এবং <strong>Logout</strong>।</p>
+    <p><strong>এই ম্যানুয়াল কীভাবে পড়বেন।</strong> প্রতিটি নম্বরযুক্ত সেকশন প্ল্যাটফর্মের একটি ফিচার, যে ক্রমে আপনি ব্যবহার করবেন। <strong>বোল্ড</strong> মেনুর নামগুলো অ্যাডমিন সাইডবারে ঠিক এভাবেই দেখবেন: <strong>Dashboard, Shop Info, Upload Product, Products, Orders, Delivery Charge, Product Size, Product Slug URL, SEO Metatags, Manage Category, Theme</strong> এবং <strong>Logout</strong>। স্টোরফ্রন্ট URL লেখা হয়েছে <code>yourstore.shopebusiness.com/…</code> আকারে — <em>yourstore</em>-এর জায়গায় আপনার শপ ডোমেইন নাম বসান।</p>
   </div>
 
-  <h2>১. নতুন শপ রেজিস্ট্রেশন</h2>
-  <p>শপ-ই-বিজনেস (<a href="https://www.shopebusiness.com" target="_blank" rel="noopener noreferrer"><strong>Shop-E-Business</strong></a>) হোম পেজ খুলে <strong>Register</strong> প্যানেল পর্যন্ত স্ক্রল করুন।</p>
+  <h2 id="bn-register">১. নতুন শপ রেজিস্ট্রেশন</h2>
+  <p><a href="https://www.shopebusiness.com" target="_blank" rel="noopener noreferrer"><strong>Shop-E-Business</strong></a> হোম পেজ খুলুন। হিরো সেকশনে অফারটি দেখানো হয়; <strong>Create Account</strong> ক্লিক করুন (বা <strong>Create Your Shop</strong> প্যানেল পর্যন্ত স্ক্রল করুন)।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/01-home-landing.jpg" alt="শপ-ই-বিজনেস হোম পেজ" loading="lazy">
   <ol>
-    <li><strong>Shop Name</strong> — আপনার ব্র্যান্ডের নাম, যেটা কাস্টমার দেখবে (আমরা দিয়েছি <em>Nordic Craft Store</em>)।</li>
-    <li><strong>Shop Domain Name</strong> — একটি ইউনিক, ছোট হাতের শব্দ, যেটি আপনার স্টোরের ঠিকানা হবে (<code>yourname.&lt;platform-domain&gt;</code>)। টাইপ করার সময়েই ফর্ম চেক করে নামটি খালি আছে কি না।</li>
-    <li><strong>Email</strong> — লগইন এবং পাসওয়ার্ড রিসেট OTP-এর জন্য ব্যবহৃত হয়, তাই আসল ইমেইল দিন।</li>
-    <li><strong>Password</strong> ও <strong>Confirm Password</strong> দিয়ে <strong>Register Now</strong> ক্লিক করুন।</li>
+    <li><strong>Shop Name</strong> — আপনার ব্র্যান্ডের নাম, যেটা স্টোরফ্রন্ট হেডারে কাস্টমার দেখবে (যেমন <em>Sabrina Fashion House</em>)।</li>
+    <li><strong>Shop Domain Name</strong> — ছোট হাতের একটি শব্দ। এটিই আপনার স্থায়ী স্টোর ঠিকানা হবে: <code>yourstore.shopebusiness.com</code>। টাইপ করার সময়েই খালি আছে কি না চেক হয়।</li>
+    <li><strong>Email</strong> — লগইন ও পাসওয়ার্ড রিসেট OTP-এর জন্য ব্যবহৃত হয়, তাই আসল ইমেইল দিন।</li>
+    <li><strong>Password</strong> ও <strong>Confirm Password</strong> — কমপক্ষে ৮ অক্ষর, অক্ষর-সংখ্যা-চিহ্ন মিশিয়ে।</li>
+    <li><strong>Register Now</strong> ক্লিক করুন। সাথে সাথেই সক্রিয় ট্রায়ালসহ শপ তৈরি হয়ে যায়।</li>
   </ol>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/01-register-form-filled.jpg" alt="রেজিস্ট্রেশন ফর্ম" loading="lazy">
-  <blockquote><strong>টিপস:</strong> ডোমেইন নাম পরে পরিবর্তন করা যায় না, তাই ছোট এবং ব্র্যান্ডের সাথে মিল রেখে দিন — এটিই আপনার প্রধান SEO পরিচয়।</blockquote>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/01-register-form-filled.jpg" alt="Create Your Shop রেজিস্ট্রেশন ফর্ম" loading="lazy">
+  <blockquote><strong>SEO টিপস:</strong> ডোমেইন নাম পরে পরিবর্তন করা যায় না এবং প্রতিটি প্রোডাক্ট URL-এ থাকে, তাই ছোট ও ব্র্যান্ডের সাথে মিল রেখে দিন — <code>sole</code>, <code>sole-fashion-store-2026</code>-এর চেয়ে ভালো।</blockquote>
 
-  <h2>২. অ্যাডমিন প্যানেলে লগইন</h2>
-  <p>রেজিস্ট্রেশন প্যানেলের ঠিক নিচেই <strong>Login</strong> ফর্ম। একই ইমেইল ও পাসওয়ার্ড দিয়ে <strong>Login</strong> ক্লিক করুন। একটি সাকসেস পপআপ আসবে এবং আপনি <strong>Dashboard</strong>-এ পৌঁছে যাবেন।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/02-login-form.jpg" alt="লগইন ফর্ম" loading="lazy">
+  <h2 id="bn-login">২. অ্যাডমিন প্যানেলে লগইন</h2>
+  <p>উপরের নেভিগেশনে <strong>Login</strong> ক্লিক করুন, রেজিস্ট্রেশনের <strong>Email</strong> ও <strong>Password</strong> দিয়ে <strong>Login</strong> চাপুন। ফর্মের নিচেই <strong>Forgot password?</strong> লিংক আছে (দেখুন <a href="#bn-reset">সেকশন ১৬</a>)।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/02-login-form.jpg" alt="অ্যাডমিন লগইন ফর্ম" loading="lazy">
+  <p>সফল লগইনের পর আপনি <strong>Dashboard</strong>-এ পৌঁছে যাবেন। বাম পাশের সাইডবারই আপনার <strong>Admin Panel</strong>: এই ম্যানুয়ালের প্রতিটি ফিচার এখান থেকে এক ক্লিকে।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/02-login-success.jpg" alt="লগইনের পর অ্যাডমিন প্যানেল ড্যাশবোর্ড" loading="lazy">
 
-  <h2>৩. ট্রায়াল, সাবস্ক্রিপশন এবং ১০ USD/বছর প্ল্যান</h2>
-  <p>প্রতিটি নতুন শপ সক্রিয় ট্রায়াল নিয়ে তৈরি হয়, তাই পুরো সাইডবার (প্রোডাক্ট, অর্ডার, থিম…) সাথে সাথেই দেখা যায়। হোম পেজের প্রাইসিং সেকশনে আন্তর্জাতিক প্ল্যান <strong>$10 / year</strong> দেখানো হয়।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/03-pricing-10-usd-year.jpg" alt="১০ USD প্রতি বছর আন্তর্জাতিক প্ল্যান" loading="lazy">
-  <p>অ্যাডমিন প্যানেলের ভেতরে একটি ব্যানারে ট্রায়ালের বাকি দিন দেখায়, সাথে <strong>Get License Key for 1 year subscription</strong> বাটন। ট্রায়াল শেষ হলে লাইসেন্স সক্রিয় করার আগ পর্যন্ত শুধু <strong>Dashboard</strong> ও <strong>Shop Info</strong> দেখা যায় — আপনার ডেটা সংরক্ষিত থাকে, কিছুই মুছে যায় না।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/16-dashboard-overview.jpg" alt="সাবস্ক্রিপশন ব্যানারসহ ড্যাশবোর্ড" loading="lazy">
+  <h2 id="bn-pricing">৩. ট্রায়াল, সাবস্ক্রিপশন এবং ১০ USD/বছর প্ল্যান</h2>
+  <p>প্রতিটি নতুন শপ সক্রিয় ট্রায়াল নিয়ে শুরু হয়, তাই পুরো সাইডবার (প্রোডাক্ট, অর্ডার, থিম…) সাথে সাথেই পাওয়া যায়। হোম পেজের <strong>Pricing</strong> সেকশনে আন্তর্জাতিক <strong>Premium Shop</strong> প্ল্যান <strong>$10 / year</strong>: আনলিমিটেড প্রোডাক্ট, কাস্টম অর্ডার লিংক, অর্ডার ম্যানেজমেন্ট ড্যাশবোর্ড ও প্রায়োরিটি সাপোর্ট। শুরু করতে কোনো কার্ড লাগে না।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/03-pricing-10-usd-year.jpg" alt="Premium Shop ১০ USD প্রতি বছর" loading="lazy">
+  <p>অ্যাডমিন প্যানেলের উপরে-ডানে ব্যাজে বর্তমান প্ল্যান ও বাকি দিন দেখায়। ট্রায়াল শেষ হলে লাইসেন্স কি সক্রিয় করার আগ পর্যন্ত শুধু <strong>Dashboard</strong> ও <strong>Shop Info</strong> দেখা যায় — প্রোডাক্ট ও অর্ডার সংরক্ষিত থাকে, কিছুই মুছে যায় না।</p>
 
-  <h2>৪. Shop Info — ব্র্যান্ডিং</h2>
-  <p><strong>Shop Info</strong>-তে যান। কাস্টমার আপনার স্টোরফ্রন্টের হেডার ও ফুটারে যা দেখে, সব এই পেজ থেকে নিয়ন্ত্রিত হয়।</p>
+  <h2 id="bn-shop-info">৪. Shop Info — ব্র্যান্ডিং</h2>
+  <p><strong>Shop Info</strong>-তে যান। প্রতিটি থিমের স্টোরফ্রন্ট হেডার, হিরো এরিয়া ও ফুটারে কাস্টমার যা দেখে, সব এই পেজ থেকে নিয়ন্ত্রিত হয়।</p>
   <ol>
-    <li><strong>Shop Logo</strong> — স্কয়ার ছবি (PNG/JPG)। স্টোরফ্রন্ট হেডার ও চেকআউট পেজে দেখায়।</li>
-    <li><strong>Cover Photo</strong> — স্টোরফ্রন্টের হিরো এরিয়ায় ব্যবহৃত প্রশস্ত ব্যানার।</li>
-    <li><strong>Description</strong> — আপনি কী বিক্রি করেন এবং কোথায় শিপ করেন, এক-দুই লাইনে।</li>
+    <li><strong>Shop Logo</strong> — স্কয়ার PNG/JPG। স্টোরফ্রন্ট হেডার ও চেকআউট পেজে দেখায়।</li>
+    <li><strong>Cover Photo</strong> — প্রশস্ত ব্যানার, স্টোরফ্রন্ট হোম ও <code>/landingpage</code>-এর হিরো ছবি হিসেবে ব্যবহৃত হয়।</li>
+    <li><strong>Shop Domain</strong> — আপনার <code>yourstore.shopebusiness.com</code> ঠিকানার রিড-অনলি রিমাইন্ডার।</li>
+    <li><strong>Description</strong> — আপনি কী বিক্রি করেন, এক-দুই লাইনে। শপ নামের নিচে দেখায় এবং ডিফল্ট মেটা ডেসক্রিপশন হিসেবে ব্যবহৃত হয়।</li>
     <li><strong>Facebook Page Link</strong> — স্টোরফ্রন্টের <em>Facebook</em> ও <em>Chat</em> বাটন এটি ব্যবহার করে।</li>
-    <li><strong>Address</strong> ও <strong>Phone Number</strong> — ফুটার/কন্টাক্ট এরিয়ায় দেখায়।</li>
-    <li><strong>Save</strong> ক্লিক করুন।</li>
+    <li><strong>Address</strong> ও <strong>Phone Number</strong> — ফুটার/কন্টাক্ট এরিয়া ও উপরের ইনফো বারে দেখায়।</li>
+    <li><strong>Save Shop Info</strong> ক্লিক করুন। উপরের <strong>View</strong> ও <strong>Share</strong> বাটনে লাইভ স্টোর লিংক খোলা বা শেয়ার করা যায়।</li>
   </ol>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/04-shop-info-form-filled.jpg" alt="Shop Info ব্র্যান্ডিং ফর্ম" loading="lazy">
-  <blockquote><strong>টিপস:</strong> ফোন নম্বর আন্তর্জাতিক ফরম্যাটে দিন (যেমন <code>+45 …</code>) যাতে বিদেশি কাস্টমার সরাসরি কল বা WhatsApp করতে পারে।</blockquote>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/04-shop-info-form.jpg" alt="Shop Information ফর্ম" loading="lazy">
+  <blockquote><strong>টিপস:</strong> ফোন নম্বর আন্তর্জাতিক ফরম্যাটে দিন (যেমন <code>+880 …</code>) যাতে বিদেশি কাস্টমার স্টোরফ্রন্ট থেকেই কল বা WhatsApp করতে পারে।</blockquote>
 
-  <h2>৫. Manage Category</h2>
-  <p>ক্যাটাগরি তৈরি হয় <strong>Upload Product</strong> ফর্ম থেকে: <strong>Select Category</strong> ড্রপডাউন খুলে নতুন নাম টাইপ করুন (আমরা লিখেছি <em>Ceramics</em>) এবং <strong>Add</strong> ক্লিক করুন। অন্তত একটি ক্যাটাগরি থাকলে <strong>Manage Category</strong> পেজ থেকে নাম পরিবর্তন, বিবরণ যোগ এবং ক্যাটাগরি ছবি আপলোড করতে পারবেন, যা স্টোরফ্রন্টের ক্যাটাগরি সেকশনে দেখায়।</p>
+  <h2 id="bn-category">৫. Manage Category</h2>
+  <p><strong>Upload Product</strong> ফর্মের ভেতরেই ক্যাটাগরি তৈরি করা যায়: <strong>Select Category</strong> ড্রপডাউন খুলে নতুন নাম টাইপ করুন (আমরা লিখেছি <em>Ladies Suit</em>) এবং <strong>Add “Ladies Suit”</strong> ক্লিক করুন। ক্যাটাগরি সাথে সাথে সেভ হয় ও প্রোডাক্টের জন্য সিলেক্ট হয়ে যায়।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/05-add-category-inline.jpg" alt="Upload Product ফর্ম থেকে Ladies Suit ক্যাটাগরি যোগ" loading="lazy">
+  <p><strong>Manage Category</strong> পেজে প্রতিটি ক্যাটাগরির ছবি, নাম, বিবরণ ও প্রোডাক্ট সংখ্যা দেখায়। এখানে নাম পরিবর্তন, বিবরণ যোগ ও ক্যাটাগরি ছবি আপলোড করতে পারবেন — এই ছবিগুলো স্টোরফ্রন্টের <em>Shop by Category</em> সেকশন ও <code>/landingpage</code>-এ দেখায়।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/05-manage-category-table.jpg" alt="Manage Category পেজ" loading="lazy">
-  <blockquote><strong>টিপস:</strong> ৩–৮টি বড় ক্যাটাগরি রাখুন। কাস্টমার স্টোরফ্রন্ট সাইডবারে ক্যাটাগরি দিয়ে ফিল্টার করে, তাই অনেক ছোট ছোট ক্যাটাগরি ব্রাউজিং কঠিন করে দেয়।</blockquote>
+  <blockquote><strong>টিপস:</strong> ৩–৮টি বড় ক্যাটাগরি রাখুন। অনেক ছোট ছোট ক্যাটাগরি ব্রাউজিং কঠিন করে এবং SEO দুর্বল করে।</blockquote>
 
-  <h2>৬. Upload Product</h2>
-  <p><strong>Upload Product</strong>-এ গিয়ে ফর্ম পূরণ করুন:</p>
+  <h2 id="bn-upload-product">৬. Upload Product (বড় বিবরণসহ)</h2>
+  <p><strong>Upload Product</strong>-এ যান। আমরা একটি আসল প্রোডাক্ট আপলোড করেছি — <em>Lavender Chikankari Embroidered Ladies Suit – 3 Piece (Kameez, Trouser &amp; Dupatta)</em> — এই তিনটি ছবি দিয়ে:</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+    <img src="{{ site.baseurl }}/assets/img/user-manual/product-ladies-suit-1.jpg" alt="ল্যাভেন্ডার চিকনকারি লেডিস সুট — সামনের ভিউ" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/img/user-manual/product-ladies-suit-2.jpg" alt="ল্যাভেন্ডার চিকনকারি লেডিস সুট — ডিটেইল" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/img/user-manual/product-ladies-suit-3.jpg" alt="স্কাই ব্লু চিকনকারি লেডিস সুট — কালার ভ্যারিয়েন্ট" loading="lazy">
+  </div>
+  <p>ফর্মটি উপর থেকে নিচে পূরণ করুন:</p>
   <ol>
-    <li><strong>Title</strong> — স্পষ্ট ও নির্দিষ্ট (<em>Handmade Ceramic Coffee Mug</em>)।</li>
-    <li><strong>Short Description</strong> — সর্বোচ্চ ২৫০ অক্ষর; প্রোডাক্ট কার্ড ও কার্টে দেখায়।</li>
-    <li><strong>Select Category</strong> — বিদ্যমান ক্যাটাগরি বেছে নিন বা সাথে সাথে নতুন যোগ করুন।</li>
-    <li><strong>Long Description</strong> — বিস্তারিত, উপাদান, যত্নের নির্দেশনা ও শিপিং সময়ের জন্য রিচ-টেক্সট এডিটর।</li>
-    <li><strong>Price</strong> ও <strong>Product Currency</strong> — আমরা <strong>USD</strong> বেছেছি; স্টোরফ্রন্টের সব জায়গায় মূল্যের সাথে এই কারেন্সি দেখায়।</li>
-    <li><strong>Photos</strong> — সর্বোচ্চ ৫টি ছবি। অতিরিক্ত ছবির জন্য <strong>Add More</strong> ক্লিক করে একটিকে <strong>Cover Photo</strong> হিসেবে বেছে নিন।</li>
-    <li><strong>Related Products</strong> (ঐচ্ছিক) — প্রোডাক্ট পেজে দেখানো ক্রস-সেল আইটেম।</li>
+    <li><strong>Title</strong> — নির্দিষ্ট ও কীওয়ার্ড-সমৃদ্ধ: কাপড়, স্টাইল, পিস ও রং। আমাদের টাইটেলে <em>Chikankari</em>, <em>Embroidered</em>, <em>Ladies Suit</em> ও <em>3 Piece</em> আছে — ঠিক যা ক্রেতারা সার্চ করে।</li>
+    <li><strong>Short Description</strong> — সর্বোচ্চ ২৫০ অক্ষর। প্রোডাক্ট কার্ড, <code>/buy</code> পেজ ও কার্টে দেখায়, তাই এক শক্তিশালী বাক্যে প্রোডাক্টটি বোঝান।</li>
+    <li><strong>Select Category</strong> — বিদ্যমান ক্যাটাগরি বেছে নিন বা সাথে সাথে নতুন যোগ করুন (সেকশন ৫)।</li>
+    <li><strong>Long Description</strong> — রিচ-টেক্সট এডিটর। <strong>এটি বড় করে লিখুন।</strong> লং ডেসক্রিপশন প্রোডাক্ট পেজে (<code>/Product/View/{id}</code> বা <code>/{slug-url}</code>) ও <code>/buy</code> পেজে পুরোটা দেখায়, তাই বিস্তারিত বিবরণই এই পেজগুলোকে প্রফেশনাল দেখায় ও সার্চে র‍্যাংক করায়। আমরা হেডিং ও বুলেট লিস্টসহ সাতটি সেকশন লিখেছি:
+      <ul>
+        <li><em>প্রোডাক্ট ওভারভিউ</em> — এটি কী এবং কাদের জন্য</li>
+        <li><em>এমব্রয়ডারি ও কাপড়</em> — নিঃশ্বাস-নেওয়া লন কটনে হাতে ফিনিশ করা চিকনকারি</li>
+        <li><em>সম্পূর্ণ ৩-পিস সেট</em> — কামিজ, ট্রাউজার ও দোপাট্টার মাপ</li>
+        <li><em>সাইজ গাইড</em> — S থেকে XXL ও Unstitched অপশন</li>
+        <li><em>স্টাইলিং আইডিয়া</em> — ক্যাজুয়াল, অফিস ও উৎসব</li>
+        <li><em>যত্নের নির্দেশনা</em> — ঠান্ডা পানিতে হাতে ধোয়া, ছায়ায় শুকানো, উল্টো করে ইস্ত্রি</li>
+        <li><em>ডেলিভারি, ক্যাশ অন ডেলিভারি ও রিটার্ন</em></li>
+      </ul>
+    </li>
+    <li><strong>Price</strong> ও <strong>Product Currency</strong> — আমরা <em>2850</em> ও <strong>BDT (৳)</strong> দিয়েছি; স্টোরফ্রন্টের সব জায়গায় মূল্যের সাথে এই চিহ্ন দেখায়।</li>
+    <li><strong>Photos</strong> — সর্বোচ্চ ৫টি ছবি। প্রতিটি অতিরিক্ত ছবির জন্য <strong>Add More (max 5)</strong> ক্লিক করে একটিকে <strong>Cover Photo</strong> টিক দিন; কভারটি প্রোডাক্ট কার্ড ও গ্যালারির প্রথম ছবি হিসেবে ব্যবহৃত হয়।</li>
+    <li><strong>Related Products</strong> (ঐচ্ছিক) — প্রোডাক্টের নিচে দেখানো ক্রস-সেল আইটেম।</li>
     <li><strong>Save Product</strong> ক্লিক করুন।</li>
   </ol>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/06-upload-product-form-filled.jpg" alt="Upload Product ফর্ম" loading="lazy">
-  <p><strong>Product status</strong> (Normal, Featured, Latest, Premium) পরে <strong>Products</strong> লিস্ট থেকে এক ক্লিকে সেট করা যায় — Featured ও Latest প্রোডাক্ট স্টোরফ্রন্ট ল্যান্ডিং পেজে হাইলাইট হয়।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/06-product-status-featured.jpg" alt="প্রোডাক্ট স্ট্যাটাস Featured" loading="lazy">
-  <blockquote><strong>টিপস:</strong> ডিসকাউন্ট ও সাইজভিত্তিক মূল্য পার্থক্য <strong>Product Size</strong> (পরের ধাপ) থেকে করা হয় — যেমন <em>Sale pack</em> নামে একটি সাইজ যোগ করে ঋণাত্মক বা ধনাত্মক মূল্য সমন্বয় দিন।</blockquote>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/06-upload-product-form-filled.jpg" alt="Add New Product ফর্ম পূরণ করা" loading="lazy">
+  <p>সেভ করার পর আপনি <strong>Products</strong> লিস্টে ফিরে যাবেন, যেখানে নতুন সুটটি কভার ছবি, মূল্য ও স্ট্যাটাসসহ উপরে দেখায়।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/06-upload-product-saved.jpg" alt="নতুন সেভ করা লেডিস সুটসহ Product List" loading="lazy">
+  <blockquote><strong>SEO টিপস:</strong> লং ডেসক্রিপশন আগে মানুষের জন্য লিখুন — হেডিং, ছোট প্যারাগ্রাফ ও বুলেট লিস্ট। ৩০০+ শব্দের ইউনিক, সুগঠিত টেক্সট সার্চ ইঞ্জিন পুরস্কৃত করে, আর সম্পূর্ণ সাইজ গাইড ও যত্নের সেকশন পড়া কাস্টমার কম রিটার্ন করে।</blockquote>
 
-  <h2>৭. Product Size / ভ্যারিয়েন্ট</h2>
-  <p><strong>Product Size</strong>-এ যান, <strong>Choose Product to Configure</strong>-এ প্রোডাক্ট বেছে নিন, তারপর প্রতিটি ভ্যারিয়েন্টের <strong>Size / Variant Name</strong> ও <strong>Increased Price (+)</strong> দিয়ে যোগ করুন। বেস ভ্যারিয়েন্টের জন্য <code>0</code> দিন।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/07-product-size-form.jpg" alt="Product Size ফর্ম" loading="lazy">
-  <p>সেভ করা ভ্যারিয়েন্ট টেবিলে দেখায় এবং চেকআউটে বাধ্যতামূলক ড্রপডাউন হয়ে যায় (যেমন <em>Large 450 ml (+6.00)</em>)।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/07-product-size-table.jpg" alt="সেভ করা প্রোডাক্ট সাইজ" loading="lazy">
+  <h2 id="bn-product-size">৭. Product Size / ভ্যারিয়েন্ট</h2>
+  <p><strong>Product Size</strong>-এ গিয়ে <strong>Choose Product to Configure</strong>-এ প্রোডাক্ট বেছে নিন। বেস প্রাইস দেখানো হয়; প্রতিটি ভ্যারিয়েন্টের <strong>Size / Variant Name</strong> ও <strong>Increased Price (+)</strong> দিয়ে যোগ করুন। বেস প্রাইসে বিক্রি হওয়া সাইজে <code>0</code>, সারচার্জে ধনাত্মক এবং ডিসকাউন্টে ঋণাত্মক সংখ্যা দিন।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/07-product-size-form.jpg" alt="Product Sizes and Pricing ফর্ম" loading="lazy">
+  <p>আমরা <strong>S, M, L</strong> (+0), <strong>XL</strong> (+৳100), <strong>XXL</strong> (+৳150) ও <strong>Unstitched</strong> (−৳200) যোগ করেছি। টেবিলে প্রতিটি ভ্যারিয়েন্টের চূড়ান্ত মূল্য দেখায়, এবং এগুলো প্রোডাক্ট পেজ, <code>/buy</code> পেজ ও চেকআউটে বাধ্যতামূলক ড্রপডাউন হয়ে যায়।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/07-product-size-table.jpg" alt="সেভ করা সাইজ S, M, L, XL, XXL ও Unstitched" loading="lazy">
 
-  <h2>৮. Products লিস্ট</h2>
-  <p><strong>Products</strong> পেজে প্রতিটি প্রোডাক্টের কভার ছবি, মূল্য, স্ট্যাটাস রেডিও বাটন এবং অ্যাকশন আইকন থাকে: এডিট, স্টোরফ্রন্টে দেখা, ফিচার, লিংক কপি, শেয়ার ও ডিলিট। বড় ক্যাটালগের জন্য সার্চ বক্স ও <strong>Rows per page</strong> ব্যবহার করুন।</p>
+  <h2 id="bn-products-list">৮. Products লিস্ট ও Product Status</h2>
+  <p><strong>Products</strong> পেজে প্রতিটি প্রোডাক্টের কভার ছবি, টাইটেল, মূল্য, <strong>Product Status</strong> রেডিও বাটন ও অ্যাকশন আইকন: এডিট, স্টোরফ্রন্টে দেখা, লিংক কপি, শেয়ার ও ডিলিট। বড় ক্যাটালগের জন্য সার্চ বক্স ও <strong>Rows per page</strong> ব্যবহার করুন।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/08-products-list.jpg" alt="Products লিস্ট" loading="lazy">
+  <p><strong>Product status</strong> এক ক্লিকে পরিবর্তন হয়: <strong>Normal</strong>, <strong>Featured</strong>, <strong>Latest</strong> বা <strong>Premium</strong>। আমরা সুটটি <em>Featured</em> করেছি, যা এটিকে স্টোরফ্রন্ট হোম ও <code>/landingpage</code>-এর <em>Featured Products</em> ব্লকে রাখে।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/06-product-status-featured.jpg" alt="প্রোডাক্ট স্ট্যাটাস Featured" loading="lazy">
 
-  <h2>৯. Product Slug URL (SEO-বান্ধব লিংক)</h2>
-  <p>ডিফল্টভাবে প্রোডাক্ট পাওয়া যায় <code>/Product/View/&lt;id&gt;</code> ঠিকানায়। <strong>Product Slug URL</strong>-এ গিয়ে প্রোডাক্ট বেছে নিন, <code>handmade-ceramic-coffee-mug</code>-এর মতো পড়ার যোগ্য একটি slug লিখুন এবং <strong>Save Slug</strong> ক্লিক করুন। এখন প্রোডাক্টটি <code>yourstore.&lt;platform-domain&gt;/handmade-ceramic-coffee-mug</code> ঠিকানায় থাকবে।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/09-product-slug-form.jpg" alt="Product slug ফর্ম" loading="lazy">
+  <h2 id="bn-slug">৯. Product Slug URL — <code>/Product/View/{id}</code> বনাম <code>/{slug-url}</code></h2>
+  <p>প্রতিটি প্রোডাক্ট সাথে সাথেই সংখ্যাভিত্তিক ঠিকানায় পাওয়া যায়, যেমন <code>sole.shopebusiness.com/Product/View/970</code>। এটি কাজ করে, কিন্তু পড়ার যোগ্য URL ভালো র‍্যাংক করে ও শেয়ারে বিশ্বাসযোগ্য দেখায়। <strong>Product Slug URL</strong>-এ গিয়ে প্রোডাক্ট বেছে নিন, <code>lavender-chikankari-ladies-suit</code>-এর মতো slug লিখুন ও <strong>Save Slug</strong> ক্লিক করুন।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/09-product-slug-form.jpg" alt="Manage Product Slug ফর্ম" loading="lazy">
+  <p>সেভ হলে পেজে <strong>Current Slug URL</strong> দেখায়। প্রোডাক্টটি এখন <code>sole.shopebusiness.com/lavender-chikankari-ladies-suit</code> ঠিকানায়, এবং একই slug এক-ক্লিক বাই পেজ <code>sole.shopebusiness.com/buy/lavender-chikankari-ladies-suit</code>-ও চালায় (সেকশন ১৪)। পুরনো সংখ্যাভিত্তিক URL-ও কাজ করতে থাকে।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/09-product-slug-saved.jpg" alt="Slug সেভ হয়েছে — Current Slug URL" loading="lazy">
   <div class="callout">
-    <p><strong>Slug নিয়ম:</strong> শুধু ছোট হাতের অক্ষর, সংখ্যা ও একক হাইফেন; ৩–৩০০ অক্ষর; শুরুতে বা শেষে হাইফেন নয়। আপনার শপে প্রতিটি slug ইউনিক হতে হবে।</p>
+    <p><strong>Slug নিয়ম:</strong> শুধু ছোট হাতের অক্ষর, সংখ্যা ও একক হাইফেন; ৩–৩০০ অক্ষর; শুরুতে/শেষে হাইফেন নয়; কমপক্ষে একটি অক্ষর থাকতে হবে। শপে প্রতিটি slug ইউনিক হতে হবে এবং <code>admin</code>, <code>product</code>, <code>order</code>, <code>landingpage</code>, <code>checkout</code>-এর মতো সংরক্ষিত শব্দ দিয়ে শুরু করা যাবে না।</p>
   </div>
 
-  <h2>১০. SEO Metatags</h2>
-  <p><strong>SEO Metatags</strong>-এ যান। <strong>Choose Page</strong>-এ শপ হোম পেজ বা নির্দিষ্ট প্রোডাক্ট বেছে নিন, তারপর <strong>Keywords</strong> ও <strong>Description</strong> (প্রায় ১৫০–১৬০ অক্ষর) লিখে <strong>Save</strong> ক্লিক করুন। এগুলোই সেই <code>&lt;meta&gt;</code> ট্যাগ যা সার্চ ইঞ্জিন ও সোশ্যাল নেটওয়ার্ক পড়ে।</p>
+  <h2 id="bn-seo">১০. SEO Metatags</h2>
+  <p><strong>SEO Metatags</strong>-এ যান। <strong>Choose Page</strong>-এ শপ হোম পেজ বা নির্দিষ্ট প্রোডাক্ট বেছে নিন; <strong>Selected Page URL</strong> দেখানো হয় যাতে আপনি জানেন কোন পেজ অপটিমাইজ করছেন। <strong>Keywords</strong> (কমা দিয়ে) ও প্রায় ১৫০–১৬০ অক্ষরের <strong>Description</strong> লিখুন, বা <strong>Use Auto Generated</strong> চেপে টাইটেল ও শর্ট ডেসক্রিপশন থেকে পূরণ করুন। <strong>Save Metatags</strong> ক্লিক করুন।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/10-seo-metatags-form.jpg" alt="SEO Metatags ফর্ম" loading="lazy">
-  <blockquote><strong>টিপস:</strong> ধাপ ৯ ও ১০ একসাথে করুন: পড়ার যোগ্য slug এবং কীওয়ার্ড-সমৃদ্ধ বিবরণ প্রোডাক্ট পেজ ইনডেক্স করানোর দ্রুততম উপায়।</blockquote>
+  <p>সেভ করা মেটাট্যাগ ওই পেজের <code>&lt;title&gt;</code>, <code>&lt;meta name="description"&gt;</code> ও Open Graph ট্যাগ হয়ে যায় — যা Google সার্চ রেজাল্টে এবং Facebook/WhatsApp লিংক শেয়ারে দেখায়।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/10-seo-metatags-saved.jpg" alt="SEO Metatags সেভ হয়েছে" loading="lazy">
+  <blockquote><strong>SEO টিপস:</strong> সেকশন ৬, ৯ ও ১০ একসাথে করুন: বড় বিবরণ, পড়ার যোগ্য slug ও কীওয়ার্ড-সমৃদ্ধ মেটা ডেসক্রিপশন — প্রোডাক্ট পেজ ইনডেক্স ও ক্লিক পাওয়ার দ্রুততম উপায়।</blockquote>
 
-  <h2>১১. Delivery Charge</h2>
-  <p><strong>Delivery Charge</strong>-এ যান। প্রতিটি সারি একটি শিপিং অপশন, যা কাস্টমার চেকআউটে বেছে নিতে পারে: একটি <strong>Message</strong> (যেমন <em>Europe (5-7 days)</em>), <strong>Charge</strong> ও তার কারেন্সি। <strong>Save</strong> ক্লিক করুন এবং প্রতিটি জোনের জন্য পুনরাবৃত্তি করুন। কোনো অপশন না মুছে সাময়িকভাবে লুকাতে ভিজিবিলিটি সুইচ টগল করুন।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/11-delivery-charge-table.jpg" alt="Delivery charge কনফিগার করা" loading="lazy">
+  <h2 id="bn-delivery">১১. Delivery Charge</h2>
+  <p><strong>Delivery Charge</strong>-এ যান। প্রতিটি সারি একটি শিপিং অপশন, যা কাস্টমার চেকআউটে বেছে নেয়: একটি <strong>Message</strong> (যেমন <em>Inside Dhaka</em>, <em>Outside Dhaka</em>, <em>Outside Bangladesh</em>), <strong>Charge</strong> ও <strong>Delivery Order Currency</strong>। <strong>Save</strong> ক্লিক করুন এবং প্রতিটি জোনের জন্য পুনরাবৃত্তি করুন। <strong>Action</strong> কলামের টগল দিয়ে কোনো অপশন না মুছে সাময়িকভাবে লুকান।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/11-delivery-charge-table.jpg" alt="Delivery Charge ফর্ম ও টেবিল" loading="lazy">
 
-  <h2>১২. Orders ও অর্ডার স্ট্যাটাস</h2>
-  <p>প্রতিটি চেকআউট সাথে সাথে <strong>Orders</strong>-এ দেখায় — প্রোডাক্ট, সাইজ, পরিমাণ, কাস্টমারের নাম, ফোন, ঠিকানা, নোট এবং মূল্যের সারসংক্ষেপ (আইটেম + শিপিং = মোট)।</p>
+  <h2 id="bn-orders">১২. Orders ও অর্ডার স্ট্যাটাস</h2>
+  <p>প্রতিটি চেকআউট সাথে সাথে <strong>Orders</strong>-এ দেখায় — প্রোডাক্ট, সাইজ, পরিমাণ, কাস্টমারের নাম, ফোন, ঠিকানা, নোট ও মূল্যের সারসংক্ষেপ (আইটেম + শিপিং = মোট)। গোপনীয়তার জন্য স্ক্রিনশটে কাস্টমারের তথ্য ব্লার করা।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-list.jpg" alt="অর্ডার লিস্ট" loading="lazy">
-  <p>ডানদিকের রেডিও বাটন দিয়ে স্ট্যাটাস পরিবর্তন করুন — <strong>Initial → Confirmed → Packed → Shipped → Delivered</strong>, অথবা <strong>Cancelled</strong>। পরিবর্তন সাথে সাথে সেভ হয়।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/12-order-status-confirmed.jpg" alt="অর্ডার স্ট্যাটাস Confirmed" loading="lazy">
-  <p>দ্রুত অর্ডার খুঁজতে <strong>All Statuses</strong> ফিল্টার ও সার্চ বক্স ব্যবহার করুন, যেমন যেগুলো এখনও প্যাক হওয়ার অপেক্ষায়।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-filter-confirmed.jpg" alt="Confirmed স্ট্যাটাসে ফিল্টার করা অর্ডার" loading="lazy">
+  <p>ডানদিকের রেডিও বাটন দিয়ে স্ট্যাটাস পরিবর্তন করুন — <strong>Initial → Confirmed → Packed → Shipped → Delivered</strong>, অথবা <strong>Cancelled</strong>। পরিবর্তন সাথে সাথে সেভ হয়। <strong>All Statuses</strong> ফিল্টার ও সার্চ বক্স দিয়ে দ্রুত অর্ডার খুঁজুন, যেমন যেগুলো এখনও প্যাক হওয়ার অপেক্ষায়।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-filter.jpg" alt="স্ট্যাটাস অনুসারে ফিল্টার করা অর্ডার" loading="lazy">
+  <blockquote><strong>টিপস:</strong> অর্ডারগুলো ক্যাশ-অন-ডেলিভারি ধাঁচের — কোনো কার্ড গেটওয়ে দরকার নেই। ফোন বা Messenger-এ কনফার্ম করে প্যাক ও শিপ করার সাথে সাথে স্ট্যাটাস এগিয়ে নিন।</blockquote>
 
-  <h2>১৩. কাস্টমার স্টোরফ্রন্ট</h2>
-  <p>কাস্টমার কখনও অ্যাডমিন প্যানেল দেখে না। তারা <code>yourstore.&lt;platform-domain&gt;</code>-এ গিয়ে একটি দ্রুত, মোবাইল-ফার্স্ট শপ পায়।</p>
-  <h3>ল্যান্ডিং পেজ</h3>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-storefront-landing.jpg" alt="স্টোরফ্রন্ট ল্যান্ডিং পেজ" loading="lazy">
-  <h3>প্রোডাক্ট ব্রাউজিং</h3>
-  <p>ক্যাটাগরি সাইডবার দিয়ে প্রোডাক্ট ফিল্টার হয়; প্রতিটি কার্ডে <em>add to cart</em> ও <em>view details</em> বাটন থাকে।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-storefront-product-browsing.jpg" alt="ক্যাটাগরি অনুসারে প্রোডাক্ট ব্রাউজিং" loading="lazy">
+  <h2 id="bn-storefront">১৩. কাস্টমার স্টোরফ্রন্ট: হোম, <code>/landingpage</code>, প্রোডাক্ট পেজ, কার্ট ও চেকআউট</h2>
+  <p>কাস্টমার কখনও অ্যাডমিন প্যানেল দেখে না। তারা <code>yourstore.shopebusiness.com</code>-এ গিয়ে একটি দ্রুত, মোবাইল-ফার্স্ট শপ পায়। নিচে বর্তমানে অ্যাপ্লাই করা থিম (<em>Fashion Luxe</em>)-এ স্টোরফ্রন্ট; সেকশন ১৫-এ Classic ও Grocery Inspired-এ একই পেজগুলো।</p>
+
+  <h3>স্টোরফ্রন্ট হোম — <code>/</code></h3>
+  <p>হোম পেজ হলো পুরো ক্যাটালগ: ক্যাটাগরি সাইডবার, সার্চ এবং প্রোডাক্ট গ্রিড, যেখানে প্রতিটি কার্ডে কভার ছবি, টাইটেল, মূল্য ও দ্রুত <em>add to cart</em> বাটন থাকে।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-storefront-home.jpg" alt="Fashion Luxe স্টোরফ্রন্ট হোম" loading="lazy">
+
+  <h3>ল্যান্ডিং পেজ — <code>/landingpage</code></h3>
+  <p>প্রতিটি শপের একটি মার্কেটিং ল্যান্ডিং পেজও আছে: <code>yourstore.shopebusiness.com/landingpage</code>। এটি আপনার <strong>Cover Photo</strong>-কে হিরো হিসেবে ব্যবহার করে, শপ বিবরণ, <strong>Shop the Collection</strong> ও <strong>Browse Categories</strong> বাটন, ট্রাস্ট ব্যাজ (ফ্রি ডেলিভারি, সিকিউর চেকআউট, সহজ রিটার্ন), ক্যাটাগরি টাইল এবং <em>Featured</em> ও <em>Latest</em> প্রোডাক্ট দেখায়। Facebook বায়ো, Instagram ও বিজ্ঞাপনে এই লিংকটি দিন — এটি ভিজিটরকে ক্রেতায় রূপান্তরের জন্য, আর <code>/</code> ব্রাউজিংয়ের জন্য।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-landingpage.jpg" alt="Fashion Luxe /landingpage" loading="lazy">
+
+  <h3>প্রোডাক্ট পেজ — <code>/{slug-url}</code> বা <code>/Product/View/{id}</code></h3>
+  <p>প্রোডাক্ট পেজে ফটো গ্যালারি, মূল্য, সাইজ ড্রপডাউন, <strong>Order Now</strong> ও <strong>Add to Cart</strong> বাটন এবং — সবচেয়ে গুরুত্বপূর্ণ — <em>Description</em> ট্যাবে আপনার পুরো লং ডেসক্রিপশন, তারপর <em>Details</em> ও <em>Delivery</em>। এজন্যই সেকশন ৬-এ বড় বিবরণ লিখতে বলা হয়েছে: নিচের পেজটি পুরোটাই এডিটরে লেখা টেক্সট দিয়ে ভরা।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-product-page-full.jpg" alt="/lavender-chikankari-ladies-suit সম্পূর্ণ প্রোডাক্ট পেজ" loading="lazy">
+
   <h3>কার্টে যোগ</h3>
-  <p>কার্ট আইকনে ক্লিক করলে আইটেম যোগ হয় এবং একটি কনফার্মেশন টোস্ট দেখায়; হেডার কাউন্টার ও ফ্লোটিং <strong>Checkout</strong> ট্যাব সাথে সাথে আপডেট হয়।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-storefront-add-to-cart.jpg" alt="প্রোডাক্ট কার্টে যোগ হয়েছে" loading="lazy">
-  <h3>প্রোডাক্ট ডিটেইল পেজ</h3>
-  <p>প্রোডাক্ট পেজে (আপনার SEO slug দিয়ে পৌঁছানো যায়) ফটো গ্যালারি, লং ডেসক্রিপশন, সাইজ অপশন এবং এক ক্লিকে অর্ডারের জন্য <strong>Order Now</strong> ফর্ম থাকে।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-product-detail-page.jpg" alt="প্রোডাক্ট ডিটেইল পেজ" loading="lazy">
-  <h3>চেকআউট</h3>
-  <p>চেকআউট পেজে <strong>Full Name, Phone Number, Full Address</strong>, একটি <strong>Shipping Method</strong> (আপনার ডেলিভারি চার্জ) ও ঐচ্ছিক নোট চাওয়া হয়। কাস্টমার প্রতিটি আইটেমের সাইজ ও পরিমাণ বেছে নেয়, লাইভ মোট দেখে এবং <strong>Place Order</strong> ক্লিক করে।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-checkout-form-filled.jpg" alt="চেকআউট ফর্ম" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/13-checkout-order-placed.jpg" alt="অর্ডার প্লেস কনফার্মেশন" loading="lazy">
-  <blockquote><strong>টিপস:</strong> অর্ডারগুলো ক্যাশ-অন-ডেলিভারি ধাঁচের — কাস্টমারের জন্য কোনো কার্ড গেটওয়ে দরকার নেই। আপনি ফোন বা Messenger-এ অর্ডার কনফার্ম করে ধাপ ১২-এর স্ট্যাটাসগুলো দিয়ে এগিয়ে নিন।</blockquote>
+  <p>কার্ডের কার্ট আইকনে (বা প্রোডাক্ট পেজের <strong>Add to Cart</strong>-এ) ক্লিক করলে আইটেম যোগ হয় ও কনফার্মেশন টোস্ট দেখায়; হেডারের কার্ট কাউন্টার সাথে সাথে আপডেট হয়।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-add-to-cart.jpg" alt="Fashion Luxe-এ প্রোডাক্ট কার্টে যোগ" loading="lazy">
 
-  <h2>১৪. থিম পরিবর্তন</h2>
+  <h3>চেকআউট — <code>/Order/Checkout</code></h3>
+  <p>চেকআউট পেজে <strong>Full Name, Phone Number, Full Address</strong>, একটি <strong>Shipping Method</strong> (সেকশন ১১-এর ডেলিভারি চার্জ) ও ঐচ্ছিক <strong>Note</strong> চাওয়া হয়। কাস্টমার প্রতিটি আইটেমের সাইজ ও পরিমাণ বেছে নেয়, <strong>Order Summary</strong>-তে লাইভ সাবটোটাল, শিপিং ও মোট দেখে <strong>Place Order</strong> ক্লিক করে। অর্ডার সাথে সাথে আপনার <strong>Orders</strong> পেজে আসে।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-checkout.jpg" alt="Fashion Luxe চেকআউট পেজ" loading="lazy">
+
+  <h2 id="bn-buy">১৪. <code>/buy</code> পেজ — এক-ক্লিক অর্ডার</h2>
+  <p>প্রতিটি প্রোডাক্টের একটি আলাদা একক-প্রোডাক্ট অর্ডার পেজও আছে: <code>yourstore.shopebusiness.com/buy/{slug-url}</code> (বা <code>/buy/{id}</code>)। প্রোডাক্ট পেজের মতো নয়, <code>/buy</code> পেজে <em>কোনো</em> ক্যাটালগ নেভিগেশন নেই: শুধু গ্যালারি, টাইটেল, শর্ট ডেসক্রিপশন, লং ডেসক্রিপশন, সাইজ সিলেক্টর এবং একই স্ক্রিনে <strong>Order Now</strong> / <strong>Buy Now</strong> ফর্ম। এটি বিজ্ঞাপন ও Messenger-এ বিক্রির জন্য তৈরি — কাস্টমারকে <code>sole.shopebusiness.com/buy/lavender-chikankari-ladies-suit</code> পাঠান, তারা অন্য প্রোডাক্টে বিভ্রান্ত না হয়ে এক মিনিটের মধ্যে অর্ডার করতে পারবে।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-buy-page.jpg" alt="Fashion Luxe /buy পেজ" loading="lazy">
+  <div class="callout">
+    <p><strong>কোন লিংক শেয়ার করবেন?</strong> ব্র্যান্ডের জন্য <code>/landingpage</code> (বায়ো, পুরো শপের বিজ্ঞাপন) · অর্গানিক সার্চ ও প্রোডাক্ট রিসার্চের জন্য <code>/{slug-url}</code> · একক-প্রোডাক্ট বিজ্ঞাপন বা সিদ্ধান্ত নেওয়া কাস্টমারের জন্য <code>/buy/{slug-url}</code>।</p>
+  </div>
+
+  <h2 id="bn-themes">১৫. থিম: Classic, Grocery Inspired ও Fashion Luxe</h2>
   <p><strong>Theme</strong>-এ যান। তিনটি স্টোরফ্রন্ট ডিজাইন আছে, প্রতিটিতে <strong>Preview</strong> ও <strong>Apply</strong> বাটন; সক্রিয় থিমটি <em>Active</em> চিহ্নিত।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/14-theme-page.jpg" alt="Theme পেজ" loading="lazy">
-  <p><strong>Preview</strong> নতুন ট্যাবে আপনার স্টোরফ্রন্ট নির্বাচিত থিমে <strong>৫ মিনিটের</strong> জন্য খোলে — শুধু আপনার ব্রাউজারে, কাস্টমার লাইভ থিমই দেখতে থাকে। <strong>Apply</strong> করলে সবার জন্য সাথে সাথে লাইভ হয়।</p>
-  <h3>Classic</h3>
-  <p>ডিফল্ট লুক: হালকা সারফেস, নীল ক্যাটাগরি বার, ক্যাটাগরি সাইডবার ও প্রোডাক্ট গ্রিড।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-storefront-classic.jpg" alt="Classic থিমে স্টোরফ্রন্ট" loading="lazy">
-  <h3>Grocery Inspired</h3>
-  <p>সবুজ মার্কেটপ্লেস লুক, গাঢ় টপ বার, সাদা কার্ড এবং পরিচ্ছন্ন এক-কলাম চেকআউট।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-storefront-grocery-inspired.jpg" alt="Grocery Inspired থিমে স্টোরফ্রন্ট" loading="lazy">
-  <h3>Fashion Luxe</h3>
-  <p>প্রিমিয়াম ফ্যাশন স্টোরফ্রন্ট: কালো-সোনালি প্যালেট, এডিটোরিয়াল হিরো, সেরিফ হেডিং ও স্টেপ-বাই-স্টেপ চেকআউট।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-storefront-fashion-luxe.jpg" alt="Fashion Luxe থিমে স্টোরফ্রন্ট" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/14-theme-applied-fashion-luxe.jpg" alt="Fashion Luxe অ্যাপ্লাই করা" loading="lazy">
-  <blockquote><strong>টিপস:</strong> আগে প্রিভিউ করুন, তারপর অ্যাপ্লাই। থিম পরিবর্তনে আপনার প্রোডাক্ট, মূল্য বা অর্ডারে কোনো প্রভাব পড়ে না — সিজনাল ক্যাম্পেইনের জন্য যতবার খুশি পরিবর্তন করুন।</blockquote>
+  <p><strong>Preview</strong> নির্বাচিত থিমে আপনার স্টোরফ্রন্ট <strong>৫ মিনিটের</strong> জন্য খোলে — শুধু আপনার ব্রাউজারে, কাস্টমার লাইভ থিমই দেখতে থাকে। <strong>Apply</strong> করলে সবার জন্য সাথে সাথে লাইভ হয়। প্রতিটি থিম একই চারটি পেজ রেন্ডার করে — হোম, <code>/landingpage</code>, প্রোডাক্ট পেজ ও <code>/buy</code> — তাই কনটেন্ট বদলায় না, শুধু ডিজাইন।</p>
 
-  <h2>১৫. OTP দিয়ে পাসওয়ার্ড রিসেট</h2>
+  <h3>Classic</h3>
+  <p>ডিফল্ট লুক: হালকা সারফেস, নীল ক্যাটাগরি বার, ক্যাটাগরি সাইডবার ও প্রোডাক্ট গ্রিড। জেনারেল স্টোর ও ইলেকট্রনিক্সের জন্য সেরা।</p>
+  <h4>Classic — হোম <code>/</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-storefront-home.jpg" alt="Classic থিম স্টোরফ্রন্ট হোম" loading="lazy">
+  <h4>Classic — <code>/landingpage</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-landingpage.jpg" alt="Classic থিম /landingpage" loading="lazy">
+  <h4>Classic — প্রোডাক্ট পেজ <code>/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-product-page-full.jpg" alt="Classic থিম প্রোডাক্ট পেজ" loading="lazy">
+  <h4>Classic — <code>/buy/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-buy-page.jpg" alt="Classic থিম /buy পেজ" loading="lazy">
+  <h4>Classic — কার্ট ও চেকআউট</h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-add-to-cart.jpg" alt="Classic থিমে কার্টে যোগ" loading="lazy">
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-classic-checkout.jpg" alt="Classic থিম চেকআউট" loading="lazy">
+
+  <h3>Grocery Inspired</h3>
+  <p>সবুজ মার্কেটপ্লেস লুক, গাঢ় টপ ইনফো বার, সাদা কার্ড, বড় <strong>Add to Cart</strong> বাটন ও পরিচ্ছন্ন দুই-কলাম চেকআউট। খাবার, নিত্যপ্রয়োজনীয় পণ্য ও বড় ক্যাটালগের জন্য সেরা।</p>
+  <h4>Grocery Inspired — হোম <code>/</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-storefront-home.jpg" alt="Grocery Inspired থিম স্টোরফ্রন্ট হোম" loading="lazy">
+  <h4>Grocery Inspired — <code>/landingpage</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-landingpage.jpg" alt="Grocery Inspired থিম /landingpage" loading="lazy">
+  <h4>Grocery Inspired — প্রোডাক্ট পেজ <code>/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-product-page-full.jpg" alt="Grocery Inspired থিম প্রোডাক্ট পেজ" loading="lazy">
+  <h4>Grocery Inspired — <code>/buy/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-buy-page.jpg" alt="Grocery Inspired থিম /buy পেজ" loading="lazy">
+  <h4>Grocery Inspired — কার্ট ও চেকআউট</h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-add-to-cart.jpg" alt="Grocery Inspired থিমে কার্টে যোগ" loading="lazy">
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-grocery-checkout.jpg" alt="Grocery Inspired থিম চেকআউট" loading="lazy">
+
+  <h3>Fashion Luxe</h3>
+  <p>প্রিমিয়াম ফ্যাশন স্টোরফ্রন্ট: কালো-সোনালি প্যালেট, এডিটোরিয়াল হিরো, সেরিফ হেডিং, হোভারে দেখা যাওয়া কুইক-অ্যাড বাটন ও ধাপে ধাপে চেকআউট (Cart → Delivery details → Confirmation)। পোশাক, জুয়েলারি ও লাইফস্টাইল ব্র্যান্ডের জন্য সেরা — এজন্যই আমাদের লেডিস-সুট শপ এটি ব্যবহার করে।</p>
+  <h4>Fashion Luxe — হোম <code>/</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-storefront-home.jpg" alt="Fashion Luxe থিম স্টোরফ্রন্ট হোম" loading="lazy">
+  <h4>Fashion Luxe — <code>/landingpage</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-landingpage.jpg" alt="Fashion Luxe থিম /landingpage" loading="lazy">
+  <h4>Fashion Luxe — প্রোডাক্ট পেজ <code>/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-product-page-full.jpg" alt="Fashion Luxe থিম প্রোডাক্ট পেজ" loading="lazy">
+  <h4>Fashion Luxe — <code>/buy/lavender-chikankari-ladies-suit</code></h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-buy-page.jpg" alt="Fashion Luxe থিম /buy পেজ" loading="lazy">
+  <h4>Fashion Luxe — কার্ট ও চেকআউট</h4>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-add-to-cart.jpg" alt="Fashion Luxe থিমে কার্টে যোগ" loading="lazy">
+  <img src="{{ site.baseurl }}/assets/img/user-manual/14-fashion-luxe-checkout.jpg" alt="Fashion Luxe থিম চেকআউট" loading="lazy">
+  <blockquote><strong>টিপস:</strong> আগে প্রিভিউ, তারপর অ্যাপ্লাই। থিম পরিবর্তনে প্রোডাক্ট, মূল্য, slug বা অর্ডারে কোনো প্রভাব পড়ে না — সিজনাল ক্যাম্পেইনের জন্য যতবার খুশি পরিবর্তন করুন।</blockquote>
+
+  <h2 id="bn-reset">১৬. OTP দিয়ে পাসওয়ার্ড রিসেট</h2>
   <p>লগইন ফর্মের নিচে <strong>Forgot password?</strong> ক্লিক করুন।</p>
   <ol>
     <li>রেজিস্টার্ড <strong>Email Address</strong> দিয়ে <strong>Send OTP</strong> ক্লিক করুন।</li>
     <li>ইনবক্স খুলে ৬-ডিজিটের কোড কপি করুন, <strong>Enter OTP Code</strong>-এ দিয়ে <strong>Verify OTP</strong> ক্লিক করুন।</li>
     <li><strong>New Password</strong> লিখুন, কনফার্ম করুন এবং <strong>Change Password</strong> ক্লিক করুন। নতুন পাসওয়ার্ড দিয়ে লগইন করুন।</li>
   </ol>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/15-reset-password-send-otp.jpg" alt="পাসওয়ার্ড রিসেট: ইমেইল দিন" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/15-reset-password-enter-otp.jpg" alt="পাসওয়ার্ড রিসেট: OTP কোড দিন" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/15-reset-password-new-password.jpg" alt="পাসওয়ার্ড রিসেট: নতুন পাসওয়ার্ড" loading="lazy">
-  <blockquote><strong>টিপস:</strong> OTP ইমেইল সাথে সাথে পাঠানো হয়; এক মিনিটের মধ্যে না পেলে স্প্যাম ফোল্ডার দেখুন। কোড একবারই ব্যবহারযোগ্য।</blockquote>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/15-reset-password-send-otp.jpg" alt="Reset Password: ইমেইল দিয়ে Send OTP" loading="lazy">
+  <blockquote><strong>টিপস:</strong> OTP ইমেইল সাথে সাথে পাঠানো হয়; এক মিনিটের মধ্যে না পেলে স্প্যাম ফোল্ডার দেখুন। কোড একবারই ব্যবহারযোগ্য এবং দ্রুত মেয়াদ শেষ হয়।</blockquote>
 
-  <h2>১৬. Dashboard ওভারভিউ</h2>
-  <p>লগইনের পর <strong>Dashboard</strong> আপনার হোম স্ক্রিন: সাবস্ক্রিপশন স্ট্যাটাস ও বাকি দিন, প্রতিটি ফিচারের কুইক লিংক, এবং বার্ষিক প্ল্যানে আপগ্রেড করতে প্রস্তুত হলে লাইসেন্স বাটন।</p>
+  <h2 id="bn-dashboard">১৭. Dashboard ওভারভিউ</h2>
+  <p>লগইনের পর <strong>Dashboard</strong> আপনার হোম স্ক্রিন: <strong>Orders</strong>, <strong>Products</strong>, <strong>Deliverable Orders</strong> ও <strong>New Orders</strong>-এর লাইভ কাউন্টার, ধাপে ধাপে গাইডসহ সার্চযোগ্য <strong>Tutorials</strong> প্যানেল (শপ-ই-বিজনেস ব্যবহার, থিম কাস্টমাইজেশন, SEO ও কাস্টম URL slug), আপনার প্ল্যান ব্যাজ ও সাপোর্টের জন্য <strong>Live Chat</strong> বাটন।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/16-dashboard-overview.jpg" alt="Dashboard ওভারভিউ" loading="lazy">
 
-  <h2>১৭. Logout</h2>
-  <p>সাইডবারের নিচে <strong>Logout</strong> (বা শপ নামের পাশের লাল লগআউট আইকন) ক্লিক করুন। আপনি পাবলিক হোম পেজে ফিরে যাবেন; ইমেইল ও পাসওয়ার্ড দিয়ে যে কোনো সময় আবার লগইন করুন।</p>
-  <img src="{{ site.baseurl }}/assets/img/user-manual/17-logout-link.jpg" alt="সাইডবারে Logout লিংক" loading="lazy">
-  <img src="{{ site.baseurl }}/assets/img/user-manual/17-logged-out.jpg" alt="লগআউট হয়ে হোম পেজে" loading="lazy">
+  <h2 id="bn-logout">১৮. Logout</h2>
+  <p>সাইডবারের নিচে শপ নামের পাশের লাল লগআউট আইকনে ক্লিক করুন। আপনি পাবলিক হোম পেজে ফিরে যাবেন; ইমেইল ও পাসওয়ার্ড দিয়ে যে কোনো সময় আবার লগইন করুন।</p>
+  <img src="{{ site.baseurl }}/assets/img/user-manual/17-logout-link.jpg" alt="সাইডবারে লগআউট আইকন" loading="lazy">
 
   <h2>দ্রুত লঞ্চ চেকলিস্ট</h2>
   <div class="feature-box">
@@ -369,10 +523,10 @@ keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store
     <ul>
       <li>রেজিস্টার → লগইন → ট্রায়ালের দিন দেখে নিন</li>
       <li><strong>Shop Info</strong>: লোগো, কভার, বিবরণ, Facebook, ঠিকানা, ফোন</li>
-      <li><strong>Upload Product</strong> — ক্যাটাগরি, ছবি ও USD মূল্যসহ → <em>Featured</em> করুন</li>
+      <li><strong>Upload Product</strong> — ক্যাটাগরি, ৩–৫টি ছবি, <em>বড়</em> বিবরণ ও মূল্যসহ → <em>Featured</em> করুন</li>
       <li><strong>Product Size</strong>, <strong>Product Slug URL</strong>, <strong>SEO Metatags</strong></li>
       <li>প্রতিটি শিপিং জোনের জন্য <strong>Delivery Charge</strong></li>
-      <li>একটি <strong>Theme</strong> বেছে নিন → স্টোর লিংক শেয়ার করুন → <strong>Orders</strong>-এ অর্ডার কনফার্ম করুন</li>
+      <li>একটি <strong>Theme</strong> বেছে নিন → <code>/landingpage</code> ও <code>/buy/{slug}</code> লিংক শেয়ার করুন → <strong>Orders</strong>-এ অর্ডার কনফার্ম করুন</li>
     </ul>
   </div>
   <p style="text-align:center;"><a class="cta-button" href="https://www.shopebusiness.com" target="_blank" rel="noopener">আজই স্টোর শুরু করুন — ১০ USD/বছর</a></p>
