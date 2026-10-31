@@ -1,0 +1,213 @@
+---
+layout: default
+title: "Shop-E-Business as a Developer Platform: Extend E-commerce with Expose API and Cloudflare Workers"
+title_bn: "ডেভেলপার প্ল্যাটফর্ম হিসেবে শপ-ই-বিজনেস: Expose API ও Cloudflare Worker দিয়ে ই-কমার্স এক্সটেন্ড করুন"
+date: 2026-10-31
+author: "Washiq Anwar Shamsi"
+languages: [en]
+description: "Developers and agencies: onboard clients on Shop-E-Business and extend it with Expose API and a customizable Cloudflare Worker instead of building from scratch."
+keywords: "ecommerce developer platform, ecommerce API for developers, order webhook API, Cloudflare Worker ecommerce, custom payment gateway integration, bKash SSLCommerz Razorpay PromptPay integration, headless ecommerce agency, Shop-E-Business Expose API"
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I use a payment gateway other than Stripe?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, by customizing the Worker. The generated Cloudflare Worker is a template with nothing seller-specific baked in. As long as /apiEndpoint returns { redirectUrl } and order updates are posted to /api/exposure/order-status with a seller-signed JWT, you can replace the Stripe calls with a regional gateway such as bKash, SSLCommerz, Razorpay or PromptPay. The ready-made template targets Stripe; other gateways are integrations you write." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I swap EasyPost for a regional courier?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, in your own copy of the Worker. Read the ship-from address and parcel defaults from GET /api/exposure/courier-config, call your courier's API, then report DeliveryStatus, DeliveryTrackingUrl and PaymentStatus to POST /api/exposure/order-status." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to redeploy when settings change?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not for courier settings: the Worker reads them from Shop-E-Business at shipment time. You only update the Worker when you change its code, rotate a key, or regenerate the JWT secret in Advance > Expose API (then update SHOPEBUSINESS_JWT_SECRET)." }
+        },
+        {
+          "@type": "Question",
+          "name": "What can I build with the Expose API?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Anything that needs the store's order stream: ERP and warehouse sync, accounting entries, fulfillment dashboards, analytics, CRM or Slack notifications, or your own payment page via the Redirect URL. Your system receives each new order as a JWT-signed POST and posts delivery, tracking and payment status back, which buyers see on their tracking page." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Expose API and Payment & Courier at the same time?",
+          "acceptedAnswer": { "@type": "Answer", "text": "They share the same order dispatch. Activating Payment & Courier points new orders at your Worker's /apiEndpoint, so if you also need your own backend, extend the Worker to forward orders to it." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does my client's store need for these features?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An active Shop-E-Business subscription with the custom domain feature (Tier-2 at $18/year or the add-on at $8/year; ৳1,500 and ৳1,000 in Bangladesh) and a saved custom domain the client owns. The Worker additionally needs the domain's DNS on Cloudflare, proxied, with SSL Full (Strict)." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> <a href="https://www.shopebusiness.com">Shop-E-Business</a> is not only a store builder for sellers &mdash; it is a base platform that developers and agencies can extend. Instead of building a store from scratch for every client, you onboard the client on Shop-E-Business (hosted storefront, checkout, orders, SEO and stock from $10/year with <strong>0% commission</strong>) and add the custom part yourself: the <strong>Expose API</strong> sends every order to your server as a JWT-signed POST and accepts status updates back, and the generated <strong>Cloudflare Worker</strong> is an editable template where you can swap Stripe for a regional payment gateway, EasyPost for a regional courier, or add notifications and inventory logic. The only contract: <code>/apiEndpoint</code> returns <code>{ redirectUrl }</code> and order updates go to <code>/api/exposure/order-status</code> with the seller JWT.</p>
+
+<h2>Why build on Shop-E-Business instead of from scratch?</h2>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Client needs</th><th>From scratch</th><th class="table-header-highlight">On Shop-E-Business</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Storefront, themes, product pages</strong></td><td>Design and build</td><td class="highlight-col">Included: 3 themes, slug URLs, SEO tags</td></tr>
+    <tr><td><strong>Checkout and order dashboard</strong></td><td>Build, test, secure</td><td class="highlight-col">Included: COD, or online payment via your Worker</td></tr>
+    <tr><td><strong>Hosting, SSL, updates</strong></td><td>Your ongoing job</td><td class="highlight-col">Handled by the platform</td></tr>
+    <tr><td><strong>Custom domain</strong></td><td>Configure server + certificates</td><td class="highlight-col">TXT verification + automatic HTTPS</td></tr>
+    <tr><td><strong>Payment gateway, courier, back-office sync</strong></td><td>Build</td><td class="highlight-col">You build only this part, on a documented contract</td></tr>
+    <tr><td><strong>Platform cost for the client</strong></td><td>Servers + maintenance</td><td class="highlight-col">$10/year (৳499) + Tier-2 or add-on, 0% fees</td></tr>
+  </tbody>
+</table>
+<p>You spend your hours on the integration that is unique to the client, not on re-implementing product pages, carts and order lists that every store needs.</p>
+
+<h2>What are the two extension points?</h2>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Extension point</th><th class="table-header-highlight">Expose API</th><th class="table-header-highlight">Payment &amp; Courier Worker</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Admin tab</strong></td><td class="highlight-col">Advance &rarr; Expose API</td><td class="highlight-col">Advance &rarr; Payment &amp; Courier</td></tr>
+    <tr><td><strong>Where your code runs</strong></td><td class="highlight-col">Any public HTTPS endpoint you host</td><td class="highlight-col">A Cloudflare Worker on the client's domain (<code>/apiEndpoint</code>, <code>/stripe-webhook</code>)</td></tr>
+    <tr><td><strong>Buyer after checkout</strong></td><td class="highlight-col">Sent to the Redirect URL you configure</td><td class="highlight-col">Sent to the <code>redirectUrl</code> your Worker returns (e.g. a hosted payment page)</td></tr>
+    <tr><td><strong>Ready-made code</strong></td><td class="highlight-col">C# and Node.js signing / verification samples in the tab</td><td class="highlight-col">Full Stripe + EasyPost Worker script, generated by the platform</td></tr>
+    <tr><td><strong>Best for</strong></td><td class="highlight-col">ERP, accounting, warehouse, analytics, CRM</td><td class="highlight-col">Online payment + automatic shipping, regional gateways and couriers</td></tr>
+  </tbody>
+</table>
+<p>Both use the same order dispatch. When Payment &amp; Courier is active, new orders go to the Worker's <code>/apiEndpoint</code>; if the client also needs your back-office system, forward orders to it from inside the Worker.</p>
+
+<h2>Is the Cloudflare Worker a black box?</h2>
+<p>No. It is a customizable template. The script the platform generates contains <strong>no seller-specific values</strong> &mdash; keys and secrets live in the Worker's own settings, and courier settings are fetched at runtime. The header of the script states the contract directly: you can customize it (other payment gateways, couriers, notifications, &hellip;) as long as:</p>
+<ol>
+  <li><code>POST /apiEndpoint</code> verifies the Shop-E-Business JWT and returns <code>{ redirectUrl }</code>, which the storefront sends the buyer to.</li>
+  <li>Order updates are posted to <code>POST /api/exposure/order-status</code> with a JWT signed by the seller (<code>iss=seller-{ShopId}</code>, <code>aud=shopebusiness</code>).</li>
+</ol>
+<p>Everything between those two points is yours. The stock template shows a production-grade reference: Stripe Checkout Session creation, Stripe signature verification, EasyPost shipment lookup by order reference (so retries never buy twice), cheapest-rate-first buying with fallback, refund handling, 15-second timeouts on every outbound call and error messages scrubbed of credentials.</p>
+
+<h2>How do I plug in a regional payment gateway or courier?</h2>
+<p>The ready-made template targets Stripe and EasyPost. In many markets clients need local options instead; because nothing seller-specific is baked into the script, you can adapt your copy of the Worker:</p>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Market</th><th class="table-header-highlight">Examples</th><th>What to change</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Bangladesh</strong></td><td class="highlight-col">bKash, SSLCommerz</td><td>Create the payment in <code>/apiEndpoint</code>; return its URL</td></tr>
+    <tr><td><strong>India</strong></td><td class="highlight-col">Razorpay</td><td>Same pattern; confirm on the callback</td></tr>
+    <tr><td><strong>Thailand</strong></td><td class="highlight-col">PromptPay</td><td>Return a payment page; report <code>PaymentStatus</code></td></tr>
+    <tr><td><strong>Any market</strong></td><td class="highlight-col">A regional courier API</td><td>Replace the EasyPost calls</td></tr>
+  </tbody>
+</table>
+<p><em>These gateways and couriers are not built into Shop-E-Business; they are examples of integrations a developer can write inside the Worker.</em></p>
+<ol>
+  <li>Copy the generated script from <strong>Advance &rarr; Payment &amp; Courier</strong> as your starting point.</li>
+  <li>In the <code>/apiEndpoint</code> handler, keep the JWT check and the <code>CustomOrderId</code> match, then create the payment with your gateway and return <code>{ redirectUrl }</code>.</li>
+  <li>Handle the gateway's payment confirmation in the Worker (the stock template uses <code>/stripe-webhook</code>) and always verify the gateway's signature first.</li>
+  <li>On a confirmed payment, read the ship-from address and parcel defaults from <code>GET /api/exposure/courier-config</code> and book the shipment with your courier.</li>
+  <li>Post <code>CustomOrderId</code>, <code>DeliveryStatus</code>, <code>DeliveryTrackingUrl</code> and <code>PaymentStatus</code> to <code>POST /api/exposure/order-status</code>.</li>
+  <li>Return an error on any failed step if your gateway retries callbacks, and make shipment booking idempotent per <code>CustomOrderId</code>, as the stock template does with EasyPost.</li>
+  <li>Add extras in the same Worker: SMS or email notifications, inventory sync, a Slack or Google Sheets push.</li>
+</ol>
+
+<h2>What can I build with the Expose API?</h2>
+<p>The Expose API gives your system the order stream and a way to write status back, without touching Shop-E-Business internals.</p>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Call</th><th>Direction</th><th class="table-header-highlight">Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>POST {your ApiEndpoint}</code></td><td>Shop-E-Business &rarr; you</td><td class="highlight-col">Every new order with a fresh <code>CustomOrderId</code>, line items, totals and billing details (including buyer email)</td></tr>
+    <tr><td><code>POST /api/exposure/order-status</code></td><td>You &rarr; Shop-E-Business</td><td class="highlight-col">Body: <code>CustomOrderId</code> (required), <code>DeliveryStatus</code> (required, &le;100 chars), <code>DeliveryTrackingUrl</code> (optional absolute URL), <code>PaymentStatus</code> (optional). Updates every line of that order. Responses 200 / 400 / 401 / 404.</td></tr>
+    <tr><td><code>GET /api/exposure/courier-config</code></td><td>You &rarr; Shop-E-Business</td><td class="highlight-col">The shop's ship-from address and default parcel length, width, height and weight</td></tr>
+  </tbody>
+</table>
+<p>What you report shows up in <strong>Custom Order Management</strong> in the seller's dashboard (with manual status override) and on the buyer's public tracking page with a clickable tracking link. Typical builds:</p>
+<ul>
+  <li><strong>ERP / warehouse sync</strong> &mdash; push each order into the client's ERP and post back "Packed", "Shipped" and the courier tracking link.</li>
+  <li><strong>Accounting</strong> &mdash; create an invoice or journal entry per order and report <code>PaymentStatus</code> when it is settled.</li>
+  <li><strong>Fulfillment dashboards</strong> &mdash; a packing or dispatch screen for the client's team, driven by the order stream.</li>
+  <li><strong>Analytics</strong> &mdash; store orders in your own database or warehouse for sales, product and region reports.</li>
+  <li><strong>Own payment page</strong> &mdash; send buyers to the Redirect URL, take payment, then report the status.</li>
+</ul>
+
+<h2>How is the integration secured?</h2>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Direction</th><th><code>iss</code></th><th><code>aud</code></th><th class="table-header-highlight">Rules</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Inbound to your code</strong> (order dispatch)</td><td><code>shopebusiness</code></td><td><code>seller-{ShopId}</code></td><td class="highlight-col">HS256, claims <code>CustomOrderId</code> and <code>shop</code>, 5-minute expiry, sent as <code>Authorization: Bearer</code></td></tr>
+    <tr><td><strong>Outbound from your code</strong> (status, courier config)</td><td><code>seller-{ShopId}</code></td><td><code>shopebusiness</code></td><td class="highlight-col">HS256 with the same secret, <code>CustomOrderId</code> claim must equal the body, &le;5 minutes recommended (1-minute clock skew)</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li><strong>One shared secret per shop</strong> &mdash; 48 random bytes generated by the server, shown only in the admin credentials panel and regenerable at any time.</li>
+  <li><strong>Webhook signature verification</strong> &mdash; the stock Worker verifies the Stripe signature before acting on any event.</li>
+  <li><strong>Secrets redacted from errors</strong> &mdash; Worker error text is scrubbed of the JWT secret, Stripe/EasyPost keys and tokens.</li>
+  <li><strong>Timeouts</strong> &mdash; every outbound Worker call has a 15-second timeout; platform dispatch uses a 10-second timeout without following redirects, so a slow server never blocks a sale.</li>
+  <li><strong>URL rules</strong> &mdash; endpoint and redirect URLs must be absolute public http(s) addresses (no localhost, no embedded credentials, max 1000 characters).</li>
+</ul>
+
+<h2>How can developers turn this into a business?</h2>
+<p>Because Shop-E-Business takes <strong>0% commission</strong> and the platform fee is a small yearly amount, the value you add is the margin. Agencies and freelancers can sell:</p>
+<ul>
+  <li><strong>Payment gateway integration</strong> for a client's local market.</li>
+  <li><strong>Courier integration</strong> with automatic booking and tracking links.</li>
+  <li><strong>Back-office connectors</strong> &mdash; ERP, accounting, inventory, CRM.</li>
+  <li><strong>Custom dashboards and reports</strong> on top of the order stream.</li>
+  <li><strong>Maintenance retainers</strong> for the Worker and connectors you run.</li>
+</ul>
+<p>A typical client onboarding:</p>
+<ol>
+  <li>Client signs up and subscribes; add Tier-2 or the custom-domain add-on.</li>
+  <li>Connect and verify the client's domain, move DNS to Cloudflare, set Proxied + SSL Full (Strict) &mdash; see the <a href="{{ site.blog_base }}/custom-domain-stripe-courier-integration-step-by-step/">step-by-step domain, Stripe and courier guide</a>.</li>
+  <li>Choose the extension point: Expose API for back-office systems, the Worker for payments and shipping.</li>
+  <li>Deploy your customized code, place a test order and confirm it appears in Custom Order Management.</li>
+  <li>Hand over the store; keep the integration as your service.</li>
+</ol>
+
+<div class="price-box">
+  <h2>Build on a 0%-Commission E-commerce Platform</h2>
+  <p>Stores from $10 / ৳499 per year. Expose API and the Worker unlocked by Tier-2 ($18 / ৳1,500) or the add-on ($8 / ৳1,000).</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start a 3-Day Free Trial</a>
+</div>
+
+<p>Platform references: <a href="https://www.shopebusiness.com/ecommerce-api-integration">e-commerce order API and webhooks</a>, <a href="https://www.shopebusiness.com/stripe-easypost-integration">Stripe payments + EasyPost shipping</a>, <a href="https://www.shopebusiness.com/stripe-courier-integration-guide">Stripe + courier integration guide</a> and <a href="https://www.shopebusiness.com/custom-domain-step-by-step">custom domain step by step</a>. Related: <a href="{{ site.blog_base }}/ecommerce-builder-vs-building-from-scratch/">e-commerce builder vs building from scratch</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Can I use a payment gateway other than Stripe?</h3>
+<p>Yes, by customizing the Worker. The generated Cloudflare Worker is a template with nothing seller-specific baked in. As long as <code>/apiEndpoint</code> returns <code>{ redirectUrl }</code> and order updates are posted to <code>/api/exposure/order-status</code> with a seller-signed JWT, you can replace the Stripe calls with a regional gateway such as bKash, SSLCommerz, Razorpay or PromptPay. The ready-made template targets Stripe; other gateways are integrations you write.</p>
+<h3>Can I swap EasyPost for a regional courier?</h3>
+<p>Yes, in your own copy of the Worker. Read the ship-from address and parcel defaults from <code>GET /api/exposure/courier-config</code>, call your courier's API, then report <code>DeliveryStatus</code>, <code>DeliveryTrackingUrl</code> and <code>PaymentStatus</code> to <code>POST /api/exposure/order-status</code>.</p>
+<h3>Do I need to redeploy when settings change?</h3>
+<p>Not for courier settings: the Worker reads them from Shop-E-Business at shipment time. You only update the Worker when you change its code, rotate a key, or regenerate the JWT secret in Advance &gt; Expose API (then update <code>SHOPEBUSINESS_JWT_SECRET</code>).</p>
+<h3>What can I build with the Expose API?</h3>
+<p>Anything that needs the store's order stream: ERP and warehouse sync, accounting entries, fulfillment dashboards, analytics, CRM or Slack notifications, or your own payment page via the Redirect URL. Your system receives each new order as a JWT-signed POST and posts delivery, tracking and payment status back, which buyers see on their tracking page.</p>
+<h3>Can I use Expose API and Payment &amp; Courier at the same time?</h3>
+<p>They share the same order dispatch. Activating Payment &amp; Courier points new orders at your Worker's <code>/apiEndpoint</code>, so if you also need your own backend, extend the Worker to forward orders to it.</p>
+<h3>What does my client's store need for these features?</h3>
+<p>An active Shop-E-Business subscription with the custom domain feature (Tier-2 at $18/year or the add-on at $8/year; ৳1,500 and ৳1,000 in Bangladesh) and a saved custom domain the client owns. The Worker additionally needs the domain's DNS on Cloudflare, proxied, with SSL Full (Strict).</p>
+
+</div>

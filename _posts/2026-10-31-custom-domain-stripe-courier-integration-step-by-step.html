@@ -1,0 +1,294 @@
+---
+layout: default
+title: "How to Connect a Custom Domain, Stripe Payments and Courier Shipping to Your Online Store (Step-by-Step)"
+title_bn: "আপনার অনলাইন স্টোরে কাস্টম ডোমেইন, Stripe পেমেন্ট ও কুরিয়ার শিপিং যুক্ত করবেন যেভাবে (ধাপে ধাপে)"
+date: 2026-10-31
+author: "Washiq Anwar Shamsi"
+languages: [en]
+description: "Connect a custom domain, Stripe card payments and EasyPost shipping to your Shop-E-Business store step by step with a Cloudflare Worker. 0% platform fee."
+keywords: "custom domain online store, connect Stripe to online store, Stripe EasyPost integration, courier integration ecommerce, Cloudflare Worker Stripe webhook, automatic shipping labels, Shop-E-Business Stripe, 0% transaction fee ecommerce"
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do I need before I can take Stripe payments and ship with EasyPost on Shop-E-Business?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A paid subscription with the custom domain feature (Tier-2 at $18/year or the custom-domain add-on at $8/year; ৳1,500 and ৳1,000 in Bangladesh), a verified custom domain you own whose DNS is on Cloudflare with Proxied records and SSL Full (Strict), complete courier settings, and your own Stripe and EasyPost accounts." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Shop-E-Business take a cut of my Stripe payments?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Shop-E-Business charges a 0% platform transaction fee. Payments go straight to your own Stripe account and you only pay Stripe's and EasyPost's own fees." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are my Stripe and EasyPost API keys stored?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only in your own Cloudflare Worker as encrypted secrets: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, COURIER_API_KEY and SHOPEBUSINESS_JWT_SECRET. The generated Worker script contains no seller-specific values and Shop-E-Business never stores your payment or courier keys." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Stripe webhook events do I need to select?",
+          "acceptedAnswer": { "@type": "Answer", "text": "checkout.session.completed, checkout.session.async_payment_succeeded, checkout.session.async_payment_failed, checkout.session.expired and charge.refunded, all sent to https://yourdomain.com/stripe-webhook." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the Activate button disabled?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Activation needs a verified custom domain (Tier-2 or the custom-domain add-on) and complete courier settings. The checklist above the cards shows exactly what is missing, for example a missing sender name or parcel weight." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Courier error mean on an order?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Stripe confirmed the payment but EasyPost could not create or buy the shipment, for example because of an invalid address or API key. The Worker records the payment, reports Courier error and returns an error to Stripe, which retries the webhook for up to about three days, so fixing the problem lets the next retry book the shipment without buying a second label." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> In your <a href="https://www.shopebusiness.com">Shop-E-Business</a> dashboard, first open <strong>Advance &rarr; Custom Domain</strong>, add three DNS records (TXT <code>_sb-challenge</code> = your token, A <code>@</code> = the platform IP, CNAME <code>www</code> = <code>shopebusiness.com</code>) and click <em>Verify &amp; Save Domain</em>. Move the domain's DNS to Cloudflare (free plan), switch the records to <strong>Proxied</strong> and set SSL to <strong>Full (Strict)</strong>. Then open <strong>Advance &rarr; Payment &amp; Courier</strong>, save your ship-from address and parcel size, paste the generated Cloudflare Worker script, add the routes <code>yourdomain.com/apiEndpoint</code> and <code>yourdomain.com/stripe-webhook</code>, add four secrets and two variables, register the Stripe webhook and click <strong>Activate</strong>. Buyers then pay on Stripe Checkout and every paid order becomes an EasyPost shipment automatically &mdash; with <strong>0% platform transaction fee</strong> and your keys kept in your own Worker.</p>
+
+<h2>What do you need before you start?</h2>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Requirement</th><th class="table-header-highlight">Details</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Shop-E-Business subscription</strong></td><td class="highlight-col">$10/year (৳499 in Bangladesh), 0% transaction fees</td></tr>
+    <tr><td><strong>Custom domain entitlement</strong></td><td class="highlight-col">Tier-2 ($18/year, ৳1,500) or the custom-domain add-on on Tier-1 ($8/year, ৳1,000). Not available during the 3-day trial.</td></tr>
+    <tr><td><strong>A domain you own</strong></td><td class="highlight-col">Registered at any registrar. Shop-E-Business does not sell domains; it only lets you connect yours.</td></tr>
+    <tr><td><strong>Cloudflare account</strong></td><td class="highlight-col">Free plan is enough. Required because the payment Worker only runs on Cloudflare-proxied records.</td></tr>
+    <tr><td><strong>Stripe account</strong></td><td class="highlight-col">Start with test keys (<code>sk_test_&hellip;</code>).</td></tr>
+    <tr><td><strong>EasyPost account</strong></td><td class="highlight-col">Start with the test API key.</td></tr>
+    <tr><td><strong>Time</strong></td><td class="highlight-col">About 15 minutes for the domain plus DNS propagation (usually minutes), then the Stripe + EasyPost steps below.</td></tr>
+  </tbody>
+</table>
+
+<h2>How does the whole flow work?</h2>
+<ol>
+  <li><strong>Buyer checks out</strong> on your custom domain using the normal checkout or Order Now button.</li>
+  <li><strong>Shop-E-Business dispatches the order</strong> (items, totals, billing details and a unique <code>CustomOrderId</code>) to your Worker's <code>/apiEndpoint</code>, signed with a short-lived HS256 JWT.</li>
+  <li><strong>The Worker creates a Stripe Checkout Session</strong> and returns <code>{ redirectUrl }</code>; the buyer is sent to Stripe's hosted page, which collects card, billing address and phone.</li>
+  <li><strong>Stripe confirms payment</strong> by calling <code>/stripe-webhook</code>; the Worker verifies the Stripe signature before doing anything.</li>
+  <li><strong>The Worker books the shipment</strong>: it reads your current ship-from address and parcel size from Shop-E-Business, creates an EasyPost shipment referenced by the order ID and buys the cheapest rate that succeeds.</li>
+  <li><strong>Status flows back</strong>: delivery status, tracking URL and payment status appear in <em>Custom Order Management</em> and on the buyer's tracking page.</li>
+</ol>
+
+<h2>Part A: How do I connect a custom domain to my online store?</h2>
+
+<h3>Step 1: Unlock the Custom Domain tab</h3>
+<ol>
+  <li>Log in to your seller dashboard, expand <strong>Advance</strong> in the sidebar and click <strong>Custom Domain</strong>.</li>
+  <li>On <strong>Tier-2</strong>, the domain form is already shown &mdash; go to Step 2.</li>
+  <li>On <strong>Tier-1</strong>, click <em>Buy add-on key</em>, complete the purchase, paste the key into <em>Add-on license key</em> and click <em>Verify</em>. The add-on is valid until your current subscription ends.</li>
+  <li>On the free trial, subscribe from the Dashboard first, then come back.</li>
+</ol>
+
+<h3>Step 2: Copy your TXT verification record</h3>
+<p>In the card <em>Verify ownership with a TXT record</em>, your token is generated automatically. Copy the Name / Host (<code>_sb-challenge</code>) and the Value (your token).</p>
+
+<h3>Step 3: Add the DNS records</h3>
+<p>Enter only the host label; your DNS provider appends your domain automatically.</p>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Type</th><th>Host / Name</th><th class="table-header-highlight">Value / Points to</th><th>TTL</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>TXT</strong></td><td><code>_sb-challenge</code></td><td class="highlight-col">Your verification token</td><td>Auto / 3600</td></tr>
+    <tr><td><strong>A</strong></td><td><code>@</code></td><td class="highlight-col">Server IP shown in your Custom Domain tab</td><td>Auto / 3600</td></tr>
+    <tr><td><strong>CNAME</strong></td><td><code>www</code></td><td class="highlight-col"><code>shopebusiness.com</code></td><td>Auto / 3600</td></tr>
+  </tbody>
+</table>
+<p>Delete any existing A or CNAME records on <code>@</code> and <code>www</code> that point somewhere else (for example a parking page). On Cloudflare, keep the A and CNAME records <strong>DNS only</strong> (gray cloud) while the domain verifies and the certificate is issued.</p>
+
+<h3>Step 4: Verify and save</h3>
+<ol>
+  <li>In <em>Your domain</em>, type the root domain, for example <code>myshop.com</code> (<code>https://</code> and <code>www.</code> are removed automatically).</li>
+  <li>Click <strong>Verify &amp; Save Domain</strong>. Shop-E-Business looks up the <code>_sb-challenge</code> TXT record and compares it with your token.</li>
+  <li>On success you see a green <strong>Verified &amp; Active</strong> badge. If you see <em>Domain not verified yet</em>, fix the record, wait a few minutes and try again.</li>
+  <li>Visit <code>https://yourdomain.com</code>. Your old <code>yourshop.shopebusiness.com</code> link now redirects permanently to the custom domain, so links you already shared keep working.</li>
+</ol>
+
+<h3>Step 5: Move DNS to Cloudflare (free plan)</h3>
+<p>Skip this if your DNS is already on Cloudflare. You keep your registrar; only DNS moves.</p>
+<ol>
+  <li>Create a free account at <code>dash.cloudflare.com/sign-up</code>.</li>
+  <li>Click <strong>Add a domain</strong>, enter your root domain and choose the <strong>Free</strong> plan.</li>
+  <li>Review the imported DNS records and add the three Shop-E-Business records if any are missing.</li>
+  <li>At your registrar, replace the nameservers with the two Cloudflare shows you.</li>
+  <li>Wait until Cloudflare marks the domain <strong>Active</strong>.</li>
+</ol>
+
+<h3>Step 6: Switch to Proxied and SSL Full (Strict)</h3>
+<ol>
+  <li>After the badge shows <strong>Verified &amp; Active</strong>, edit the A and CNAME records and click the cloud so it turns orange (<strong>Proxied</strong>). Leave the TXT record as it is.</li>
+  <li>Open <strong>SSL/TLS &rarr; Overview</strong> and choose <strong>Full (Strict)</strong>. Never use Flexible: Shop-E-Business always redirects to HTTPS, so Flexible causes <code>ERR_TOO_MANY_REDIRECTS</code>.</li>
+</ol>
+<p>Proxied records give you Cloudflare caching and DDoS protection, and they are required for the Stripe and courier Worker. Full walkthrough with screenshots: <a href="https://www.shopebusiness.com/custom-domain-step-by-step">custom domain step-by-step guide</a>.</p>
+
+<h2>Part B: How do I set up Stripe payments and EasyPost shipping?</h2>
+
+<h3>Step 7: Save your courier settings</h3>
+<p>Open <strong>Advance &rarr; Payment &amp; Courier</strong> and fill card <em>1 &middot; Courier settings (ship-from &amp; parcel)</em>, then click <strong>Save courier settings</strong>.</p>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Field</th><th class="table-header-highlight">Required?</th><th>Example / note</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Sender name</strong></td><td class="highlight-col">Required</td><td>Also used as the customs signer for international parcels</td></tr>
+    <tr><td><strong>Street</strong></td><td class="highlight-col">Required</td><td>Ship-from street address</td></tr>
+    <tr><td><strong>City</strong></td><td class="highlight-col">Required</td><td>&mdash;</td></tr>
+    <tr><td><strong>ZIP / postal code</strong></td><td class="highlight-col">Required</td><td>&mdash;</td></tr>
+    <tr><td><strong>Country</strong></td><td class="highlight-col">Required</td><td>2-letter code, e.g. <code>US</code></td></tr>
+    <tr><td><strong>Parcel length, width, height</strong></td><td class="highlight-col">Required</td><td>Default parcel size in <strong>inches</strong></td></tr>
+    <tr><td><strong>Parcel weight</strong></td><td class="highlight-col">Required</td><td>Default weight in <strong>ounces</strong></td></tr>
+    <tr><td><strong>Company, Street 2 / Apt / Suite, State / region, Phone</strong></td><td class="highlight-col">Optional</td><td>Sent to EasyPost when filled</td></tr>
+  </tbody>
+</table>
+<p>The <em>Courier settings</em> line in the checklist at the top turns green once nothing is missing. The Worker reads these values at shipment time, so later edits need <strong>no redeploy</strong>.</p>
+
+<h3>Step 8: Create the Cloudflare Worker</h3>
+<ol>
+  <li>In card <em>3 &middot; Cloudflare Worker script</em>, click <strong>Copy script</strong>. The script contains no secrets and no seller-specific values.</li>
+  <li>In Cloudflare open <strong>Workers &amp; Pages &rarr; Create Worker</strong>, paste the script and deploy.</li>
+  <li>Add two Worker routes on your zone: <code>yourdomain.com/apiEndpoint</code> and <code>yourdomain.com/stripe-webhook</code>.</li>
+</ol>
+
+<h3>Step 9: Get your Stripe key and register the webhook</h3>
+<ol>
+  <li>In Stripe go to <strong>Developers &rarr; API keys</strong> and copy the Secret key (<code>sk_test_&hellip;</code> for testing).</li>
+  <li>Go to <strong>Developers &rarr; Webhooks</strong> and add the endpoint <code>https://yourdomain.com/stripe-webhook</code>.</li>
+  <li>Select the five events below.</li>
+  <li>Open the new endpoint and copy its <strong>Signing secret</strong> (<code>whsec_&hellip;</code>).</li>
+</ol>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Stripe event</th><th class="table-header-highlight">What the Worker does</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>checkout.session.completed</code></td><td class="highlight-col">Runs the paid flow: books the EasyPost shipment and reports payment + delivery status</td></tr>
+    <tr><td><code>checkout.session.async_payment_succeeded</code></td><td class="highlight-col">Runs the paid flow for delayed payment methods</td></tr>
+    <tr><td><code>checkout.session.async_payment_failed</code></td><td class="highlight-col">Reports payment status <em>Failed</em></td></tr>
+    <tr><td><code>checkout.session.expired</code></td><td class="highlight-col">Reports <em>Expired</em> / <em>Not shipped</em></td></tr>
+    <tr><td><code>charge.refunded</code></td><td class="highlight-col">Reports <em>Refunded</em> (or <em>Partially refunded</em>) and attempts a best-effort EasyPost label refund</td></tr>
+  </tbody>
+</table>
+
+<h3>Step 10: Get your EasyPost API key</h3>
+<p>In EasyPost open <strong>Account settings &rarr; API Keys</strong> and copy the test key for your trial run.</p>
+
+<h3>Step 11: Activate and copy the JWT secret</h3>
+<ol>
+  <li>In card <em>2 &middot; Activate</em>, check that the Order endpoint shows <code>https://yourdomain.com/apiEndpoint</code>.</li>
+  <li>Click <strong>Activate</strong>. The badge turns <strong>Active</strong> and new orders are sent to your Worker; checkout switches from cash on delivery to online payment.</li>
+  <li>Copy <code>SHOPEBUSINESS_JWT_SECRET</code> from the same card and finish Step 12 right away.</li>
+</ol>
+
+<h3>Step 12: Add the Worker secrets and variables</h3>
+<p>In your Worker open <strong>Settings &rarr; Variables and Secrets</strong> and add:</p>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Name</th><th>Type</th><th class="table-header-highlight">Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>STRIPE_SECRET_KEY</code></td><td>Secret</td><td class="highlight-col">Stripe secret key from Step 9</td></tr>
+    <tr><td><code>STRIPE_WEBHOOK_SECRET</code></td><td>Secret</td><td class="highlight-col">Webhook signing secret (<code>whsec_&hellip;</code>) from Step 9</td></tr>
+    <tr><td><code>COURIER_API_KEY</code></td><td>Secret</td><td class="highlight-col">EasyPost API key from Step 10</td></tr>
+    <tr><td><code>SHOPEBUSINESS_JWT_SECRET</code></td><td>Secret</td><td class="highlight-col">JWT secret from the Activate card</td></tr>
+    <tr><td><code>STRIPE_CHECKOUT_URL</code></td><td>Text</td><td class="highlight-col"><code>https://api.stripe.com/v1/checkout/sessions</code></td></tr>
+    <tr><td><code>EASYPOST_SHIPMENT_URL</code></td><td>Text</td><td class="highlight-col"><code>https://api.easypost.com/v2/shipments</code></td></tr>
+  </tbody>
+</table>
+<p>Save the values (and deploy, if Cloudflare asks) so the Worker uses them.</p>
+
+<h3>Step 13: Place a test order</h3>
+<ol>
+  <li>Open a product on <code>https://yourdomain.com</code> and order it.</li>
+  <li>On Stripe Checkout, pay with the test card <code>4242 4242 4242 4242</code> (any future expiry and any CVC).</li>
+  <li>You land on <code>yourdomain.com/order-success</code>.</li>
+  <li>In <strong>Advance &rarr; Custom Order Management</strong> the order shows payment status, delivery status and the EasyPost tracking link. The buyer sees the same on their tracking page.</li>
+</ol>
+
+<h2>Go-live checklist</h2>
+<ul>
+  <li>Custom domain shows <strong>Verified &amp; Active</strong>; A and CNAME are <strong>Proxied</strong>; SSL/TLS is <strong>Full (Strict)</strong>.</li>
+  <li>Both Worker routes use your exact domain: <code>/apiEndpoint</code> and <code>/stripe-webhook</code>.</li>
+  <li>A test order went through end to end with card 4242&hellip; and shows a tracking link.</li>
+  <li>Create a <strong>live-mode</strong> webhook in Stripe with the same URL and five events, and copy its new signing secret.</li>
+  <li>Replace <code>STRIPE_SECRET_KEY</code>, <code>STRIPE_WEBHOOK_SECRET</code> and <code>COURIER_API_KEY</code> with the live / production keys, then deploy.</li>
+</ul>
+
+<h2>Why is this setup cheaper and safer than a plugin?</h2>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Topic</th><th class="table-header-highlight">Shop-E-Business + your Worker</th><th>Typical hosted platform / plugin</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Platform transaction fee</strong></td><td class="highlight-col">0% &mdash; payments go straight to your Stripe account</td><td>Often an extra fee with third-party gateways, or a paid app</td></tr>
+    <tr><td><strong>Where API keys live</strong></td><td class="highlight-col">Encrypted secrets in your own Cloudflare Worker</td><td>Platform, app vendor or your WordPress database</td></tr>
+    <tr><td><strong>Message signing</strong></td><td class="highlight-col">JWT-signed dispatch both ways, Stripe signature verified on every webhook</td><td>Varies by app</td></tr>
+    <tr><td><strong>Shipment creation</strong></td><td class="highlight-col">Automatic after payment, cheapest rate first</td><td>Manual or a separate shipping app</td></tr>
+    <tr><td><strong>Failure handling</strong></td><td class="highlight-col">Any failure returns an error so Stripe retries for up to ~3 days; never buys a second label</td><td>Varies by app</td></tr>
+  </tbody>
+</table>
+<p>Under the hood: orders sent to the Worker carry an HS256 JWT issued by <code>shopebusiness</code> for <code>seller-{your shop id}</code> that expires in five minutes, and status updates sent back must be signed by your shop with the same secret. The Worker returns 200 to Stripe only after every step succeeds; a courier failure first records the payment with delivery status <em>Courier error</em> and then returns an error so Stripe retries. Shipments are looked up by order reference before buying, so retries and duplicate events never buy a second label. Every outbound call times out after 15 seconds and error messages are scrubbed of keys and tokens.</p>
+
+<h2>Troubleshooting</h2>
+<table class="comparison-table">
+  <thead>
+    <tr><th>Symptom</th><th class="table-header-highlight">Likely cause and fix</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Activate button is disabled</strong></td><td class="highlight-col">The checklist shows what's missing: a verified custom domain or required courier fields. Fix them and reload.</td></tr>
+    <tr><td><strong>Checkout doesn't reach Stripe</strong></td><td class="highlight-col">Records must be <strong>Proxied</strong> (orange cloud) or Worker routes never run. Check both routes use your exact domain.</td></tr>
+    <tr><td><strong>Stripe shows failed webhook deliveries</strong></td><td class="highlight-col">Usually a wrong <code>STRIPE_WEBHOOK_SECRET</code> (test vs live) or a missing secret. Stripe retries for about three days, so fixed deliveries catch up.</td></tr>
+    <tr><td><strong>Order shows "Courier error"</strong></td><td class="highlight-col">Payment succeeded but EasyPost couldn't buy a label. Check the ship-from address, parcel size and <code>COURIER_API_KEY</code>; the next Stripe retry books the shipment without buying a second label.</td></tr>
+    <tr><td><strong>"Domain not verified yet"</strong></td><td class="highlight-col">The TXT host must be just <code>_sb-challenge</code> (some providers add your domain twice if you type the full name) and the value must match the token.</td></tr>
+    <tr><td><strong><code>ERR_TOO_MANY_REDIRECTS</code></strong></td><td class="highlight-col">Cloudflare SSL is on Flexible. Set <strong>SSL/TLS &rarr; Full (Strict)</strong>.</td></tr>
+    <tr><td><strong>JWT secret leaked</strong></td><td class="highlight-col">Regenerate it in <strong>Advance &rarr; Expose API</strong>, then update <code>SHOPEBUSINESS_JWT_SECRET</code> in the Worker.</td></tr>
+  </tbody>
+</table>
+
+<div class="price-box">
+  <h2>Card Payments + Automatic Shipping, 0% Platform Fee</h2>
+  <p>Store from $10 / ৳499 per year. Connect your own domain with Tier-2 or the add-on. Your keys stay in your Worker.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<p>Detailed in-app guides on the platform: <a href="https://www.shopebusiness.com/stripe-courier-integration-guide">Stripe + courier integration guide</a>, <a href="https://www.shopebusiness.com/custom-domain-step-by-step">custom domain step by step</a>, <a href="https://www.shopebusiness.com/stripe-easypost-integration">Stripe payments + EasyPost shipping</a> and <a href="https://www.shopebusiness.com/ecommerce-api-integration">order API and webhooks</a>. Building integrations for clients? Read <a href="{{ site.blog_base }}/shopebusiness-developer-platform-expose-api-cloudflare-worker/">Shop-E-Business as a developer platform</a>. Related: <a href="{{ site.blog_base }}/shop-e-business-vs-shopify-woocommerce-wix-comparison/">Shop-E-Business vs Shopify vs WooCommerce vs Wix</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What do I need before I can take Stripe payments and ship with EasyPost on Shop-E-Business?</h3>
+<p>A paid subscription with the custom domain feature (Tier-2 at $18/year or the custom-domain add-on at $8/year; ৳1,500 and ৳1,000 in Bangladesh), a verified custom domain you own whose DNS is on Cloudflare with Proxied records and SSL Full (Strict), complete courier settings, and your own Stripe and EasyPost accounts.</p>
+<h3>Does Shop-E-Business take a cut of my Stripe payments?</h3>
+<p>No. Shop-E-Business charges a 0% platform transaction fee. Payments go straight to your own Stripe account and you only pay Stripe's and EasyPost's own fees.</p>
+<h3>Where are my Stripe and EasyPost API keys stored?</h3>
+<p>Only in your own Cloudflare Worker as encrypted secrets: <code>STRIPE_SECRET_KEY</code>, <code>STRIPE_WEBHOOK_SECRET</code>, <code>COURIER_API_KEY</code> and <code>SHOPEBUSINESS_JWT_SECRET</code>. The generated Worker script contains no seller-specific values and Shop-E-Business never stores your payment or courier keys.</p>
+<h3>Which Stripe webhook events do I need to select?</h3>
+<p><code>checkout.session.completed</code>, <code>checkout.session.async_payment_succeeded</code>, <code>checkout.session.async_payment_failed</code>, <code>checkout.session.expired</code> and <code>charge.refunded</code>, all sent to <code>https://yourdomain.com/stripe-webhook</code>.</p>
+<h3>Why is the Activate button disabled?</h3>
+<p>Activation needs a verified custom domain (Tier-2 or the custom-domain add-on) and complete courier settings. The checklist above the cards shows exactly what is missing, for example a missing sender name or parcel weight.</p>
+<h3>What does Courier error mean on an order?</h3>
+<p>Stripe confirmed the payment but EasyPost could not create or buy the shipment, for example because of an invalid address or API key. The Worker records the payment, reports Courier error and returns an error to Stripe, which retries the webhook for up to about three days, so fixing the problem lets the next retry book the shipment without buying a second label.</p>
+
+</div>
