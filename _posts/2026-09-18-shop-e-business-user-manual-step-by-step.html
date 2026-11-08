@@ -169,7 +169,7 @@ keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store
   <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-list.jpg" alt="Order List with product, customer, price summary and status radio buttons" loading="lazy">
   <p>Change the status with the radio buttons on the right — <strong>Initial → Confirmed → Packed → Shipped → Delivered</strong>, or <strong>Cancelled</strong>. The change is saved immediately. Use the <strong>All Statuses</strong> filter and the search box to find, for example, every order still waiting to be packed.</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-filter.jpg" alt="Orders filtered by status" loading="lazy">
-  <blockquote><strong>Tip:</strong> Orders are cash-on-delivery style — no card gateway is needed. Confirm the order by phone or Messenger, then move it through the statuses as you pack and ship.</blockquote>
+  <blockquote><strong>Tip:</strong> Orders are cash-on-delivery by default — no card gateway is needed (on Tier-2 you can switch to <a href="{{ site.blog_base }}/custom-domain-stripe-courier-integration-step-by-step/">Stripe card payments</a> from <strong>Advance &rarr; Payment &amp; Courier</strong>). Confirm the order by phone or Messenger, then move it through the statuses as you pack and ship.</blockquote>
 
   <h2 id="storefront">13. The Customer Storefront: Home, <code>/landingpage</code>, Product Page, Cart and Checkout</h2>
   <p>Your customers never see the admin panel. They visit <code>yourstore.shopebusiness.com</code> and get a fast, mobile-first shop. Below is the storefront in the currently applied theme (<em>Fashion Luxe</em>); section 15 shows the same pages in Classic and Grocery Inspired.</p>
@@ -266,6 +266,17 @@ keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store
   <h2 id="logout">18. Logout</h2>
   <p>Click the red logout icon next to your shop name at the bottom of the sidebar. You are returned to the public home page; log in again any time with your email and password.</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/17-logout-link.jpg" alt="Admin Panel sidebar with the logout icon next to the shop name" loading="lazy">
+
+  <h2>Beyond COD: a store that grows with you</h2>
+  <p>Cash on delivery is the default checkout, so you can start selling today without a payment gateway. COD is where you start, not a limit — the same store scales as your business grows:</p>
+  <ul>
+    <li><strong>Custom domain:</strong> connect a domain you own (yourbrand.com); old subdomain links redirect automatically.</li>
+    <li><strong>Stripe online payments:</strong> switch checkout to Stripe card payments, paid straight into your own Stripe account with 0% platform fee.</li>
+    <li><strong>Courier integration:</strong> every paid order is booked as an EasyPost shipment with a tracking link, automatically.</li>
+    <li><strong>Developer API:</strong> the Expose API and an editable Cloudflare Worker let developers connect ERPs, regional gateways and couriers.</li>
+    <li><strong>25% affiliate program:</strong> earn 25% on every Tier-1 and Tier-2 license sold through your link.</li>
+  </ul>
+  <p>Custom domain, Stripe, courier and API features need Tier-2 ($18/year, ৳1,500 in Bangladesh) or the custom-domain add-on ($8/year, ৳1,000). Guides: <a href="{{ site.blog_base }}/custom-domain-stripe-courier-integration-step-by-step/">custom domain, Stripe and courier setup</a>, <a href="{{ site.blog_base }}/shopebusiness-developer-platform-expose-api-cloudflare-worker/">developer platform: Expose API and Cloudflare Worker</a> and <a href="{{ site.blog_base }}/shop-e-business-affiliate-program-25-percent-commission/">the 25% affiliate program</a>.</p>
 
   <h2>Quick Launch Checklist</h2>
   <div class="feature-box">
@@ -419,7 +430,7 @@ keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store
   <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-list.jpg" alt="অর্ডার লিস্ট" loading="lazy">
   <p>ডানদিকের রেডিও বাটন দিয়ে স্ট্যাটাস পরিবর্তন করুন — <strong>Initial → Confirmed → Packed → Shipped → Delivered</strong>, অথবা <strong>Cancelled</strong>। পরিবর্তন সাথে সাথে সেভ হয়। <strong>All Statuses</strong> ফিল্টার ও সার্চ বক্স দিয়ে দ্রুত অর্ডার খুঁজুন, যেমন যেগুলো এখনও প্যাক হওয়ার অপেক্ষায়।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/12-orders-filter.jpg" alt="স্ট্যাটাস অনুসারে ফিল্টার করা অর্ডার" loading="lazy">
-  <blockquote><strong>টিপস:</strong> অর্ডারগুলো ক্যাশ-অন-ডেলিভারি ধাঁচের — কোনো কার্ড গেটওয়ে দরকার নেই। ফোন বা Messenger-এ কনফার্ম করে প্যাক ও শিপ করার সাথে সাথে স্ট্যাটাস এগিয়ে নিন।</blockquote>
+  <blockquote><strong>টিপস:</strong> অর্ডারগুলো ডিফল্টভাবে ক্যাশ-অন-ডেলিভারি — কোনো কার্ড গেটওয়ে দরকার নেই (Tier-2-এ <strong>Advance &rarr; Payment &amp; Courier</strong> থেকে <a href="{{ site.blog_base }}/custom-domain-stripe-courier-integration-step-by-step/">Stripe কার্ড পেমেন্ট</a> চালু করা যায়)। ফোন বা Messenger-এ কনফার্ম করে প্যাক ও শিপ করার সাথে সাথে স্ট্যাটাস এগিয়ে নিন।</blockquote>
 
   <h2 id="bn-storefront">১৩. কাস্টমার স্টোরফ্রন্ট: হোম, <code>/landingpage</code>, প্রোডাক্ট পেজ, কার্ট ও চেকআউট</h2>
   <p>কাস্টমার কখনও অ্যাডমিন প্যানেল দেখে না। তারা <code>yourstore.shopebusiness.com</code>-এ গিয়ে একটি দ্রুত, মোবাইল-ফার্স্ট শপ পায়। নিচে বর্তমানে অ্যাপ্লাই করা থিম (<em>Fashion Luxe</em>)-এ স্টোরফ্রন্ট; সেকশন ১৫-এ Classic ও Grocery Inspired-এ একই পেজগুলো।</p>
@@ -516,6 +527,17 @@ keywords: "Shop-E-Business user manual, how to use Shop-E-Business, online store
   <h2 id="bn-logout">১৮. Logout</h2>
   <p>সাইডবারের নিচে শপ নামের পাশের লাল লগআউট আইকনে ক্লিক করুন। আপনি পাবলিক হোম পেজে ফিরে যাবেন; ইমেইল ও পাসওয়ার্ড দিয়ে যে কোনো সময় আবার লগইন করুন।</p>
   <img src="{{ site.baseurl }}/assets/img/user-manual/17-logout-link.jpg" alt="সাইডবারে লগআউট আইকন" loading="lazy">
+
+  <h2>COD-এর বাইরে: ব্যবসার সাথে বড় হয় আপনার দোকান</h2>
+  <p>ক্যাশ অন ডেলিভারি ডিফল্ট চেকআউট, তাই কোনো পেমেন্ট গেটওয়ে ছাড়াই আজই বিক্রি শুরু করতে পারেন। COD শুধু শুরু, সীমা নয় — ব্যবসা বড় হলে একই দোকানে পাবেন:</p>
+  <ul>
+    <li><strong>কাস্টম ডোমেইন:</strong> নিজের কেনা ডোমেইন (যেমন yourbrand.com) যুক্ত করুন; পুরোনো সাবডোমেইন লিংক স্বয়ংক্রিয়ভাবে রিডাইরেক্ট হয়।</li>
+    <li><strong>Stripe অনলাইন পেমেন্ট:</strong> চেকআউট Stripe কার্ড পেমেন্টে চালু করুন; টাকা সরাসরি আপনার নিজের Stripe অ্যাকাউন্টে যায়, প্ল্যাটফর্ম ফি ০%।</li>
+    <li><strong>কুরিয়ার ইন্টিগ্রেশন:</strong> প্রতিটি পেইড অর্ডার স্বয়ংক্রিয়ভাবে ট্র্যাকিং লিংকসহ EasyPost শিপমেন্টে বুক হয়।</li>
+    <li><strong>ডেভেলপার API:</strong> Expose API ও এডিটযোগ্য Cloudflare Worker দিয়ে ডেভেলপাররা ERP, আঞ্চলিক পেমেন্ট গেটওয়ে ও কুরিয়ার যুক্ত করতে পারেন।</li>
+    <li><strong>২৫% অ্যাফিলিয়েট প্রোগ্রাম:</strong> আপনার লিংক দিয়ে বিক্রি হওয়া প্রতিটি Tier-1 ও Tier-2 লাইসেন্সে ২৫% কমিশন।</li>
+  </ul>
+  <p>কাস্টম ডোমেইন, Stripe, কুরিয়ার ও API ফিচারের জন্য Tier-2 (বছরে ৳১,৫০০ / $18) অথবা কাস্টম-ডোমেইন অ্যাড-অন (৳১,০০০ / $8) লাগবে। গাইড: <a href="{{ site.blog_base }}/custom-domain-stripe-courier-integration-step-by-step/">কাস্টম ডোমেইন, Stripe ও কুরিয়ার সেটআপ</a>, <a href="{{ site.blog_base }}/shopebusiness-developer-platform-expose-api-cloudflare-worker/">ডেভেলপার প্ল্যাটফর্ম: Expose API ও Cloudflare Worker</a> এবং <a href="{{ site.blog_base }}/shop-e-business-affiliate-program-25-percent-commission/">২৫% অ্যাফিলিয়েট প্রোগ্রাম</a>।</p>
 
   <h2>দ্রুত লঞ্চ চেকলিস্ট</h2>
   <div class="feature-box">
