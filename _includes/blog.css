@@ -134,6 +134,17 @@ video {
   color: var(--accent-dark);
 }
 
+.site-footer a:has(> img) {
+  display: inline-block;
+  margin: 0.25rem;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+.site-footer a > img {
+  display: block;
+}
+
 /* --------------------------------------------------------------------------
    Buttons and language toggle
    -------------------------------------------------------------------------- */
