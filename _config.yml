@@ -1,6 +1,8 @@
 baseurl: "/shopebusiness-blog"
 # Public path the blog is served from on shopebusiness.com (used for internal links).
 blog_base: "/blog"
+# Preferred public origin (shopebusiness.com 301-redirects to www); used for canonical URLs and the sitemap.
+site_origin: "https://www.shopebusiness.com"
 url: "https://shamsishakeeb.github.io"
 title: "Shop-E-Business Blog"
 description: "E-commerce tips, tutorials, and updates."

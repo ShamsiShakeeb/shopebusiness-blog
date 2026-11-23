@@ -1,0 +1,19 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site.site_origin }}{{ site.blog_base }}/</loc>
+    {% if site.posts.first %}<lastmod>{{ site.posts.first.date | date_to_xmlschema }}</lastmod>{% endif %}
+  </url>
+  {%- for post in site.posts %}
+  {%- unless post.sitemap == false %}
+  <url>
+    <loc>{{ site.site_origin }}{{ site.blog_base }}{{ post.url }}</loc>
+    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
+  </url>
+  {%- endunless %}
+  {%- endfor %}
+</urlset>

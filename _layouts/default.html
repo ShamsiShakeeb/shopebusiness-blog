@@ -11,7 +11,7 @@
   {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
   {% if page.author %}<meta name="author" content="{{ page.author }}">{% endif %}
   <meta name="robots" content="index, follow">
-  {% assign canonical_url = "https://shopebusiness.com" | append: site.blog_base | append: page.url %}
+  {% assign canonical_url = site.site_origin | append: site.blog_base | append: page.url %}
   {% assign og_image = page.image | default: "https://assets.shopebusiness.com/images/blog-og-banner.jpg" %}
   <link rel="canonical" href="{{ canonical_url }}">
 
@@ -37,7 +37,7 @@
 
     <header class="site-header">
       <div class="wrap site-header__inner">
-        <a class="brand" href="https://shopebusiness.com">
+        <a class="brand" href="https://www.shopebusiness.com">
           Shop-E-Business
           <span class="brand__mark">Blog</span>
         </a>
@@ -71,7 +71,7 @@
 
         <div class="post-banners" id="post-banners">
         {% if page.bd_guide %}
-        <a class="bd-banner" id="bd-banner" href="https://shopebusiness.com/blog/how-to-use-shopebusiness/" hidden>
+        <a class="bd-banner" id="bd-banner" href="https://www.shopebusiness.com/blog/how-to-use-shopebusiness/" hidden>
           <span class="bd-banner__flag" aria-hidden="true"></span>
           <span class="bd-banner__text">
             <strong data-en="Selling from Bangladesh? Watch the video guide in Bangla" data-bn="বাংলাদেশ থেকে বিক্রি করছেন? বাংলায় ভিডিও গাইড দেখুন" data-th="Selling from Bangladesh? Watch the video guide in Bangla">Selling from Bangladesh? Watch the video guide in Bangla</strong>
@@ -82,7 +82,7 @@
         {% endif %}
 
         {% unless page.hide_manual_banner %}
-        <a class="guide-banner" href="https://shopebusiness.com/blog/shop-e-business-user-manual-step-by-step/">
+        <a class="guide-banner" href="https://www.shopebusiness.com/blog/shop-e-business-user-manual-step-by-step/">
           <svg class="guide-banner__icon" aria-hidden="true" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M9 7h7M9 10.5h7"/></svg>
           <span class="guide-banner__text">
             <strong data-en="New here? Read the Shop-E-Business User Manual" data-bn="নতুন? শপ-ই-বিজনেস ইউজার ম্যানুয়াল পড়ুন" data-th="มือใหม่? อ่านคู่มือการใช้งาน Shop-E-Business">New here? Read the Shop-E-Business User Manual</strong>
@@ -99,7 +99,7 @@
 
         <footer class="post__footer">
           <span data-en="Published by Shop-E-Business" data-bn="প্রকাশিত: শপ-ই-বিজনেস" data-th="เผยแพร่โดย Shop-E-Business">Published by Shop-E-Business</span>
-          <a class="btn" href="https://shopebusiness.com" data-en="Launch Your Store" data-bn="আপনার স্টোর চালু করুন" data-th="เปิดร้านของคุณ">Launch Your Store</a>
+          <a class="btn" href="https://www.shopebusiness.com" data-en="Launch Your Store" data-bn="আপনার স্টোর চালু করুন" data-th="เปิดร้านของคุณ">Launch Your Store</a>
         </footer>
       </article>
     </main>
