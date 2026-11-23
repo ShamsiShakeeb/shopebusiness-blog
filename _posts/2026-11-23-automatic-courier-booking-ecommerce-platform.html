@@ -1,0 +1,111 @@
+---
+layout: default
+title: "Automatic Courier Booking eCommerce Platform: Book Shipments Without Lifting a Finger"
+seo_title: "Automatic Courier Booking eCommerce Platform (EasyPost)"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "An automatic courier booking ecommerce platform: paid Stripe orders book an EasyPost shipment and save tracking on their own. $18/year, 0% fees. Free trial."
+keywords: "automatic courier booking ecommerce, auto book courier online store, courier booking automation, ecommerce courier integration automatic, automated courier dispatch"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is automatic courier booking?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The store books the shipment and buys postage with a courier automatically when an order is paid." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which courier does Shop-E-Business book?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It books through EasyPost, using the carriers enabled on your own EasyPost account." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if booking fails?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The order shows Courier error and Stripe retries the webhook; fixing the issue lets the next retry book it without a duplicate label." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can developers add another courier?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Cloudflare Worker can be customized to plug in other couriers or gateways." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> Automatic courier booking means the store books the shipment with a courier the moment an order is paid, instead of the seller doing it by hand. Shop-E-Business Tier-2 ($18/year) does this through EasyPost: a paid Stripe order becomes a booked shipment with a purchased label and a tracking link, using your own EasyPost account.</p>
+
+<h2>What counts as automatic courier booking?</h2>
+<p>Booking a courier means creating a shipment record with the carrier and buying postage. In an automatic flow, software does both from the order data. EasyPost exposes this as a single shipment-and-buy flow; see the <a href="https://docs.easypost.com/docs/shipments" target="_blank" rel="noopener">EasyPost Shipments API</a>.</p>
+
+<h2>How Shop-E-Business books the courier</h2>
+<ol>
+  <li>The buyer pays with Stripe Checkout; the money goes to your own Stripe account.</li>
+  <li>Stripe sends the <code>checkout.session.completed</code> webhook to your store's Cloudflare Worker.</li>
+  <li>The Worker reads your current ship-from address and default parcel size from Shop-E-Business.</li>
+  <li>It creates an EasyPost shipment referenced by the order ID and buys the cheapest rate that succeeds.</li>
+  <li>The tracking link, payment status and delivery status appear in <strong>Custom Order Management</strong> and on the buyer's tracking page.</li>
+</ol>
+
+<h2>Status you can see</h2>
+<table class="comparison-table">
+  <thead><tr><th>Status</th><th class="table-header-highlight">Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Paid + shipment booked</strong></td><td class="highlight-col">Label bought, tracking link saved</td></tr>
+    <tr><td><strong>Courier error</strong></td><td class="highlight-col">Payment recorded but label failed; Stripe retries</td></tr>
+    <tr><td><strong>Refunded</strong></td><td class="highlight-col">Stripe refund received; best-effort label refund attempted</td></tr>
+  </tbody>
+</table>
+
+<h2>Requirements</h2>
+<ul>
+  <li>Tier-2 ($18/year) or Tier-1 plus the $8/year custom-domain add-on.</li>
+  <li>A verified custom domain with DNS on Cloudflare (proxied records, SSL Full (Strict)).</li>
+  <li>Your own Stripe account and EasyPost account with API keys.</li>
+  <li>Courier settings saved: sender name, ship-from address, parcel length/width/height (inches) and weight (ounces).</li>
+</ul>
+<p>Carriers depend on your EasyPost account and can include <a href="https://www.ups.com/us/en/business-solutions" target="_blank" rel="noopener">UPS business solutions</a> and <a href="https://www.fedex.com/en-us/shipping.html" target="_blank" rel="noopener">FedEx shipping</a>. Developers can customize the Worker to add other couriers: <a href="{{ site.blog_base }}/shopebusiness-developer-platform-expose-api-cloudflare-worker/">Expose API and Cloudflare Worker guide</a>.</p>
+
+<div class="price-box">
+  <h2>Ship Paid Orders Automatically</h2>
+  <p>Tier-2: own domain + Stripe Checkout + automatic EasyPost shipments for $18/year. 0% transaction fees. 3-day free trial.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What is automatic courier booking?</h3>
+<p>The store books the shipment and buys postage with a courier automatically when an order is paid.</p>
+<h3>Which courier does Shop-E-Business book?</h3>
+<p>It books through EasyPost, using the carriers enabled on your own EasyPost account.</p>
+<h3>What happens if booking fails?</h3>
+<p>The order shows Courier error and Stripe retries the webhook; fixing the issue lets the next retry book it without a duplicate label.</p>
+<h3>Can developers add another courier?</h3>
+<p>Yes. The Cloudflare Worker can be customized to plug in other couriers or gateways.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>

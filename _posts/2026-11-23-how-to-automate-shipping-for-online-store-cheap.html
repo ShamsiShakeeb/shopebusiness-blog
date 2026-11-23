@@ -1,0 +1,105 @@
+---
+layout: default
+title: "How to Automate Shipping for an Online Store Cheaply (Step-by-Step)"
+seo_title: "How to Automate Shipping for an Online Store Cheaply"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "How to automate shipping for an online store cheaply: connect Stripe and EasyPost to a $18/year store so paid orders ship themselves. 0% fees, 3-day free trial."
+keywords: "how to automate shipping online store cheap, cheap shipping automation setup, automate shipping step by step, low cost shipping automation guide, set up automatic shipping"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the cheapest way to automate shipping?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Connect payment events to a shipping API directly. Shop-E-Business Tier-2 does this with Stripe and EasyPost for $18 per year." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to code?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The Worker script is generated for you; you paste it into Cloudflare and add your keys." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I test before going live?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the EasyPost test key and Stripe test card 4242 before switching to live keys." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I pay for a shipping app?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. You pay EasyPost postage and Stripe fees only." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> The cheapest way to automate shipping for an online store is to connect your store's payment events directly to a shipping API, instead of paying for a separate shipping app. On Shop-E-Business Tier-2 ($18/year) you save courier settings, deploy the generated Cloudflare Worker with your Stripe and EasyPost keys, register the Stripe webhook and click Activate.</p>
+
+<h2>Step-by-step</h2>
+<ol>
+  <li><strong>Get Tier-2</strong> ($18/year) or add the $8/year custom-domain add-on to Tier-1.</li>
+  <li><strong>Verify your domain</strong> in <strong>Advance &rarr; Custom Domain</strong> and move DNS to Cloudflare with proxied records (<a href="https://developers.cloudflare.com/dns/" target="_blank" rel="noopener">Cloudflare DNS docs</a>).</li>
+  <li><strong>Save courier settings</strong>: sender name, ship-from address, default parcel size and weight.</li>
+  <li><strong>Create an EasyPost account</strong> and copy the test API key.</li>
+  <li><strong>Deploy the Worker</strong> script shown in <strong>Payment &amp; Courier</strong> to Cloudflare Workers (<a href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener">Cloudflare Workers docs</a>), add the routes and secrets.</li>
+  <li><strong>Register the Stripe webhook</strong> at <code>yourdomain.com/stripe-webhook</code> (<a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener">Stripe webhooks docs</a>).</li>
+  <li><strong>Activate</strong>, place a test order with card 4242&hellip; and confirm a tracking link appears.</li>
+  <li><strong>Switch to live keys</strong> and redeploy.</li>
+</ol>
+
+<h2>What it costs</h2>
+<table class="comparison-table">
+  <thead><tr><th>Item</th><th class="table-header-highlight">Cost</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Store (Tier-2)</strong></td><td class="highlight-col">$18/year</td></tr>
+    <tr><td><strong>Cloudflare DNS + Worker</strong></td><td class="highlight-col">Cloudflare free plan works for DNS</td></tr>
+    <tr><td><strong>Postage</strong></td><td class="highlight-col">Billed by EasyPost per label</td></tr>
+    <tr><td><strong>Card processing</strong></td><td class="highlight-col">Stripe's fee (<a href="https://stripe.com/pricing" target="_blank" rel="noopener">Stripe pricing</a>)</td></tr>
+    <tr><td><strong>Platform fee</strong></td><td class="highlight-col">0%</td></tr>
+  </tbody>
+</table>
+<p>Detailed screenshots: <a href="{{ site.blog_base }}/custom-domain-stripe-courier-integration-step-by-step/">custom domain, Stripe and courier setup guide</a>.</p>
+
+<div class="price-box">
+  <h2>Automate Shipping for $18 a Year</h2>
+  <p>Tier-2: own domain + Stripe Checkout + automatic EasyPost shipments for $18/year. 0% transaction fees. 3-day free trial.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What is the cheapest way to automate shipping?</h3>
+<p>Connect payment events to a shipping API directly. Shop-E-Business Tier-2 does this with Stripe and EasyPost for $18 per year.</p>
+<h3>Do I need to code?</h3>
+<p>No. The Worker script is generated for you; you paste it into Cloudflare and add your keys.</p>
+<h3>Can I test before going live?</h3>
+<p>Yes. Use the EasyPost test key and Stripe test card 4242 before switching to live keys.</p>
+<h3>Do I pay for a shipping app?</h3>
+<p>No. You pay EasyPost postage and Stripe fees only.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>

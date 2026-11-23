@@ -1,0 +1,112 @@
+---
+layout: default
+title: "eCommerce Platform With EasyPost Integration Built In (No Shipping App Needed)"
+seo_title: "eCommerce Platform With EasyPost Integration Built In"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "An ecommerce platform with EasyPost integration built in: paid Stripe orders become shipments with tracking automatically. $18/year, 0% fees, 3-day free trial."
+keywords: "ecommerce platform with EasyPost integration, EasyPost store builder, EasyPost online store, EasyPost API ecommerce, built-in EasyPost shipping"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which ecommerce platform has EasyPost built in?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Shop-E-Business Tier-2 ($18/year) books an EasyPost shipment automatically for every paid Stripe order." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need my own EasyPost account?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. You paste your EasyPost API key into your own Cloudflare Worker, and postage is billed by EasyPost to your account." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Shop-E-Business store my EasyPost key?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Keys live only as encrypted secrets in your own Cloudflare Worker." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a platform fee on shipped orders?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Shop-E-Business charges 0% platform transaction fees." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> Shop-E-Business is an ecommerce platform with EasyPost integration built in. On Tier-2 ($18/year), every paid Stripe order is sent to a Cloudflare Worker that uses your own EasyPost API key to create the shipment, buy the label and save the tracking link to the order. There is no shipping app subscription and the platform takes 0% of each sale.</p>
+
+<h2>What is EasyPost?</h2>
+<p>EasyPost is a shipping API that lets software create shipments, compare carrier rates, buy labels and track parcels across many carriers. Its core objects are documented in the <a href="https://docs.easypost.com/docs/shipments" target="_blank" rel="noopener">EasyPost Shipments API</a> and <a href="https://docs.easypost.com/docs/trackers" target="_blank" rel="noopener">EasyPost Trackers API</a>.</p>
+
+<h2>How the integration works</h2>
+<ol>
+  <li>The buyer pays with Stripe Checkout; the money goes to your own Stripe account.</li>
+  <li>Stripe sends the <code>checkout.session.completed</code> webhook to your store's Cloudflare Worker.</li>
+  <li>The Worker reads your current ship-from address and default parcel size from Shop-E-Business.</li>
+  <li>It creates an EasyPost shipment referenced by the order ID and buys the cheapest rate that succeeds.</li>
+  <li>The tracking link, payment status and delivery status appear in <strong>Custom Order Management</strong> and on the buyer's tracking page.</li>
+</ol>
+
+<h2>What you need</h2>
+<ul>
+  <li>Tier-2 ($18/year) or Tier-1 plus the $8/year custom-domain add-on.</li>
+  <li>A verified custom domain with DNS on Cloudflare (proxied records, SSL Full (Strict)).</li>
+  <li>Your own Stripe account and EasyPost account with API keys.</li>
+  <li>Courier settings saved: sender name, ship-from address, parcel length/width/height (inches) and weight (ounces).</li>
+</ul>
+
+<h2>EasyPost on Shop-E-Business vs a separate shipping app</h2>
+<table class="comparison-table">
+  <thead><tr><th>Factor</th><th>Separate shipping app</th><th class="table-header-highlight">Shop-E-Business Tier-2</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Monthly app fee</strong></td><td>Usually yes</td><td class="highlight-col">None; included in $18/year</td></tr>
+    <tr><td><strong>Label trigger</strong></td><td>Import orders, then buy</td><td class="highlight-col">Automatic on paid Stripe orders</td></tr>
+    <tr><td><strong>Postage billing</strong></td><td>Through the app or carrier</td><td class="highlight-col">Your own EasyPost account</td></tr>
+    <tr><td><strong>Keys stored</strong></td><td>In the app</td><td class="highlight-col">Only in your own Cloudflare Worker</td></tr>
+  </tbody>
+</table>
+<p>Setup walkthrough: <a href="{{ site.blog_base }}/custom-domain-stripe-courier-integration-step-by-step/">custom domain, Stripe and courier setup guide</a>. Stripe side: <a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener">Stripe webhooks docs</a>.</p>
+
+<div class="price-box">
+  <h2>Ship Paid Orders Automatically</h2>
+  <p>Tier-2: own domain + Stripe Checkout + automatic EasyPost shipments for $18/year. 0% transaction fees. 3-day free trial.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Which ecommerce platform has EasyPost built in?</h3>
+<p>Shop-E-Business Tier-2 ($18/year) books an EasyPost shipment automatically for every paid Stripe order.</p>
+<h3>Do I need my own EasyPost account?</h3>
+<p>Yes. You paste your EasyPost API key into your own Cloudflare Worker, and postage is billed by EasyPost to your account.</p>
+<h3>Does Shop-E-Business store my EasyPost key?</h3>
+<p>No. Keys live only as encrypted secrets in your own Cloudflare Worker.</p>
+<h3>Is there a platform fee on shipped orders?</h3>
+<p>No. Shop-E-Business charges 0% platform transaction fees.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>

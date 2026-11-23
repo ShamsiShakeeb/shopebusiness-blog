@@ -1,0 +1,98 @@
+---
+layout: default
+title: "Automatic Shipping Notification Emails in eCommerce: What Shop-E-Business Does Today"
+seo_title: "Automatic Shipping Notification Emails for eCommerce"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "Automatic shipping notification emails in ecommerce: how tracking and status reach buyers on a $18/year store, and how to add email via the Worker. 0% fees."
+keywords: "automatic shipping notification emails ecommerce, shipping confirmation email automation, shipped email to customer, order shipped notification, tracking email automation"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Shop-E-Business email buyers when an order ships?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The tracking link is shown on the buyer tracking page; buyer shipping emails can be added by customizing the Worker." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who gets email alerts by default?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The seller gets email alerts for new orders." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Stripe send receipts?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Stripe can send payment receipts from your Stripe account settings." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which plan supports the Worker?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tier-2 at $18 per year or the $8/year add-on." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> Shipping notification emails tell buyers their parcel is on its way. On Shop-E-Business Tier-2 ($18/year), the shipment and tracking link are created automatically and appear on the buyer's tracking page; the platform's email alerts go to the seller for new orders. If you want buyer shipping emails, a developer can extend the Cloudflare Worker to send them when the label is bought.</p>
+
+<h2>What happens today</h2>
+<table class="comparison-table">
+  <thead><tr><th>Event</th><th class="table-header-highlight">Notification</th></tr></thead>
+  <tbody>
+    <tr><td><strong>New order</strong></td><td class="highlight-col">Email alert to seller</td></tr>
+    <tr><td><strong>Label bought</strong></td><td class="highlight-col">Tracking link on buyer tracking page and seller dashboard</td></tr>
+    <tr><td><strong>Buyer shipping email</strong></td><td class="highlight-col">Add via Worker customization</td></tr>
+  </tbody>
+</table>
+
+<h2>Adding buyer emails</h2>
+<ol>
+  <li>In the Worker, after the EasyPost buy step, call your email provider's API.</li>
+  <li>Include the tracking URL returned by EasyPost (<a href="https://docs.easypost.com/docs/trackers" target="_blank" rel="noopener">EasyPost Trackers API</a>).</li>
+  <li>Store email API keys as Worker secrets (<a href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener">Cloudflare Workers docs</a>).</li>
+</ol>
+<p>Developer overview: <a href="{{ site.blog_base }}/shopebusiness-developer-platform-expose-api-cloudflare-worker/">Expose API and Cloudflare Worker guide</a>. Stripe can also send payment receipts; see <a href="https://docs.stripe.com/payments/checkout" target="_blank" rel="noopener">Stripe Checkout docs</a>.</p>
+
+<div class="price-box">
+  <h2>Ship Paid Orders Automatically</h2>
+  <p>Tier-2: own domain + Stripe Checkout + automatic EasyPost shipments for $18/year. 0% transaction fees. 3-day free trial.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Does Shop-E-Business email buyers when an order ships?</h3>
+<p>The tracking link is shown on the buyer tracking page; buyer shipping emails can be added by customizing the Worker.</p>
+<h3>Who gets email alerts by default?</h3>
+<p>The seller gets email alerts for new orders.</p>
+<h3>Can Stripe send receipts?</h3>
+<p>Stripe can send payment receipts from your Stripe account settings.</p>
+<h3>Which plan supports the Worker?</h3>
+<p>Tier-2 at $18 per year or the $8/year add-on.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>
