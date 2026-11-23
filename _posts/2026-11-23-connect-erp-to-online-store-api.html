@@ -1,0 +1,107 @@
+---
+layout: default
+title: "How to Connect an ERP to Your Online Store With an API"
+seo_title: "Connect ERP to Online Store via API: Step-by-Step Guide"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "Connect an ERP to your online store via API: receive signed order webhooks, push status and tracking back, on an $18/year store with 0% fees. 3-day free trial."
+keywords: "connect ERP to online store API, ERP ecommerce integration, sync orders to ERP, online store ERP webhook, ERP order sync API"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I connect an ERP to my online store?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Receive orders through the store API, create them in the ERP and post status back." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Shop-E-Business push orders to my ERP?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, the Expose API sends each new order to your HTTPS endpoint." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the ERP send tracking back?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, via POST /api/exposure/order-status." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which plan is needed?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tier-2 ($18/year) or the $8/year add-on." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> To connect an ERP to an online store, receive each new order from the store through an API, create it in the ERP, and send fulfilment status back. On Shop-E-Business (Tier-2, $18/year), the Expose API posts every new order to your HTTPS endpoint with a signed JWT, and your integration updates delivery and payment status through POST /api/exposure/order-status.</p>
+
+<h2>Integration flow</h2>
+<ol>
+  <li>Buyer places an order on your store.</li>
+  <li>Shop-E-Business calls your endpoint with a JWT carrying CustomOrderId and shop.</li>
+  <li>Your service verifies the token (<a href="https://datatracker.ietf.org/doc/html/rfc7519" target="_blank" rel="noopener">RFC 7519 (JSON Web Token)</a>) and creates the sales order in the ERP (for example via the <a href="https://www.odoo.com/documentation/17.0/developer/reference/external_api.html" target="_blank" rel="noopener">Odoo external API docs</a>).</li>
+  <li>When the ERP ships, post DeliveryStatus and DeliveryTrackingUrl back.</li>
+</ol>
+
+<h2>API contract</h2>
+<table class="comparison-table">
+  <thead><tr><th>Endpoint</th><th>Direction</th><th class="table-header-highlight">Purpose</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Order dispatch</strong></td><td>Shop-E-Business &rarr; your HTTPS endpoint</td><td class="highlight-col">New order, HS256 JWT (CustomOrderId, shop), 5-minute expiry</td></tr>
+    <tr><td><strong>POST /api/exposure/order-status</strong></td><td>You &rarr; Shop-E-Business</td><td class="highlight-col">CustomOrderId, DeliveryStatus, DeliveryTrackingUrl, PaymentStatus</td></tr>
+    <tr><td><strong>GET /api/exposure/courier-config</strong></td><td>You &rarr; Shop-E-Business</td><td class="highlight-col">Ship-from address and default parcel size/weight</td></tr>
+  </tbody>
+</table>
+<p>Both directions use HS256 with one shared 48-byte secret per shop, shown in <strong>Advance &rarr; Expose API</strong> and regenerable at any time. C# and Node.js signing samples are provided.</p>
+
+<h2>Design tips</h2>
+<ul>
+  <li>Use CustomOrderId as the idempotency key so retries never duplicate ERP orders.</li>
+  <li>Keep the shared secret in your server's secret store.</li>
+  <li>Map statuses to a shared vocabulary such as <a href="https://schema.org/Order" target="_blank" rel="noopener">schema.org Order</a> order status.</li>
+</ul>
+<p>Running it serverless: <a href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener">Cloudflare Workers docs</a>. Full contract: <a href="{{ site.blog_base }}/shopebusiness-developer-platform-expose-api-cloudflare-worker/">Expose API and Worker developer guide</a>.</p>
+
+<div class="price-box">
+  <h2>Connect Your ERP</h2>
+  <p>Tier-2 ($18/year) or the $8/year add-on unlocks the Expose API and Cloudflare Worker on your own domain. 0% platform fees. 3-day free trial, no card.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>How do I connect an ERP to my online store?</h3>
+<p>Receive orders through the store API, create them in the ERP and post status back.</p>
+<h3>Does Shop-E-Business push orders to my ERP?</h3>
+<p>Yes, the Expose API sends each new order to your HTTPS endpoint.</p>
+<h3>Can the ERP send tracking back?</h3>
+<p>Yes, via POST /api/exposure/order-status.</p>
+<h3>Which plan is needed?</h3>
+<p>Tier-2 ($18/year) or the $8/year add-on.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>
