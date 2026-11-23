@@ -1,0 +1,104 @@
+---
+layout: default
+title: "Online Store With Automatic Shipment Booking for Every Paid Order"
+seo_title: "Online Store With Automatic Shipment Booking (Tier-2)"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "An online store with automatic shipment booking: every paid Stripe order is booked with EasyPost and gets a tracking link, with no extra app. $18/year, 0% fees."
+keywords: "online store automatic shipment booking, auto shipment booking ecommerce, book shipments automatically online shop, automatic dispatch online store, shipment booking automation"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does every paid order get booked automatically?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, every paid Stripe order on Tier-2 is booked with EasyPost." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does Stripe retry a failed booking?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Stripe retries the webhook for up to about three days." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will retries create two shipments?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Shipments are looked up by order reference before buying." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does setup take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "About 15 minutes for the domain plus DNS propagation, then the Stripe and EasyPost steps." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> Automatic shipment booking means each paid order is booked with a carrier without the seller opening a shipping site. A Shop-E-Business Tier-2 store ($18/year) books an EasyPost shipment for every paid Stripe order, buys the label and records the tracking link, then reports payment and delivery status back to your dashboard.</p>
+
+<h2>The booking flow in one table</h2>
+<table class="comparison-table">
+  <thead><tr><th>Stage</th><th class="table-header-highlight">What happens</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Order placed</strong></td><td class="highlight-col">Buyer pays on Stripe Checkout</td></tr>
+    <tr><td><strong>Webhook</strong></td><td class="highlight-col">Stripe notifies your Worker</td></tr>
+    <tr><td><strong>Booking</strong></td><td class="highlight-col">Worker creates the EasyPost shipment and buys a rate</td></tr>
+    <tr><td><strong>Status</strong></td><td class="highlight-col">Tracking link, payment and delivery status sent back to the store</td></tr>
+  </tbody>
+</table>
+<p>Docs: <a href="https://docs.stripe.com/payments/checkout" target="_blank" rel="noopener">Stripe Checkout docs</a>, <a href="https://docs.easypost.com/docs/shipments" target="_blank" rel="noopener">EasyPost Shipments API</a>, <a href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener">Cloudflare Workers docs</a>.</p>
+
+<h2>Retries without double-booking</h2>
+<p>The Worker returns success to Stripe only after every step works. If booking fails, Stripe retries for up to about three days; because shipments are looked up by order reference first, the retry never books twice.</p>
+
+<h2>Turning it on</h2>
+<ol>
+  <li>Verify your custom domain on Tier-2 (or the $8/year add-on) and move DNS to Cloudflare.</li>
+  <li>Save courier settings in <strong>Advance &rarr; Payment &amp; Courier</strong>.</li>
+  <li>Deploy the generated Worker and add your Stripe and EasyPost secrets.</li>
+  <li>Register the Stripe webhook and click Activate.</li>
+</ol>
+<p>Full guide: <a href="{{ site.blog_base }}/custom-domain-stripe-courier-integration-step-by-step/">custom domain, Stripe and courier setup guide</a>.</p>
+
+<div class="price-box">
+  <h2>Ship Paid Orders Automatically</h2>
+  <p>Tier-2: own domain + Stripe Checkout + automatic EasyPost shipments for $18/year. 0% transaction fees. 3-day free trial.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Does every paid order get booked automatically?</h3>
+<p>Yes, every paid Stripe order on Tier-2 is booked with EasyPost.</p>
+<h3>How long does Stripe retry a failed booking?</h3>
+<p>Stripe retries the webhook for up to about three days.</p>
+<h3>Will retries create two shipments?</h3>
+<p>No. Shipments are looked up by order reference before buying.</p>
+<h3>How long does setup take?</h3>
+<p>About 15 minutes for the domain plus DNS propagation, then the Stripe and EasyPost steps.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>

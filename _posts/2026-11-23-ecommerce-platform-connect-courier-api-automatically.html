@@ -1,0 +1,103 @@
+---
+layout: default
+title: "eCommerce Platform That Connects to a Courier API Automatically (EasyPost + Worker)"
+seo_title: "Store Builder That Connects to a Courier API Automatically"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "An ecommerce platform that connects to a courier API automatically: a generated Cloudflare Worker calls EasyPost on each paid order. $18/year, 0% fees."
+keywords: "ecommerce platform connect courier API, courier API integration store, EasyPost API Worker, automatic courier API connection, connect shipping API to store"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does Shop-E-Business connect to a courier API?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Through a generated Cloudflare Worker that calls EasyPost with your key on each paid Stripe order." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is the courier key stored?",
+          "acceptedAnswer": { "@type": "Answer", "text": "As the COURIER_API_KEY secret in your own Worker." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use a different courier API?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Developers can edit the Worker to plug in other couriers." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which plan?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tier-2 at $18 per year or the $8/year add-on." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> Shop-E-Business connects to a courier API automatically through a Cloudflare Worker it generates for you. On Tier-2 ($18/year), the Worker holds your EasyPost key as a secret (COURIER_API_KEY), calls the EasyPost shipments endpoint for each paid Stripe order, and reports status back. Developers can swap or add courier APIs by editing the Worker.</p>
+
+<h2>The connection pieces</h2>
+<table class="comparison-table">
+  <thead><tr><th>Piece</th><th class="table-header-highlight">Value</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Secret</strong></td><td class="highlight-col"><code>COURIER_API_KEY</code> (EasyPost key)</td></tr>
+    <tr><td><strong>Variable</strong></td><td class="highlight-col"><code>EASYPOST_SHIPMENT_URL</code> = <code>https://api.easypost.com/v2/shipments</code></td></tr>
+    <tr><td><strong>Routes</strong></td><td class="highlight-col"><code>yourdomain.com/apiEndpoint</code>, <code>yourdomain.com/stripe-webhook</code></td></tr>
+    <tr><td><strong>Auth</strong></td><td class="highlight-col">Short-lived HS256 JWT from Shop-E-Business</td></tr>
+  </tbody>
+</table>
+<p>API references: <a href="https://docs.easypost.com/docs/shipments" target="_blank" rel="noopener">EasyPost Shipments API</a>, <a href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener">Cloudflare Workers docs</a>, <a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener">Stripe webhooks docs</a>.</p>
+
+<h2>Why a Worker?</h2>
+<p>Your keys never leave your Cloudflare account, the script contains no seller-specific values, and you can change courier logic without waiting for a platform update. See the <a href="{{ site.blog_base }}/shopebusiness-developer-platform-expose-api-cloudflare-worker/">Expose API and Cloudflare Worker guide</a>.</p>
+
+<h2>Requirements</h2>
+<ul>
+  <li>Tier-2 ($18/year) or Tier-1 plus the $8/year custom-domain add-on.</li>
+  <li>A verified custom domain with DNS on Cloudflare (proxied records, SSL Full (Strict)).</li>
+  <li>Your own Stripe account and EasyPost account with API keys.</li>
+  <li>Courier settings saved: sender name, ship-from address, parcel length/width/height (inches) and weight (ounces).</li>
+</ul>
+
+<div class="price-box">
+  <h2>Ship Paid Orders Automatically</h2>
+  <p>Tier-2: own domain + Stripe Checkout + automatic EasyPost shipments for $18/year. 0% transaction fees. 3-day free trial.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>How does Shop-E-Business connect to a courier API?</h3>
+<p>Through a generated Cloudflare Worker that calls EasyPost with your key on each paid Stripe order.</p>
+<h3>Where is the courier key stored?</h3>
+<p>As the COURIER_API_KEY secret in your own Worker.</p>
+<h3>Can I use a different courier API?</h3>
+<p>Developers can edit the Worker to plug in other couriers.</p>
+<h3>Which plan?</h3>
+<p>Tier-2 at $18 per year or the $8/year add-on.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>
