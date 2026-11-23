@@ -1,0 +1,102 @@
+---
+layout: default
+title: "Online Store With Stripe Checkout and No Monthly Fee"
+seo_title: "Online Store With Stripe Checkout and No Monthly Fee"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "An online store with Stripe Checkout and no monthly fee: pay $18 once a year for Tier-2, keep payments in your own Stripe account, 0% fees. 3-day free trial."
+keywords: "online store with Stripe Checkout no monthly fee, Stripe checkout yearly plan, no monthly fee card payments store, annual Stripe store builder, Stripe store without subscription"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is there a monthly fee for Stripe Checkout on Shop-E-Business?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Tier-2 is $18 per year with no monthly fee." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which payment methods does Stripe Checkout show?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The methods enabled on your own Stripe account, starting with cards." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the platform take a cut?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No, 0% platform transaction fee." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I try before paying?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, a 3-day free trial with no card." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> Shop-E-Business offers an online store with Stripe Checkout and no monthly fee: Tier-2 is billed once at $18 per year. Buyers pay on Stripe's hosted checkout page, money settles in your own Stripe account, and the platform charges no monthly subscription and no per-sale fee.</p>
+
+<h2>Monthly vs yearly billing</h2>
+<table class="comparison-table">
+  <thead><tr><th>Model</th><th>Example</th><th class="table-header-highlight">12-month cost</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Monthly plan</strong></td><td>Shopify Basic (<a href="https://www.shopify.com/pricing" target="_blank" rel="noopener">Shopify pricing</a>)</td><td class="highlight-col">Hundreds of dollars</td></tr>
+    <tr><td><strong>Yearly plan</strong></td><td>Shop-E-Business Tier-2</td><td class="highlight-col">$18</td></tr>
+  </tbody>
+</table>
+<p><em>Competitor figures are approximate and based on publicly available pricing at the time of writing; check each vendor's pricing page for current numbers.</em></p>
+
+<h2>What Stripe Checkout gives buyers</h2>
+<p>Stripe Checkout is a Stripe-hosted payment page that supports cards and other methods Stripe enables for your account (<a href="https://stripe.com/payments/checkout" target="_blank" rel="noopener">Stripe Checkout</a>, <a href="https://docs.stripe.com/payments/payment-methods" target="_blank" rel="noopener">Stripe payment methods</a>). It handles card security, so card data never touches your store.</p>
+
+<h2>Turning it on</h2>
+<ol>
+  <li>On Tier-2 ($18/year), or Tier-1 plus the $8/year add-on, verify a domain you own in <strong>Advance &rarr; Custom Domain</strong>.</li>
+  <li>Move its DNS to Cloudflare, set the records to Proxied and SSL to Full (Strict).</li>
+  <li>In <strong>Advance &rarr; Payment &amp; Courier</strong>, deploy the generated Cloudflare Worker and add your Stripe secret key and webhook secret as Worker secrets.</li>
+  <li>Register the Stripe webhook at <code>yourdomain.com/stripe-webhook</code> and click <strong>Activate</strong>; checkout switches from cash on delivery to Stripe Checkout.</li>
+</ol>
+<p>Webhook reference: <a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener">Stripe webhooks docs</a>.</p>
+
+<div class="price-box">
+  <h2>Accept Cards on Your Own Domain</h2>
+  <p>Tier-2: connect a domain you own + Stripe Checkout into your own Stripe account for $18/year. 0% platform fees. 3-day free trial, no card.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Is there a monthly fee for Stripe Checkout on Shop-E-Business?</h3>
+<p>No. Tier-2 is $18 per year with no monthly fee.</p>
+<h3>Which payment methods does Stripe Checkout show?</h3>
+<p>The methods enabled on your own Stripe account, starting with cards.</p>
+<h3>Does the platform take a cut?</h3>
+<p>No, 0% platform transaction fee.</p>
+<h3>Can I try before paying?</h3>
+<p>Yes, a 3-day free trial with no card.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>
