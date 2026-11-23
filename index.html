@@ -112,6 +112,7 @@
       var STORAGE_KEY = 'pref_lang';
 
       function applyLanguage(lang) {
+        var isFallback = lang !== 'bn' && lang !== 'en';
         lang = lang === 'bn' ? 'bn' : 'en';
 
         document.querySelectorAll('[data-en][data-bn]').forEach(function (el) {
@@ -131,6 +132,7 @@
 
         document.documentElement.lang = lang;
 
+        if (isFallback) { return; }
         try {
           localStorage.setItem(STORAGE_KEY, lang);
         } catch (e) { /* storage unavailable */ }

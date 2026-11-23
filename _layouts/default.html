@@ -144,8 +144,9 @@
     var SUPPORTED_LANGS = [{% for lang in page_langs %}'{{ lang | strip }}'{% unless forloop.last %}, {% endunless %}{% endfor %}];
 
     function applyLanguage(lang) {
-      // Fallback to 'en' if invalid or unsupported
-      if (SUPPORTED_LANGS.indexOf(lang) === -1) {
+      // Fallback to 'en' if invalid or unsupported, without overwriting the saved preference
+      var isFallback = SUPPORTED_LANGS.indexOf(lang) === -1;
+      if (isFallback) {
         lang = 'en';
       }
 
@@ -194,6 +195,7 @@
       positionBanners(lang);
 
       // 8. Save preference
+      if (isFallback) { return; }
       try {
         localStorage.setItem(STORAGE_KEY, lang);
       } catch (e) { /* storage unavailable */ }
