@@ -1,0 +1,106 @@
+---
+layout: default
+title: "eCommerce Platform Where Payments Go to My Own Stripe Account"
+seo_title: "eCommerce Platform Where Payments Go to My Own Stripe"
+date: 2026-11-23
+author: "Washiq Anwar Shamsi"
+description: "An ecommerce platform where payments go to your own Stripe account: no middleman balance or payout delay from the platform, 0% fees, $18/year. 3-day free trial."
+keywords: "ecommerce platform payments go to my own Stripe account, own Stripe account store, direct Stripe payouts, no platform held funds, Stripe direct ecommerce"
+languages: [en]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "description": "{{ page.description | escape }}",
+      "keywords": "{{ page.keywords }}",
+      "inLanguage": "en",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@type": "Person", "name": "{{ page.author }}" },
+      "publisher": { "@type": "Organization", "name": "Shop-E-Business", "url": "https://www.shopebusiness.com" },
+      "mainEntityOfPage": "https://www.shopebusiness.com{{ site.blog_base }}{{ page.url }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do payments go to my own Stripe account?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shop-E-Business uses your own Stripe keys, so funds settle in your account." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Shop-E-Business hold my money?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are my Stripe keys stored?",
+          "acceptedAnswer": { "@type": "Answer", "text": "As encrypted secrets in your own Cloudflare Worker." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which plan?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tier-2 at $18 per year or Tier-1 with the $8/year add-on." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="content-en" class="lang-en">
+
+<p><strong>Short answer:</strong> On Shop-E-Business, card payments go to your own Stripe account, not to a platform balance. Tier-2 ($18/year) uses your Stripe secret key, stored only in your own Cloudflare Worker, to create Stripe Checkout sessions, so Stripe settles funds and payouts directly to you on your Stripe schedule, and the platform takes 0%.</p>
+
+<h2>Your account vs a marketplace balance</h2>
+<table class="comparison-table">
+  <thead><tr><th>Model</th><th>Who holds funds</th><th class="table-header-highlight">Payouts</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Marketplace / platform balance</strong></td><td>Platform first</td><td class="highlight-col">Platform's schedule</td></tr>
+    <tr><td><strong>Shop-E-Business + your Stripe</strong></td><td>Your Stripe account</td><td class="highlight-col">Stripe's payout schedule for your account</td></tr>
+  </tbody>
+</table>
+<p>Platforms that route payments for many sellers often use Stripe Connect (<a href="https://docs.stripe.com/connect" target="_blank" rel="noopener">Stripe Connect docs</a>); Shop-E-Business instead uses your own Stripe keys.</p>
+
+<h2>Where your keys live</h2>
+<ul>
+  <li><code>STRIPE_SECRET_KEY</code> and <code>STRIPE_WEBHOOK_SECRET</code> are encrypted Worker secrets.</li>
+  <li>Shop-E-Business never stores them; the Worker runs on Cloudflare (<a href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener">Cloudflare Workers docs</a>).</li>
+  <li>Webhooks are signature-verified (<a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener">Stripe webhooks docs</a>).</li>
+</ul>
+
+<h2>Setup</h2>
+<ol>
+  <li>On Tier-2 ($18/year), or Tier-1 plus the $8/year add-on, verify a domain you own in <strong>Advance &rarr; Custom Domain</strong>.</li>
+  <li>Move its DNS to Cloudflare, set the records to Proxied and SSL to Full (Strict).</li>
+  <li>In <strong>Advance &rarr; Payment &amp; Courier</strong>, deploy the generated Cloudflare Worker and add your Stripe secret key and webhook secret as Worker secrets.</li>
+  <li>Register the Stripe webhook at <code>yourdomain.com/stripe-webhook</code> and click <strong>Activate</strong>; checkout switches from cash on delivery to Stripe Checkout.</li>
+</ol>
+<p>Stripe fees: <a href="https://stripe.com/pricing" target="_blank" rel="noopener">Stripe pricing</a>.</p>
+
+<div class="price-box">
+  <h2>Get Paid Into Your Own Stripe</h2>
+  <p>Tier-2: connect a domain you own + Stripe Checkout into your own Stripe account for $18/year. 0% platform fees. 3-day free trial, no card.</p>
+  <a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Do payments go to my own Stripe account?</h3>
+<p>Yes. Shop-E-Business uses your own Stripe keys, so funds settle in your account.</p>
+<h3>Does Shop-E-Business hold my money?</h3>
+<p>No.</p>
+<h3>Where are my Stripe keys stored?</h3>
+<p>As encrypted secrets in your own Cloudflare Worker.</p>
+<h3>Which plan?</h3>
+<p>Tier-2 at $18 per year or Tier-1 with the $8/year add-on.</p>
+
+<p><strong>Ready to switch?</strong> Start your 3-day free trial at <a href="https://www.shopebusiness.com/Home#auth-section">shopebusiness.com</a>: no credit card, 0% transaction fees, $10/year after the trial.</p>
+<a class="cta-button" href="https://www.shopebusiness.com/Home#auth-section">Start Your 3-Day Free Trial</a>
+
+</div>
