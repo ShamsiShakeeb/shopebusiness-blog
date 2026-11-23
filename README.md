@@ -1,6 +1,6 @@
 # Shop-E-Business Blog
 
-Jekyll blog served at `https://shopebusiness.com/blog/`.
+Jekyll blog served at `https://www.shopebusiness.com/blog/`.
 
 ## Writing a post
 
